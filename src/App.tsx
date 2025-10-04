@@ -20,6 +20,7 @@ import PlatformLaunch from "./pages/PlatformLaunch";
 import DistributionNFT from "./pages/DistributionNFT";
 import CaseStudiesNFT from "./pages/CaseStudiesNFT";
 import Contact from "./pages/Contact";
+import BookACall from "./pages/BookACall";
 import AIVoice from "./pages/AIVoice";
 import AIVoiceStarter from "./pages/AIVoiceStarter";
 import AIVoiceProfessional from "./pages/AIVoiceProfessional";
@@ -61,6 +62,7 @@ const App = () => (
             <Route path="/ai-voice/advanced" element={<AIVoiceAdvanced />} />
             <Route path="/ai-voice/enterprise" element={<AIVoiceEnterprise />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/book-a-call" element={<BookACall />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>

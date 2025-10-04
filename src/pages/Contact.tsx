@@ -1,485 +1,563 @@
-import React, { useState } from "react";
+import { useState, useEffect } from "react";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import { Badge } from "@/components/ui/badge";
-import { MapPin, Phone, Mail, Clock, Send, MessageCircle, CheckCircle, ArrowRight, Calendar, Users, FileText, Code, Rocket, Headphones } from "lucide-react";
-
-import { InquiryForm } from "@/components/InquiryForm";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
+import { Card } from "@/components/ui/card";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Phone, Mail, MapPin, Users, Briefcase, Newspaper, HeadphonesIcon, ArrowRight, Upload, CheckCircle2 } from "lucide-react";
 import { sendInquiryEmail } from "@/service/sendInquiryEmail";
+import { SEOHead } from "@/components/SEO/SEOHead";
 
-// Declare Tawk_API types for TypeScript
-declare global {
-  interface Window {
-    Tawk_API?: {
-      maximize?: () => void;
-    };
+// GA4 Event tracking
+const trackGA4Event = (eventName: string, params?: Record<string, any>) => {
+  if (typeof window !== 'undefined' && (window as any).gtag) {
+    (window as any).gtag('event', eventName, params);
   }
-}
+};
 
 const Contact = () => {
   const [formData, setFormData] = useState({
     name: "",
-    email: "",
     company: "",
-    message: ""
+    email: "",
+    phone: "",
+    interest: "",
+    budget: "",
+    timeline: "",
+    message: "",
+    monthlyMinutes: "",
+    telephony: "",
+    crm: "",
+    consent: false,
+    file: null as File | null
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const [isInquiryFormOpen, setIsInquiryFormOpen] = useState(false);
+  const [showAIVoiceFields, setShowAIVoiceFields] = useState(false);
 
-  const contactInfo = [
-    {
-      icon: Mail,
-      title: "Email Us",
-      value: "contact@nftlasvegas.com",
-      description: "Send us an email anytime"
-    },
-    {
-      icon: Phone,
-      title: "Call Us",
-      value: "+1 (702) 555-0100",
-      description: "Mon-Fri from 9am to 6pm PST"
-    },
-    {
-      icon: Clock,
-      title: "Working Hours",
-      value: "Mon - Fri: 9am - 6pm",
-      description: "PST timezone"
+  const handleInputChange = (field: string, value: string | boolean | File | null) => {
+    setFormData(prev => ({ ...prev, [field]: value }));
+    
+    if (field === "interest") {
+      setShowAIVoiceFields(value === "AI Voice System");
     }
-  ];
+  };
 
-  const globalOffices = [
-    {
-      countryCode: "US",
-      name: "Las Vegas, Nevada",
-      description: "Headquarters",
-      address: "Las Vegas, Nevada, USA",
-      mapSrc: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d409930.2897533593!2d-115.31785024999999!3d36.1251958!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80beb782a4f57dd1%3A0x3accd5e6d5b379a3!2sLas%20Vegas%2C%20NV!5e0!3m2!1sen!2sus!4v1640000000000!5m2!1sen!2sus"
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file && file.size <= 25 * 1024 * 1024) {
+      handleInputChange("file", file);
     }
-  ];
-
-  const workflowSteps = [
-    {
-      title: "Initial Consultation",
-      description: "We discuss your project requirements and goals",
-      duration: "30 minutes",
-      icon: Users
-    },
-    {
-      title: "Proposal & Planning",
-      description: "Detailed project proposal with timeline and cost",
-      duration: "2-3 days",
-      icon: FileText
-    },
-    {
-      title: "Development & Design",
-      description: "Our team starts building your solution",
-      duration: "2-12 weeks",
-      icon: Code
-    },
-    {
-      title: "Testing & Launch",
-      description: "Quality assurance and deployment to production",
-      duration: "1-2 weeks",
-      icon: Rocket
-    },
-    {
-      title: "Support & Maintenance",
-      description: "Ongoing support and feature enhancements",
-      duration: "Ongoing",
-      icon: Headphones
-    }
-  ];
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
-    setIsSubmitted(true);
-
-    sendInquiryEmail({
-      name: formData.name,
-      email: formData.email,
-      company: formData.company,
-      message: formData.message,
-    }).then(() => {
-        setIsSubmitted(true);
-        setTimeout(() => {
-          setIsSubmitted(false);
-          setFormData({ name: "", email: "", company: "", message: "" });
-        }, 3000);
-      })
-      .catch(() => {});
-  };
-
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
+    
+    // Track GA4 event
+    trackGA4Event('contact_submit', {
+      interest: formData.interest,
+      budget: formData.budget,
+      timeline: formData.timeline
     });
+
+    sendInquiryEmail(formData).then(() => {
+      setIsSubmitted(true);
+      setTimeout(() => {
+        setIsSubmitted(false);
+        setFormData({
+          name: "",
+          company: "",
+          email: "",
+          phone: "",
+          interest: "",
+          budget: "",
+          timeline: "",
+          message: "",
+          monthlyMinutes: "",
+          telephony: "",
+          crm: "",
+          consent: false,
+          file: null
+        });
+      }, 5000);
+    }).catch(() => {})
   };
 
-  const openLiveChat = () => {
-    // Check if Tawk.to is loaded and open the chat widget
-    if (window.Tawk_API && window.Tawk_API.maximize) {
-      window.Tawk_API.maximize();
-    }
+  const scrollToSection = (id: string) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
   };
+
+  useEffect(() => {
+    trackGA4Event('page_view', { page_title: 'Contact' });
+  }, []);
+
+  const quickContactCards = [
+    {
+      icon: Briefcase,
+      title: "Sales",
+      description: "Funding, Tech, Manufacturing, Launch, Distribution",
+      action: () => scrollToSection('contact-form')
+    },
+    {
+      icon: Users,
+      title: "Partnerships",
+      description: "Agencies, vendors, channels",
+      action: () => scrollToSection('contact-form')
+    },
+    {
+      icon: Newspaper,
+      title: "Media/Press",
+      description: "Press inquiries and media relations",
+      action: () => scrollToSection('contact-form')
+    },
+    {
+      icon: HeadphonesIcon,
+      title: "Support",
+      description: "Technical and customer support",
+      action: () => scrollToSection('contact-form')
+    }
+  ];
+
+  const faqItems = [
+    {
+      question: "What are your response times?",
+      answer: "We typically respond within 1 business day. For urgent inquiries, please call us directly at +1 (725) 256-9852."
+    },
+    {
+      question: "Do you offer NDAs for initial discussions?",
+      answer: "Yes, we're happy to sign mutual NDAs before discussing your project details. Simply mention this in your inquiry."
+    },
+    {
+      question: "Do you accept equity-based partnerships?",
+      answer: "Absolutely. We evaluate equity partnerships for projects that align with our expertise and vision. Contact us to discuss terms."
+    },
+    {
+      question: "What CRMs and telephony systems do you support?",
+      answer: "We integrate with HubSpot, Salesforce, Twilio, Telnyx, and many other platforms. If you have a specific system, let us know."
+    },
+    {
+      question: "How do you handle security and compliance?",
+      answer: "We follow industry best practices for data security and can accommodate HIPAA, SOC 2, and other compliance requirements."
+    }
+  ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50">
+    <>
+      <SEOHead
+        title="Contact NFT Las Vegas | Let's Build What's Next"
+        description="Get in touch with NFT Las Vegas for funding enablement, tech development, product manufacturing, platform launch, distribution, or AI voice systems."
+        url="https://www.nftlasvegas.io/contact"
+      />
       <Header />
-      
-      {/* Hero Section */}
-      <section className="pt-24 pb-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center animate-fade-in">
-            <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
-              Let's <span className="text-gradient">Connect</span>
-            </h1>
-            <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
-              Ready to transform your business? Get in touch with our experts and let's discuss how we can help you achieve your goals.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button 
-                onClick={() => setIsInquiryFormOpen(true)}
-                className="bg-blue-600 hover:bg-blue-700 text-lg px-8 py-3 btn-animate hover-lift"
-              >
-                Book Free Consultation
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Button>
-              <Button 
-                variant="outline" 
-                onClick={openLiveChat}
-                className="text-lg px-8 py-3 btn-animate hover-lift"
-              >
-                <MessageCircle className="mr-2 h-5 w-5" />
-                Live Chat
-              </Button>
+      <div className="min-h-screen bg-gradient-to-br from-background via-background to-primary/5">
+        {/* Hero Section */}
+        <section className="relative pt-32 pb-20 px-4 sm:px-6 lg:px-8">
+          <div className="max-w-7xl mx-auto text-center">
+            <div className="animate-fade-in">
+              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 bg-gradient-to-r from-primary via-purple-600 to-pink-600 bg-clip-text text-transparent">
+                Let's Build What's Next
+              </h1>
+              <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto mb-10">
+                Tell us where you're headed—funding, technology, manufacturing, launch, distribution, or AI voice systems—and we'll make it real.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
+                <Button 
+                  size="lg" 
+                  onClick={() => scrollToSection('booking-section')}
+                  className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white px-8 py-6 text-lg shadow-lg hover:shadow-xl transition-all duration-300"
+                >
+                  Book a Discovery Call
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </Button>
+                <Button 
+                  size="lg" 
+                  variant="outline"
+                  onClick={() => scrollToSection('contact-form')}
+                  className="px-8 py-6 text-lg"
+                >
+                  Send a Message
+                </Button>
+              </div>
+              <p className="text-sm text-muted-foreground">
+                Las Vegas, NV • Global delivery • Equity-based partnerships available
+              </p>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Contact Form & Info */}
-      <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-            {/* Contact Form */}
-            <div className="animate-slide-in-left">
-              <Card className="border-0 shadow-lg hover-lift">
-                <CardHeader>
-                  <CardTitle className="text-2xl text-blue-600">Send us a Message</CardTitle>
-                  <CardDescription>
-                    Fill out the form below and we'll get back to you within 24 hours
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  {isSubmitted ? (
-                    <div className="text-center py-8 animate-fade-in">
-                      <CheckCircle className="h-16 w-16 text-green-500 mx-auto mb-4" />
-                      <h3 className="text-xl font-semibold text-gray-900 mb-2">Thank You!</h3>
-                      <p className="text-gray-600">Your message has been sent successfully. We'll get back to you within 24 hours.</p>
-                    </div>
-                  ) : (
-                    <form onSubmit={handleSubmit} className="space-y-6">
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div>
-                          <label className="block text-sm font-medium text-gray-700 mb-2">
-                            Full Name *
-                          </label>
-                          <Input
-                            name="name"
-                            value={formData.name}
-                            onChange={handleInputChange}
-                            placeholder="John Doe"
-                            required
-                            className="focus-ring"
-                          />
-                        </div>
-                        <div>
-                          <label className="block text-sm font-medium text-gray-700 mb-2">
-                            Email Address *
-                          </label>
-                          <Input
-                            name="email"
-                            type="email"
-                            value={formData.email}
-                            onChange={handleInputChange}
-                            placeholder="john@company.com"
-                            required
-                            className="focus-ring"
-                          />
-                        </div>
-                      </div>
-                      
-                      <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-2">
-                          Company
-                        </label>
+        {/* Quick Contact Cards */}
+        <section className="py-16 px-4 sm:px-6 lg:px-8">
+          <div className="max-w-7xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {quickContactCards.map((card, index) => (
+                <Card 
+                  key={index}
+                  className="p-6 hover:shadow-lg transition-all duration-300 cursor-pointer group hover:scale-[1.02] bg-card/50 backdrop-blur"
+                  onClick={card.action}
+                  style={{ animationDelay: `${index * 80}ms` }}
+                >
+                  <card.icon className="h-10 w-10 text-primary mb-4 group-hover:scale-110 transition-transform" />
+                  <h3 className="text-xl font-semibold mb-2">{card.title}</h3>
+                  <p className="text-sm text-muted-foreground">{card.description}</p>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Dual Path Section */}
+        <section id="booking-section" className="py-16 px-4 sm:px-6 lg:px-8 bg-muted/30">
+          <div className="max-w-7xl mx-auto">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+              {/* Calendly Embed */}
+              <Card className="p-8">
+                <h2 className="text-3xl font-bold mb-6">Book a Discovery Call</h2>
+                <p className="text-muted-foreground mb-6">
+                  Schedule a 30, 45, or 60-minute consultation with our team. We'll discuss your goals and how we can help.
+                </p>
+                <div className="bg-gray-50 rounded-lg overflow-hidden min-h-[700px]">
+                  <iframe
+                    src="https://calendly.com/quincey-lee"
+                    width="100%"
+                    height="700"
+                    frameBorder="0"
+                    onLoad={() => trackGA4Event('calendly_widget_view')}
+                  ></iframe>
+                </div>
+              </Card>
+
+              {/* Contact Form */}
+              <Card id="contact-form" className="p-8">
+                <h2 className="text-3xl font-bold mb-6">Send a Message</h2>
+                {isSubmitted ? (
+                  <div className="text-center py-12">
+                    <CheckCircle2 className="h-16 w-16 text-green-500 mx-auto mb-4" />
+                    <h3 className="text-2xl font-bold mb-3">Thank You!</h3>
+                    <p className="text-muted-foreground mb-6">
+                      We've received your message and will respond within 1 business day.
+                    </p>
+                    <p className="text-sm text-muted-foreground">
+                      We don't sell data. Ever.
+                    </p>
+                  </div>
+                ) : (
+                  <form onSubmit={handleSubmit} className="space-y-6">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div className="space-y-2">
+                        <Label htmlFor="name">Full Name *</Label>
                         <Input
-                          name="company"
-                          value={formData.company}
-                          onChange={handleInputChange}
-                          placeholder="Your Company Name"
-                          className="focus-ring"
-                        />
-                      </div>
-                      
-                      <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-2">
-                          Message *
-                        </label>
-                        <textarea
-                          name="message"
-                          value={formData.message}
-                          onChange={handleInputChange}
-                          placeholder="Tell us about your project..."
+                          id="name"
+                          value={formData.name}
+                          onChange={(e) => handleInputChange("name", e.target.value)}
                           required
-                          rows={6}
-                          className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none"
+                          placeholder="John Doe"
                         />
                       </div>
-                      
-                      <Button 
-                        type="submit" 
-                        className="w-full bg-blue-600 hover:bg-blue-700 text-lg py-3 btn-animate hover-lift"
-                      >
-                        Send Message
-                        <Send className="ml-2 h-5 w-5" />
-                      </Button>
-                    </form>
-                  )}
-                </CardContent>
+                      <div className="space-y-2">
+                        <Label htmlFor="company">Company *</Label>
+                        <Input
+                          id="company"
+                          value={formData.company}
+                          onChange={(e) => handleInputChange("company", e.target.value)}
+                          required
+                          placeholder="Your Company"
+                        />
+                      </div>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div className="space-y-2">
+                        <Label htmlFor="email">Work Email *</Label>
+                        <Input
+                          id="email"
+                          type="email"
+                          value={formData.email}
+                          onChange={(e) => handleInputChange("email", e.target.value)}
+                          required
+                          placeholder="john@company.com"
+                        />
+                      </div>
+                      <div className="space-y-2">
+                        <Label htmlFor="phone">Phone (Optional)</Label>
+                        <Input
+                          id="phone"
+                          type="tel"
+                          value={formData.phone}
+                          onChange={(e) => handleInputChange("phone", e.target.value)}
+                          placeholder="+1 (555) 123-4567"
+                        />
+                      </div>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div className="space-y-2">
+                        <Label htmlFor="interest">Interest *</Label>
+                        <Select value={formData.interest} onValueChange={(value) => handleInputChange("interest", value)}>
+                          <SelectTrigger>
+                            <SelectValue placeholder="Select area of interest" />
+                          </SelectTrigger>
+                          <SelectContent>
+                            <SelectItem value="Funding Enablement">Funding Enablement</SelectItem>
+                            <SelectItem value="Tech Development">Tech Development</SelectItem>
+                            <SelectItem value="Product Manufacturing">Product Manufacturing</SelectItem>
+                            <SelectItem value="Platform Launch">Platform Launch</SelectItem>
+                            <SelectItem value="Distribution">Distribution</SelectItem>
+                            <SelectItem value="AI Voice System">AI Voice System</SelectItem>
+                            <SelectItem value="General">General</SelectItem>
+                          </SelectContent>
+                        </Select>
+                      </div>
+                      <div className="space-y-2">
+                        <Label htmlFor="budget">Budget Range</Label>
+                        <Select value={formData.budget} onValueChange={(value) => handleInputChange("budget", value)}>
+                          <SelectTrigger>
+                            <SelectValue placeholder="Select budget range" />
+                          </SelectTrigger>
+                          <SelectContent>
+                            <SelectItem value="<$25k">&lt;$25k</SelectItem>
+                            <SelectItem value="$25-75k">$25–75k</SelectItem>
+                            <SelectItem value="$75-150k">$75–150k</SelectItem>
+                            <SelectItem value="$150-500k">$150–500k</SelectItem>
+                            <SelectItem value="$500k+">$500k+</SelectItem>
+                          </SelectContent>
+                        </Select>
+                      </div>
+                    </div>
+
+                    <div className="space-y-2">
+                      <Label htmlFor="timeline">Timeline</Label>
+                      <Select value={formData.timeline} onValueChange={(value) => handleInputChange("timeline", value)}>
+                        <SelectTrigger>
+                          <SelectValue placeholder="Select timeline" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="ASAP (0–30 days)">ASAP (0–30 days)</SelectItem>
+                          <SelectItem value="1–3 months">1–3 months</SelectItem>
+                          <SelectItem value="3–6 months">3–6 months</SelectItem>
+                          <SelectItem value="6+ months">6+ months</SelectItem>
+                        </SelectContent>
+                      </Select>
+                    </div>
+
+                    {showAIVoiceFields && (
+                      <>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 p-4 bg-blue-50 rounded-lg border border-blue-200">
+                          <div className="space-y-2 md:col-span-2">
+                            <p className="text-sm font-semibold text-blue-900">AI Voice System Details</p>
+                          </div>
+                          <div className="space-y-2">
+                            <Label htmlFor="monthlyMinutes">Estimated Monthly Minutes</Label>
+                            <Input
+                              id="monthlyMinutes"
+                              type="number"
+                              value={formData.monthlyMinutes}
+                              onChange={(e) => handleInputChange("monthlyMinutes", e.target.value)}
+                              placeholder="e.g., 2000"
+                            />
+                          </div>
+                          <div className="space-y-2">
+                            <Label htmlFor="telephony">Current Telephony</Label>
+                            <Select value={formData.telephony} onValueChange={(value) => handleInputChange("telephony", value)}>
+                              <SelectTrigger>
+                                <SelectValue placeholder="Select provider" />
+                              </SelectTrigger>
+                              <SelectContent>
+                                <SelectItem value="Twilio">Twilio</SelectItem>
+                                <SelectItem value="Telnyx">Telnyx</SelectItem>
+                                <SelectItem value="Other">Other</SelectItem>
+                                <SelectItem value="None">None</SelectItem>
+                              </SelectContent>
+                            </Select>
+                          </div>
+                          <div className="space-y-2 md:col-span-2">
+                            <Label htmlFor="crm">CRM System</Label>
+                            <Select value={formData.crm} onValueChange={(value) => handleInputChange("crm", value)}>
+                              <SelectTrigger>
+                                <SelectValue placeholder="Select CRM" />
+                              </SelectTrigger>
+                              <SelectContent>
+                                <SelectItem value="HubSpot">HubSpot</SelectItem>
+                                <SelectItem value="Salesforce">Salesforce</SelectItem>
+                                <SelectItem value="Other">Other</SelectItem>
+                              </SelectContent>
+                            </Select>
+                          </div>
+                        </div>
+                      </>
+                    )}
+
+                    <div className="space-y-2">
+                      <Label htmlFor="message">Message / Requirements *</Label>
+                      <Textarea
+                        id="message"
+                        value={formData.message}
+                        onChange={(e) => handleInputChange("message", e.target.value)}
+                        required
+                        rows={4}
+                        placeholder="Share only what's helpful. You can upload a deck anytime."
+                      />
+                    </div>
+
+                    <div className="space-y-2">
+                      <Label htmlFor="file">Upload File (Optional)</Label>
+                      <div className="border-2 border-dashed border-gray-300 rounded-lg p-4 text-center hover:border-primary transition-colors cursor-pointer">
+                        <input
+                          id="file"
+                          type="file"
+                          accept=".pdf,.pptx,.docx,.zip"
+                          onChange={handleFileChange}
+                          className="hidden"
+                        />
+                        <label htmlFor="file" className="cursor-pointer">
+                          <Upload className="h-8 w-8 mx-auto mb-2 text-muted-foreground" />
+                          <p className="text-sm text-muted-foreground">
+                            {formData.file ? formData.file.name : "Upload deck/specs (PDF, PPTX, DOCX, ZIP - Max 25MB)"}
+                          </p>
+                        </label>
+                      </div>
+                    </div>
+
+                    <div className="flex items-start space-x-2">
+                      <Checkbox
+                        id="consent"
+                        checked={formData.consent}
+                        onCheckedChange={(checked) => handleInputChange("consent", checked as boolean)}
+                        required
+                      />
+                      <Label htmlFor="consent" className="text-sm leading-relaxed cursor-pointer">
+                        I agree to the Privacy Policy and to be contacted by NFT Las Vegas™. *
+                      </Label>
+                    </div>
+
+                    <Button 
+                      type="submit" 
+                      className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white py-6 text-lg"
+                      disabled={!formData.consent}
+                    >
+                      Send Your Inquiry
+                      <ArrowRight className="ml-2 h-5 w-5" />
+                    </Button>
+
+                    <p className="text-xs text-center text-muted-foreground">
+                      We don't sell data. Ever.
+                    </p>
+                  </form>
+                )}
               </Card>
             </div>
+          </div>
+        </section>
 
-            {/* Contact Information */}
-            <div className="animate-slide-in-right">
-              <div className="space-y-8">
+        {/* Direct Contact / Office */}
+        <section className="py-16 px-4 sm:px-6 lg:px-8">
+          <div className="max-w-7xl mx-auto">
+            <Card className="p-8 md:p-12">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                 <div>
-                  <h2 className="text-3xl font-bold text-gray-900 mb-6">Get in Touch</h2>
-                  <p className="text-gray-600 mb-8">
-                    We're here to help you succeed. Reach out to us through any of these channels and let's start building something amazing together.
-                  </p>
-                </div>
-
-                <div className="grid grid-cols-1 gap-6">
-                  {contactInfo.map((info, index) => (
-                    <Card 
-                      key={info.title}
-                      className="hover-lift border-0 shadow-lg animate-scale-in"
-                      style={{ animationDelay: `${index * 0.1}s` }}
-                    >
-                      <CardContent className="p-6">
-                        <div className="flex items-start space-x-4">
-                          <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
-                            <info.icon className="h-6 w-6 text-blue-600" />
-                          </div>
-                          <div>
-                            <h3 className="font-semibold text-gray-900 mb-1">{info.title}</h3>
-                            <p className="text-blue-600 font-medium mb-1">{info.value}</p>
-                            <p className="text-gray-500 text-sm">{info.description}</p>
-                          </div>
-                        </div>
-                      </CardContent>
-                    </Card>
-                  ))}
-                </div>
-
-                {/* Live Chat Widget */}
-                <Card className="bg-gradient-to-r from-blue-600 to-purple-600 text-white border-0 shadow-lg hover-lift animate-pulse-glow">
-                  <CardContent className="p-6">
-                    <div className="flex items-center justify-between">
+                  <h2 className="text-3xl font-bold mb-6">Get in Touch</h2>
+                  <div className="space-y-6">
+                    <div className="flex items-start space-x-4">
+                      <MapPin className="h-6 w-6 text-primary mt-1" />
                       <div>
-                        <h3 className="text-xl font-semibold mb-2">Need Immediate Help?</h3>
-                        <p className="text-blue-100">Chat with our experts right now</p>
+                        <h3 className="font-semibold mb-1">Address</h3>
+                        <p className="text-muted-foreground">
+                          NFT Las Vegas Ltd.<br />
+                          7429 Royal Crystal St.<br />
+                          Las Vegas, NV 89149
+                        </p>
                       </div>
-                      <Button 
-                        onClick={openLiveChat}
-                        className="bg-white text-blue-600 hover:bg-gray-100"
-                      >
-                        <MessageCircle className="h-5 w-5 mr-2" />
-                        Live Chat
-                      </Button>
                     </div>
-                  </CardContent>
-                </Card>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Global Offices Section */}
-      <section className="py-16 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12 animate-fade-in">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Visit Our Global Offices
-            </h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Headquartered in Las Vegas, Nevada - The Innovation Capital
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 gap-6 max-w-md mx-auto">
-            {globalOffices.map((office, index) => (
-              <Card 
-                key={office.name}
-                className="border-0 shadow-lg overflow-hidden hover-lift hover:shadow-xl transition-all duration-300 animate-scale-in"
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
-                <div className="p-6">
-                  <div className="flex items-center mb-4">
-                    <div className="w-10 h-6 bg-gray-200 rounded flex items-center justify-center mr-3 text-xs font-bold text-gray-700">
-                      {office.countryCode}
+                    <div className="flex items-start space-x-4">
+                      <Mail className="h-6 w-6 text-primary mt-1" />
+                      <div>
+                        <h3 className="font-semibold mb-1">Email</h3>
+                        <a href="mailto:QuinceyLee@NFTLasVegas.io" className="text-primary hover:underline">
+                          QuinceyLee@NFTLasVegas.io
+                        </a>
+                      </div>
                     </div>
-                    <div>
-                      <h3 className="text-lg font-semibold text-gray-900">{office.name}</h3>
-                      <p className="text-blue-600 text-sm font-medium">{office.description}</p>
+                    <div className="flex items-start space-x-4">
+                      <Phone className="h-6 w-6 text-primary mt-1" />
+                      <div>
+                        <h3 className="font-semibold mb-1">Phone</h3>
+                        <a href="tel:+17252569852" className="text-primary hover:underline">
+                          +1 (725) 256-9852
+                        </a>
+                      </div>
                     </div>
                   </div>
-                  <p className="text-gray-600 text-sm mb-4">{office.address}</p>
                 </div>
-                <div className="h-32 bg-gray-300 relative">
+                <div className="bg-muted rounded-lg overflow-hidden h-[400px]">
                   <iframe
-                    src={office.mapSrc}
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3220.8!2d-115.3!3d36.2!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzbCsDEyJzAwLjAiTiAxMTXCsDE4JzAwLjAiVw!5e0!3m2!1sen!2sus!4v1234567890"
                     width="100%"
                     height="100%"
-                    style={{ border: 0 }}
+                    style={{ border: 0, filter: 'grayscale(30%)' }}
                     allowFullScreen
                     loading="lazy"
                     referrerPolicy="no-referrer-when-downgrade"
-                    className="absolute inset-0"
-                  />
-                  <div className="absolute bottom-2 left-2">
-                    <Badge className="bg-blue-600 text-white text-xs">{office.countryCode}</Badge>
-                  </div>
+                  ></iframe>
                 </div>
-              </Card>
-            ))}
+              </div>
+            </Card>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* How We Work Timeline */}
-      <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16 animate-fade-in">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              How We Work
-            </h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Our proven process ensures successful project delivery from start to finish
+        {/* FAQ Section */}
+        <section className="py-16 px-4 sm:px-6 lg:px-8 bg-muted/30">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">Frequently Asked Questions</h2>
+            <Accordion type="single" collapsible className="space-y-4">
+              {faqItems.map((item, index) => (
+                <AccordionItem key={index} value={`item-${index}`} className="bg-card rounded-lg px-6 border">
+                  <AccordionTrigger className="text-left font-semibold hover:no-underline">
+                    {item.question}
+                  </AccordionTrigger>
+                  <AccordionContent className="text-muted-foreground">
+                    {item.answer}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+            <p className="text-center mt-8 text-sm text-muted-foreground">
+              For full terms and privacy information, visit our{" "}
+              <a href="/privacy-policy" className="text-primary hover:underline">Privacy Policy</a> and{" "}
+              <a href="/terms" className="text-primary hover:underline">Terms of Service</a>.
             </p>
           </div>
+        </section>
 
-          {/* Desktop: Horizontal Timeline */}
-          <div className="hidden lg:block">
-            <div className="relative">
-              {/* Horizontal timeline line */}
-              <div className="absolute top-1/2 left-0 right-0 h-1 bg-blue-200 transform -translate-y-1/2"></div>
-              
-              <div className="flex justify-between items-center relative">
-                {workflowSteps.map((step, index) => {
-                  const IconComponent = step.icon;
-                  return (
-                    <div 
-                      key={step.title}
-                      className="flex flex-col items-center relative animate-scale-in"
-                      style={{ animationDelay: `${index * 0.2}s` }}
-                    >
-                      {/* Timeline node */}
-                      <div className="w-16 h-16 bg-blue-600 text-white rounded-full flex items-center justify-center mb-6 hover-scale z-10 relative">
-                        <IconComponent className="h-8 w-8" />
-                      </div>
-                      
-                      {/* Card */}
-                      <Card className="w-64 hover-lift shadow-lg">
-                        <CardHeader className="pb-3">
-                          <div className="text-center">
-                            <CardTitle className="text-lg text-blue-600 mb-2">{step.title}</CardTitle>
-                            <Badge variant="secondary" className="mb-2">{step.duration}</Badge>
-                          </div>
-                        </CardHeader>
-                        <CardContent className="pt-0">
-                          <p className="text-gray-700 text-sm text-center">{step.description}</p>
-                        </CardContent>
-                      </Card>
-                    </div>
-                  );
-                })}
-              </div>
+        {/* Bottom CTA */}
+        <section className="py-20 px-4 sm:px-6 lg:px-8">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">Not sure where to start?</h2>
+            <p className="text-xl text-muted-foreground mb-8">We'll guide you.</p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button 
+                size="lg"
+                onClick={() => scrollToSection('booking-section')}
+                className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white px-8 py-6 text-lg"
+              >
+                Book a Call
+              </Button>
+              <Button 
+                size="lg"
+                variant="outline"
+                onClick={() => window.location.href = '/onboarding'}
+                className="px-8 py-6 text-lg"
+              >
+                Start Onboarding
+              </Button>
             </div>
           </div>
-
-          {/* Mobile: Vertical Timeline */}
-          <div className="lg:hidden">
-            <div className="relative">
-              {/* Vertical timeline line */}
-              <div className="absolute left-8 top-0 bottom-0 w-1 bg-blue-200"></div>
-              
-              {workflowSteps.map((step, index) => {
-                const IconComponent = step.icon;
-                return (
-                  <div 
-                    key={step.title}
-                    className="relative flex items-center mb-12 animate-slide-in-left"
-                    style={{ animationDelay: `${index * 0.2}s` }}
-                  >
-                    {/* Timeline node */}
-                    <div className="w-16 h-16 bg-blue-600 text-white rounded-full flex items-center justify-center mr-6 hover-scale z-10 relative">
-                      <IconComponent className="h-8 w-8" />
-                    </div>
-                    
-                    {/* Card */}
-                    <Card className="flex-1 hover-lift shadow-lg">
-                      <CardHeader>
-                        <div className="flex items-center justify-between mb-2">
-                          <CardTitle className="text-xl text-blue-600">{step.title}</CardTitle>
-                          <Badge variant="secondary">{step.duration}</Badge>
-                        </div>
-                        <CardDescription className="text-gray-700">{step.description}</CardDescription>
-                      </CardHeader>
-                    </Card>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-16 bg-gradient-to-r from-blue-600 to-purple-600">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center animate-fade-in">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-            Ready to Start Your Project?
-          </h2>
-          <p className="text-xl text-blue-100 mb-8">
-            Book a free consultation and let's discuss how we can help you succeed
-          </p>
-          <Button 
-            onClick={() => setIsInquiryFormOpen(true)}
-            className="bg-white text-blue-600 hover:bg-gray-100 text-lg px-8 py-3 btn-animate hover-lift"
-          >
-            Book Free Consultation
-            <Calendar className="ml-2 h-5 w-5" />
-          </Button>
-        </div>
-      </section>
-
-      <InquiryForm
-        isOpen={isInquiryFormOpen}
-        onClose={() => setIsInquiryFormOpen(false)}
-        title="Book Free Consultation"
-        context="Tell us about your project and we'll provide expert guidance."
-      />
-
+        </section>
+      </div>
       <Footer />
-    </div>
+    </>
   );
 };
 
