@@ -72,7 +72,7 @@ const BookACall = () => {
                 <h2 className="text-2xl font-bold mb-6">Choose Your Time</h2>
                 <div className="bg-gray-50 rounded-lg overflow-hidden min-h-[700px]">
                   <iframe
-                    src="https://calendly.com/quincey-lee"
+                    src="https://calendly.com/nftlasvegas"
                     width="100%"
                     height="750"
                     frameBorder="0"

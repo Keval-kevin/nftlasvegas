@@ -24,7 +24,7 @@ export const InquiryForm = ({
   title = "Let's Talk About Your Project", 
   context = "",
   isCalendly = false,
-  calendlyUrl = "https://calendly.com/quincey-lee"
+  calendlyUrl = "https://calendly.com/nftlasvegas"
 }: InquiryFormProps) => {
   const [formData, setFormData] = useState({
     name: "",
