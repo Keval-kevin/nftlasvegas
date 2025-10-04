@@ -39,6 +39,11 @@ import Contact from "./pages/Contact";
 import Careers from "./pages/Careers";
 import Sitemap from "./pages/Sitemap";
 import NotFound from "./pages/NotFound";
+import AIVoice from "./pages/AIVoice";
+import AIVoiceStarter from "./pages/AIVoiceStarter";
+import AIVoiceProfessional from "./pages/AIVoiceProfessional";
+import AIVoiceAdvanced from "./pages/AIVoiceAdvanced";
+import AIVoiceEnterprise from "./pages/AIVoiceEnterprise";
 
 const queryClient = new QueryClient();
 
@@ -86,6 +91,11 @@ const App = () => (
             <Route path="/blog/ai-healthcare" element={<AIHealthcare />} />
             <Route path="/blog/react-development" element={<ReactDevelopment />} />
             <Route path="/blog/design-systems" element={<DesignSystems />} />
+            <Route path="/ai-voice" element={<AIVoice />} />
+            <Route path="/ai-voice/starter" element={<AIVoiceStarter />} />
+            <Route path="/ai-voice/professional" element={<AIVoiceProfessional />} />
+            <Route path="/ai-voice/advanced" element={<AIVoiceAdvanced />} />
+            <Route path="/ai-voice/enterprise" element={<AIVoiceEnterprise />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/careers" element={<Careers />} />
             <Route path="/sitemap" element={<Sitemap />} />
