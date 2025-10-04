@@ -33,9 +33,9 @@ const queryClient = new QueryClient();
 const App = () => (
   <HelmetProvider>
     <QueryClientProvider client={queryClient}>
-      <TooltipProvider>
-        <Toaster />
-        <BrowserRouter>
+      <BrowserRouter>
+        <TooltipProvider delayDuration={300} skipDelayDuration={100}>
+          <Toaster />
           <ScrollToTop />
           <PerformanceMonitor />
           <ResponsiveTestingHelper />
@@ -65,8 +65,8 @@ const App = () => (
             <Route path="/book-a-call" element={<BookACall />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
-        </BrowserRouter>
-      </TooltipProvider>
+        </TooltipProvider>
+      </BrowserRouter>
     </QueryClientProvider>
   </HelmetProvider>
 );
