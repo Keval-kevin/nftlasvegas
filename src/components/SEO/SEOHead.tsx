@@ -12,20 +12,20 @@ interface SEOHeadProps {
 }
 
 export const SEOHead = ({
-  title = "Easenext - Smart Tech Solutions & On-Demand Talent",
-  description = "Empowering businesses with custom solutions, AI automation, healthcare innovation, and expert talent. Transform your business with cutting-edge technology.",
-  keywords = "AI automation, healthcare innovation, custom software development, tech solutions, business process automation, trending technologies",
+  title = "NFT Las Vegas™ Distribution Label",
+  description = "Your all-in-one partner for marketing, branding, and enterprise-level tech development. We turn ambitious ideas into reality, propelling your business to new heights.",
+  keywords = "NFT Las Vegas, distribution label, marketing, branding, tech development, music distribution, product manufacturing, platform launch",
   image = "/lovable-uploads/45d400ac-8bf5-41af-8aaf-1c03b17e2b04.png",
-  url = "https://easenext.com",
+  url = "https://www.nftlasvegas.com",
   type = "website",
   structuredData
 }: SEOHeadProps) => {
-  const fullTitle = title.includes("Easenext") ? title : `${title} | Easenext`;
+  const fullTitle = title.includes("NFT Las Vegas") ? title : `${title} | NFT Las Vegas`;
   
   const defaultStructuredData = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    "name": "Easenext",
+    "name": "NFT Las Vegas",
     "description": description,
     "url": url,
     "logo": {

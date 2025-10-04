@@ -1,6 +1,6 @@
 
 export const generateSitemap = () => {
-  const baseUrl = "https://easenext.com";
+  const baseUrl = "https://www.nftlasvegas.com";
   const currentDate = new Date().toISOString().split('T')[0];
   
   const pages = [

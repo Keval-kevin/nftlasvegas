@@ -105,18 +105,18 @@ export const AdvancedSEO: React.FC<AdvancedSEOProps> = ({
         {JSON.stringify({
           "@context": "https://schema.org",
           "@type": "Organization",
-          "name": "Easenext",
-          "url": "https://easenext.com",
-          "logo": "https://easenext.com/lovable-uploads/1c9723c9-35fd-49bd-878c-7cea1e3e924f.png",
-          "description": "Empowering businesses with smart tech solutions including AI automation, healthcare innovation, and custom software development.",
+          "name": "NFT Las Vegas",
+          "url": "https://www.nftlasvegas.com",
+          "logo": "https://www.nftlasvegas.com/lovable-uploads/1c9723c9-35fd-49bd-878c-7cea1e3e924f.png",
+          "description": "Your all-in-one partner for marketing, branding, and enterprise-level tech development. We turn ambitious ideas into reality.",
           "contactPoint": {
             "@type": "ContactPoint",
             "contactType": "customer service",
-            "url": "https://easenext.com/contact"
+            "url": "https://www.nftlasvegas.com/contact"
           },
           "sameAs": [
-            "https://linkedin.com/company/easenext",
-            "https://twitter.com/easenext"
+            "https://linkedin.com/company/nftlasvegas",
+            "https://twitter.com/nftlasvegas"
           ]
         })}
       </script>

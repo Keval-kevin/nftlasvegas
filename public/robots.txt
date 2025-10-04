@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Sitemap location
-Sitemap: https://easenext.com/sitemap.xml
+Sitemap: https://www.nftlasvegas.com/sitemap.xml
 
 # Crawl-delay for better server performance
 Crawl-delay: 1
