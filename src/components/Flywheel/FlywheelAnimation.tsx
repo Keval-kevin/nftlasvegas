@@ -1,155 +1,65 @@
-import nftLogo from "@/assets/nft-logo.jpeg";
+import { useEffect, useState } from "react";
+import { DollarSign, Code, Package, Rocket, Globe } from "lucide-react";
 
-const segments = [
-  { label: "Onboarding", gradient: "from-cyan-400 to-blue-500" },
-  { label: "Funding\nEnablement", gradient: "from-purple-500 to-pink-500" },
-  { label: "Tech\nDevelopment", gradient: "from-pink-500 to-purple-600" },
-  { label: "Product\nManufacturing", gradient: "from-purple-600 to-pink-600" },
-  { label: "Platform\nLaunch", gradient: "from-blue-500 to-cyan-400" },
-  { label: "Distribution", gradient: "from-cyan-500 to-blue-500" },
+const pillars = [
+  { icon: DollarSign, label: "Funding", color: "from-primary to-primary-glow" },
+  { icon: Code, label: "Tech", color: "from-secondary to-accent" },
+  { icon: Package, label: "Manufacturing", color: "from-accent to-secondary" },
+  { icon: Rocket, label: "Launch", color: "from-primary to-secondary" },
+  { icon: Globe, label: "Distribution", color: "from-secondary to-primary" },
 ];
 
 export const FlywheelAnimation = () => {
+  const [rotation, setRotation] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setRotation((prev) => (prev + 0.5) % 360);
+    }, 50);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
-    <div className="relative w-full max-w-4xl mx-auto py-16">
-      {/* Title */}
-      <div className="text-center mb-12">
-        <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 bg-clip-text text-transparent">
-          Building Self-Sustainable Ecosystems
-        </h2>
+    <div className="relative w-full max-w-2xl mx-auto h-[500px] flex items-center justify-center">
+      {/* Center Hub */}
+      <div className="absolute inset-0 flex items-center justify-center">
+        <div className="w-32 h-32 rounded-full bg-gradient-to-br from-primary to-secondary shadow-[0_0_60px_rgba(59,130,246,0.6)] flex items-center justify-center border-4 border-white/20">
+          <span className="text-white font-bold text-lg">NFT LV</span>
+        </div>
       </div>
 
-      {/* Circular Ecosystem Diagram */}
-      <div className="relative w-full aspect-square max-w-2xl mx-auto">
-        {/* Center Logo */}
-        <div className="absolute inset-0 flex items-center justify-center z-20">
-          <div className="relative">
-            {/* Inner glow circle */}
-            <div className="absolute inset-0 rounded-full bg-gradient-to-br from-purple-500/30 to-pink-500/30 blur-2xl animate-pulse" />
-            
-            {/* Logo container with neon border */}
-            <div className="relative w-40 h-40 rounded-full border-4 border-purple-500/50 shadow-[0_0_60px_rgba(168,85,247,0.6)] bg-gradient-to-br from-purple-900/90 to-blue-900/90 flex items-center justify-center overflow-hidden">
-              <img 
-                src={nftLogo} 
-                alt="NFT Las Vegas" 
-                className="w-full h-full object-cover"
-              />
-            </div>
-          </div>
-        </div>
-
-        {/* Circular segments */}
-        <svg className="w-full h-full" viewBox="0 0 400 400">
-          <defs>
-            {/* Gradients for each segment */}
-            <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" style={{ stopColor: '#22d3ee', stopOpacity: 0.8 }} />
-              <stop offset="100%" style={{ stopColor: '#3b82f6', stopOpacity: 0.9 }} />
-            </linearGradient>
-            <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" style={{ stopColor: '#a855f7', stopOpacity: 0.8 }} />
-              <stop offset="100%" style={{ stopColor: '#ec4899', stopOpacity: 0.9 }} />
-            </linearGradient>
-            <linearGradient id="grad3" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" style={{ stopColor: '#ec4899', stopOpacity: 0.8 }} />
-              <stop offset="100%" style={{ stopColor: '#9333ea', stopOpacity: 0.9 }} />
-            </linearGradient>
-            <linearGradient id="grad4" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" style={{ stopColor: '#9333ea', stopOpacity: 0.8 }} />
-              <stop offset="100%" style={{ stopColor: '#db2777', stopOpacity: 0.9 }} />
-            </linearGradient>
-            <linearGradient id="grad5" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" style={{ stopColor: '#3b82f6', stopOpacity: 0.8 }} />
-              <stop offset="100%" style={{ stopColor: '#22d3ee', stopOpacity: 0.9 }} />
-            </linearGradient>
-            <linearGradient id="grad6" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" style={{ stopColor: '#06b6d4', stopOpacity: 0.8 }} />
-              <stop offset="100%" style={{ stopColor: '#3b82f6', stopOpacity: 0.9 }} />
-            </linearGradient>
-
-            {/* Glow filters */}
-            <filter id="glow">
-              <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
-              <feMerge>
-                <feMergeNode in="coloredBlur"/>
-                <feMergeNode in="SourceGraphic"/>
-              </feMerge>
-            </filter>
-          </defs>
-
-          {/* Outer circle path */}
-          {segments.map((segment, index) => {
-            const segmentAngle = 360 / segments.length;
-            const startAngle = index * segmentAngle - 90;
-            const endAngle = startAngle + segmentAngle;
-            
-            const outerRadius = 180;
-            const innerRadius = 90;
-            
-            const startOuter = {
-              x: 200 + outerRadius * Math.cos((startAngle * Math.PI) / 180),
-              y: 200 + outerRadius * Math.sin((startAngle * Math.PI) / 180),
-            };
-            const endOuter = {
-              x: 200 + outerRadius * Math.cos((endAngle * Math.PI) / 180),
-              y: 200 + outerRadius * Math.sin((endAngle * Math.PI) / 180),
-            };
-            const startInner = {
-              x: 200 + innerRadius * Math.cos((endAngle * Math.PI) / 180),
-              y: 200 + innerRadius * Math.sin((endAngle * Math.PI) / 180),
-            };
-            const endInner = {
-              x: 200 + innerRadius * Math.cos((startAngle * Math.PI) / 180),
-              y: 200 + innerRadius * Math.sin((startAngle * Math.PI) / 180),
-            };
-
-            const pathData = `
-              M ${startOuter.x} ${startOuter.y}
-              A ${outerRadius} ${outerRadius} 0 0 1 ${endOuter.x} ${endOuter.y}
-              L ${startInner.x} ${startInner.y}
-              A ${innerRadius} ${innerRadius} 0 0 0 ${endInner.x} ${endInner.y}
-              Z
-            `;
-
-            return (
-              <g key={index} className="hover:opacity-90 transition-opacity cursor-pointer">
-                <path
-                  d={pathData}
-                  fill={`url(#grad${index + 1})`}
-                  stroke={index % 2 === 0 ? '#22d3ee' : '#a855f7'}
-                  strokeWidth="2"
-                  filter="url(#glow)"
-                  className="transition-all duration-300"
-                />
-              </g>
-            );
-          })}
-        </svg>
-
-        {/* Labels positioned around the circle */}
-        {segments.map((segment, index) => {
-          const angle = (index * 360) / segments.length - 90 + (360 / segments.length) / 2;
-          const radius = 220;
-          const x = 50 + (radius / 2) * Math.cos((angle * Math.PI) / 180);
-          const y = 50 + (radius / 2) * Math.sin((angle * Math.PI) / 180);
+      {/* Rotating Pillars */}
+      <div 
+        className="absolute inset-0 transition-transform duration-100 ease-linear"
+        style={{ transform: `rotate(${rotation}deg)` }}
+      >
+        {pillars.map((pillar, index) => {
+          const angle = (index * 360) / pillars.length;
+          const radius = 180;
+          const x = Math.cos((angle * Math.PI) / 180) * radius;
+          const y = Math.sin((angle * Math.PI) / 180) * radius;
 
           return (
             <div
-              key={index}
-              className="absolute text-center pointer-events-none"
+              key={pillar.label}
+              className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
               style={{
-                left: `${x}%`,
-                top: `${y}%`,
-                transform: 'translate(-50%, -50%)',
+                transform: `translate(calc(-50% + ${x}px), calc(-50% + ${y}px)) rotate(-${rotation}deg)`,
               }}
             >
-              <span className="text-white font-bold text-sm md:text-lg whitespace-pre-line drop-shadow-[0_0_10px_rgba(255,255,255,0.5)]">
-                {segment.label}
-              </span>
+              <div className={`w-24 h-24 rounded-full bg-gradient-to-br ${pillar.color} shadow-lg flex flex-col items-center justify-center border-2 border-white/30 hover:scale-110 transition-transform cursor-pointer group`}>
+                <pillar.icon className="w-8 h-8 text-white mb-1 group-hover:scale-125 transition-transform" />
+                <span className="text-xs text-white font-semibold">{pillar.label}</span>
+              </div>
             </div>
           );
         })}
       </div>
+
+      {/* Connecting Lines */}
+      <svg className="absolute inset-0 w-full h-full pointer-events-none opacity-20">
+        <circle cx="50%" cy="50%" r="180" fill="none" stroke="currentColor" strokeWidth="2" className="text-primary" strokeDasharray="5,5" />
+      </svg>
     </div>
   );
 };
