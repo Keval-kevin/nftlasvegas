@@ -9,29 +9,29 @@ export const Footer = () => {
     {
       title: "Solutions",
       links: [
-        { name: "Business Process Solutions", href: "/business-process-solutions" },
-        { name: "Healthcare Innovation", href: "/healthcare-solutions" },
-        { name: "AI & Automation", href: "/ai-automation-solutions" },
-        { name: "Trending Technologies", href: "/trending-technologies-solutions" },
-        { name: "Affiliate Solutions", href: "/solutions" }
+        { name: "Funding Enablement", href: "/funding-enablement" },
+        { name: "Tech Development", href: "/tech-development" },
+        { name: "Product Manufacturing", href: "/product-manufacturing" },
+        { name: "Platform Launch", href: "/platform-launch" },
+        { name: "Distribution", href: "/distribution" }
       ]
     },
     {
       title: "Services",
       links: [
-        { name: "Consulting Services", href: "/contact" },
-        { name: "Product Development", href: "/product-development" },
-        { name: "Hire Experts", href: "/hire-experts" },
+        { name: "AI Voice System", href: "/ai-voice" },
+        { name: "Consulting", href: "/services" },
         { name: "Case Studies", href: "/case-studies" },
-        { name: "Support", href: "/contact" }
+        { name: "Onboarding", href: "/onboarding" },
+        { name: "Contact", href: "/contact" }
       ]
     },
     {
       title: "Company",
       links: [
-        { name: "About Easenext", href: "/about" },
-        { name: "Careers", href: "/careers" },
-        { name: "Blog", href: "/blog" },
+        { name: "About NFT Las Vegas", href: "/about" },
+        { name: "Our Solutions", href: "/solutions" },
+        { name: "Partners", href: "#partners" },
         { name: "Contact Us", href: "/contact" },
         { name: "Sitemap", href: "/sitemap" }
       ]
@@ -45,26 +45,40 @@ export const Footer = () => {
           {/* Company Info */}
           <div className="lg:col-span-2 animate-slide-in-left">
             <h3 className="text-2xl lg:text-3xl font-bold text-white mb-4 hover-scale cursor-pointer">
-              Easenext
+              NFT Las Vegas™
             </h3>
             <p className="text-gray-300 mb-6 max-w-md leading-relaxed">
-              Empowering businesses with smart technology, custom solutions, and on-demand talent. 
-              Your partner in building the future.
+              Your all-in-one partner for marketing, branding & enterprise-level tech development. 
+              From funding to launch, powered by AI, Blockchain & Human Creativity.
             </p>
             
             {/* Contact Info */}
             <div className="space-y-3 mb-6">
               <div className="flex items-center text-gray-300 hover:text-white transition-colors">
                 <Mail className="h-4 w-4 mr-3" />
-                <span>info@easenext.com</span>
+                <span>contact@nftlasvegas.com</span>
               </div>
               <div className="flex items-center text-gray-300 hover:text-white transition-colors">
                 <Phone className="h-4 w-4 mr-3" />
-                <span>+91 8511707005</span>
+                <span>+1 (702) 555-0100</span>
               </div>
               <div className="flex items-center text-gray-300 hover:text-white transition-colors">
                 <MapPin className="h-4 w-4 mr-3" />
-                <span>Pune, India</span>
+                <span>Las Vegas, Nevada, USA</span>
+              </div>
+            </div>
+            
+            {/* Partners Section */}
+            <div id="partners" className="mb-6">
+              <h4 className="text-lg font-semibold mb-3">Our Partners</h4>
+              <div className="flex flex-wrap gap-3 text-sm text-gray-300">
+                <a href="https://easenext.com" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
+                  Easenext
+                </a>
+                <span className="text-gray-600">•</span>
+                <a href="#" className="hover:text-white transition-colors">
+                  Cetdigit
+                </a>
               </div>
             </div>
             
@@ -113,7 +127,7 @@ export const Footer = () => {
         <div className="border-t border-gray-800 mt-12 lg:mt-16 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center animate-fade-in animate-delay-500">
             <div className="text-gray-400 text-sm mb-4 md:mb-0">
-              © 2025 Easenext. All rights reserved.
+              © 2025 NFT Las Vegas™. All rights reserved.
             </div>
             <div className="flex space-x-6">
               {[

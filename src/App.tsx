@@ -19,31 +19,13 @@ import ProductManufacturing from "./pages/ProductManufacturing";
 import PlatformLaunch from "./pages/PlatformLaunch";
 import DistributionNFT from "./pages/DistributionNFT";
 import CaseStudiesNFT from "./pages/CaseStudiesNFT";
-import About from "./pages/About";
-import Solutions from "./pages/Solutions";
-import BusinessProcessSolutions from "./pages/BusinessProcessSolutions";
-import HealthcareSolutions from "./pages/HealthcareSolutions";
-import AIAutomationSolutions from "./pages/AIAutomationSolutions";
-import TrendingTechnologiesSolutions from "./pages/TrendingTechnologiesSolutions";
-import HealthcareInnovation from "./pages/HealthcareInnovation";
-import AIAutomation from "./pages/AIAutomation";
-import TrendingTechnologies from "./pages/TrendingTechnologies";
-import ProductDevelopment from "./pages/ProductDevelopment";
-import HireExperts from "./pages/HireExperts";
-import CaseStudies from "./pages/CaseStudies";
-import Blog from "./pages/Blog";
-import AIHealthcare from "./pages/blog/AIHealthcare";
-import ReactDevelopment from "./pages/blog/ReactDevelopment";
-import DesignSystems from "./pages/blog/DesignSystems";
 import Contact from "./pages/Contact";
-import Careers from "./pages/Careers";
-import Sitemap from "./pages/Sitemap";
-import NotFound from "./pages/NotFound";
 import AIVoice from "./pages/AIVoice";
 import AIVoiceStarter from "./pages/AIVoiceStarter";
 import AIVoiceProfessional from "./pages/AIVoiceProfessional";
 import AIVoiceAdvanced from "./pages/AIVoiceAdvanced";
 import AIVoiceEnterprise from "./pages/AIVoiceEnterprise";
+import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
 
@@ -73,32 +55,12 @@ const App = () => (
             <Route path="/platform-launch" element={<PlatformLaunch />} />
             <Route path="/distribution" element={<DistributionNFT />} />
             <Route path="/case-studies" element={<CaseStudiesNFT />} />
-            
-            {/* Legacy routes for backward compatibility */}
-            <Route path="/about-old" element={<About />} />
-            <Route path="/solutions-old" element={<Solutions />} />
-            <Route path="/business-process-solutions" element={<BusinessProcessSolutions />} />
-            <Route path="/healthcare-solutions" element={<HealthcareSolutions />} />
-            <Route path="/ai-automation-solutions" element={<AIAutomationSolutions />} />
-            <Route path="/trending-technologies-solutions" element={<TrendingTechnologiesSolutions />} />
-            <Route path="/healthcare-innovation" element={<HealthcareInnovation />} />
-            <Route path="/ai-automation" element={<AIAutomation />} />
-            <Route path="/trending-technologies" element={<TrendingTechnologies />} />
-            <Route path="/product-development" element={<ProductDevelopment />} />
-            <Route path="/hire-experts" element={<HireExperts />} />
-            <Route path="/case-studies" element={<CaseStudies />} />
-            <Route path="/blog" element={<Blog />} />
-            <Route path="/blog/ai-healthcare" element={<AIHealthcare />} />
-            <Route path="/blog/react-development" element={<ReactDevelopment />} />
-            <Route path="/blog/design-systems" element={<DesignSystems />} />
             <Route path="/ai-voice" element={<AIVoice />} />
             <Route path="/ai-voice/starter" element={<AIVoiceStarter />} />
             <Route path="/ai-voice/professional" element={<AIVoiceProfessional />} />
             <Route path="/ai-voice/advanced" element={<AIVoiceAdvanced />} />
             <Route path="/ai-voice/enterprise" element={<AIVoiceEnterprise />} />
             <Route path="/contact" element={<Contact />} />
-            <Route path="/careers" element={<Careers />} />
-            <Route path="/sitemap" element={<Sitemap />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>

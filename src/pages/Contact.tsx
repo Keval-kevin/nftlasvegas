@@ -33,51 +33,30 @@ const Contact = () => {
     {
       icon: Mail,
       title: "Email Us",
-      value: "info@easenext.com",
+      value: "contact@nftlasvegas.com",
       description: "Send us an email anytime"
     },
     {
       icon: Phone,
       title: "Call Us",
-      value: "+91 8511707005",
-      description: "Mon-Fri from 9am to 7pm IST"
+      value: "+1 (702) 555-0100",
+      description: "Mon-Fri from 9am to 6pm PST"
     },
     {
       icon: Clock,
       title: "Working Hours",
-      value: "Mon - Fri: 9am - 7pm",
-      description: "IST timezone"
+      value: "Mon - Fri: 9am - 6pm",
+      description: "PST timezone"
     }
   ];
 
   const globalOffices = [
     {
-      countryCode: "IN",
-      name: "Pune, India",
-      description: "Tech Hub",
-      address: "Pune, India",
-      mapSrc: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d242118.05094477198!2d73.69815084335938!3d18.52456706875184!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2bf2e67461101%3A0x828d43bf9d9ee343!2sPune%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1640000000000!5m2!1sen!2sin"
-    },
-    {
-      countryCode: "CA",
-      name: "Toronto, Canada",
-      description: "Business District",
-      address: "161 Bay Street, Toronto, ON, M5J2S1, Canada",
-      mapSrc: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2887.0027176019485!2d-79.38208102346622!3d43.64779497912012!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x882b34d68bf33a9b%3A0x15edd8c4de1c7581!2s161%20Bay%20St%2C%20Toronto%2C%20ON%20M5J%202S1%2C%20Canada!5e0!3m2!1sen!2sin!4v1640000000000!5m2!1sen!2sin"
-    },
-    {
-      countryCode: "SE",
-      name: "Stockholm, Sweden",
-      description: "Nordic Office",
-      address: "Stockholm, Sweden",
-      mapSrc: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d32443.48346034855!2d18.043128935937457!3d59.32932369999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x465f763119640bcb%3A0xa80d27d3679d7766!2sStockholm%2C%20Sweden!5e0!3m2!1sen!2sin!4v1640000000000!5m2!1sen!2sin"
-    },
-    {
-      countryCode: "NL",
-      name: "Amsterdam, Netherlands",
-      description: "EU Office",
-      address: "Amsterdam, Netherlands",
-      mapSrc: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d39258.58571424058!2d4.85018315!3d52.3679843!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c63fb5949a7755%3A0x6600fd4cb7c0af8d!2sAmsterdam%2C%20Netherlands!5e0!3m2!1sen!2sin!4v1640000000000!5m2!1sen!2sin"
+      countryCode: "US",
+      name: "Las Vegas, Nevada",
+      description: "Headquarters",
+      address: "Las Vegas, Nevada, USA",
+      mapSrc: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d409930.2897533593!2d-115.31785024999999!3d36.1251958!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80beb782a4f57dd1%3A0x3accd5e6d5b379a3!2sLas%20Vegas%2C%20NV!5e0!3m2!1sen!2sus!4v1640000000000!5m2!1sen!2sus"
     }
   ];
 
@@ -341,11 +320,11 @@ const Contact = () => {
               Visit Our Global Offices
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Located in tech hubs across India, Canada, Sweden, and the Netherlands
+              Headquartered in Las Vegas, Nevada - The Innovation Capital
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 gap-6 max-w-md mx-auto">
             {globalOffices.map((office, index) => (
               <Card 
                 key={office.name}
