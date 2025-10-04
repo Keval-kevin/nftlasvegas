@@ -13,6 +13,12 @@ import Onboarding from "./pages/Onboarding";
 import AboutNFT from "./pages/AboutNFT";
 import SolutionsNFT from "./pages/SolutionsNFT";
 import ServicesNFT from "./pages/ServicesNFT";
+import FundingEnablement from "./pages/FundingEnablement";
+import TechDevelopmentNFT from "./pages/TechDevelopmentNFT";
+import ProductManufacturing from "./pages/ProductManufacturing";
+import PlatformLaunch from "./pages/PlatformLaunch";
+import DistributionNFT from "./pages/DistributionNFT";
+import CaseStudiesNFT from "./pages/CaseStudiesNFT";
 import About from "./pages/About";
 import Solutions from "./pages/Solutions";
 import BusinessProcessSolutions from "./pages/BusinessProcessSolutions";
@@ -56,6 +62,12 @@ const App = () => (
             <Route path="/about" element={<AboutNFT />} />
             <Route path="/solutions" element={<SolutionsNFT />} />
             <Route path="/services" element={<ServicesNFT />} />
+            <Route path="/funding-enablement" element={<FundingEnablement />} />
+            <Route path="/tech-development" element={<TechDevelopmentNFT />} />
+            <Route path="/product-manufacturing" element={<ProductManufacturing />} />
+            <Route path="/platform-launch" element={<PlatformLaunch />} />
+            <Route path="/distribution" element={<DistributionNFT />} />
+            <Route path="/case-studies" element={<CaseStudiesNFT />} />
             
             {/* Legacy routes for backward compatibility */}
             <Route path="/about-old" element={<About />} />
