@@ -14,9 +14,18 @@ interface InquiryFormProps {
   onClose: () => void;
   title?: string;
   context?: string;
+  isCalendly?: boolean;
+  calendlyUrl?: string;
 }
 
-export const InquiryForm = ({ isOpen, onClose, title = "Let's Talk About Your Project", context = "" }: InquiryFormProps) => {
+export const InquiryForm = ({ 
+  isOpen, 
+  onClose, 
+  title = "Let's Talk About Your Project", 
+  context = "",
+  isCalendly = false,
+  calendlyUrl = "https://calendly.com/quincey-lee"
+}: InquiryFormProps) => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -53,6 +62,37 @@ export const InquiryForm = ({ isOpen, onClose, title = "Let's Talk About Your Pr
   };
 
   if (!isOpen) return null;
+
+  // If Calendly mode, show iframe
+  if (isCalendly) {
+    return (
+      <div className="fixed inset-0 z-[9999] bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
+        <Card className="w-full max-w-4xl max-h-[90vh] overflow-hidden bg-white shadow-2xl border-0 rounded-lg">
+          <CardHeader className="relative bg-gradient-to-r from-blue-50 to-indigo-50 pb-4">
+            <button
+              onClick={onClose}
+              className="absolute right-4 top-4 text-gray-400 hover:text-gray-600 transition-colors p-2 rounded-full hover:bg-white/70 z-10"
+              aria-label="Close"
+            >
+              <X className="h-5 w-5" />
+            </button>
+            <CardTitle className="text-2xl font-bold text-gray-900 pr-12">
+              Schedule Your Discovery Call
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="p-0">
+            <iframe 
+              src={calendlyUrl}
+              width="100%"
+              height="700px"
+              frameBorder="0"
+              className="rounded-b-lg"
+            />
+          </CardContent>
+        </Card>
+      </div>
+    );
+  }
 
   return (
     <div className="fixed inset-0 z-[9999] bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">

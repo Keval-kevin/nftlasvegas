@@ -131,9 +131,10 @@ export const Footer = () => {
             </div>
             <div className="flex space-x-6">
               {[
-                { icon: Linkedin, href: "https://www.linkedin.com/company/ease-next/", label: "LinkedIn" },
-                { icon: Twitter, href: "#", label: "Twitter" },
-                { icon: Github, href: "#", label: "GitHub" }
+                { icon: Linkedin, href: "https://www.linkedin.com/company/nftlasvegas/", label: "LinkedIn" },
+                { icon: Twitter, href: "https://x.com/nftlasvegas", label: "Twitter" },
+                { icon: Github, href: "https://www.facebook.com/people/NFT-Las-Vegas/100088656705965", label: "Facebook" },
+                { icon: Mail, href: "https://www.instagram.com/nftlasvegas/", label: "Instagram" }
               ].map((social, index) => (
                 <a 
                   key={social.label}
