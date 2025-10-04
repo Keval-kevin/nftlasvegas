@@ -4,16 +4,15 @@ import { Link } from "react-router-dom";
 
 export const PartnersMarquee = () => {
   const partners = [
-    { name: "TechCorp", industry: "Enterprise Software", logo: "💼" },
-    { name: "InnovateLab", industry: "AI Research", logo: "🧠" },
-    { name: "FutureWorks", industry: "IoT Solutions", logo: "🌐" },
-    { name: "DigitalEdge", industry: "Fintech", logo: "💳" },
-    { name: "SmartSolutions", industry: "Healthcare Tech", logo: "🏥" },
-    { name: "CloudFirst", industry: "Cloud Services", logo: "☁️" },
-    { name: "DataDriven", industry: "Analytics", logo: "📊" },
-    { name: "AI Innovations", industry: "Machine Learning", logo: "🤖" },
-    { name: "NextGen Tech", industry: "Blockchain", logo: "🔗" },
-    { name: "ScaleUp Co", industry: "Growth Tech", logo: "🚀" }
+    { name: "DiamondTier Capital", industry: "Business Funding", logo: "/partners/diamondtier-logo.png" },
+    { name: "StrtUp Boost", industry: "Startup Community", logo: "/partners/strtupboost-logo.png" },
+    { name: "CETDIGIT", industry: "CRM Solutions", logo: "/partners/cetdigit-logo.png" },
+    { name: "Scrubbed", industry: "Accounting & Finance", logo: "/partners/scrubbed-logo.png" },
+    { name: "ToTo Marketing", industry: "Digital Advertising", logo: "/partners/toto-marketing-logo.png" },
+    { name: "Alibaba", industry: "E-Commerce & Tech", logo: "/partners/alibaba-logo.svg" },
+    { name: "EaseNext", industry: "Technology Training", logo: "/partners/easenext-logo.png" },
+    { name: "Clustox", industry: "Software Development", logo: "/partners/clustox-logo.png" },
+    { name: "AI Certs", industry: "AI Certification", logo: "/partners/aicerts-logo.png" }
   ];
 
   const stats = [
@@ -75,7 +74,7 @@ export const PartnersMarquee = () => {
           {/* Continuous Scrolling Marquee */}
           <div className="relative overflow-hidden">
             <div className="flex animate-marquee space-x-8" style={{ 
-              width: 'calc(280px * 20)'
+              width: 'calc(280px * 18)'
             }}>
               {/* First set of partners */}
               {partners.map((partner, index) => (
@@ -84,8 +83,13 @@ export const PartnersMarquee = () => {
                   className="flex-shrink-0 flex items-center justify-between h-20 px-8 bg-white/80 backdrop-blur-sm rounded-xl shadow-md border border-white/60 hover:shadow-xl hover:bg-white hover:scale-105 transition-all duration-300 min-w-[280px] group cursor-pointer"
                 >
                   <div className="flex items-center space-x-4">
-                    <div className="text-2xl group-hover:scale-125 transition-transform duration-300">
-                      {partner.logo}
+                    <div className="w-12 h-12 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                      <img 
+                        src={partner.logo} 
+                        alt={`${partner.name} logo`}
+                        className="max-w-full max-h-full object-contain"
+                        style={{ filter: 'brightness(0.9)' }}
+                      />
                     </div>
                     <div>
                       <div className="font-bold text-gray-900 text-lg group-hover:text-blue-600 transition-colors duration-300">
@@ -106,8 +110,13 @@ export const PartnersMarquee = () => {
                   className="flex-shrink-0 flex items-center justify-between h-20 px-8 bg-white/80 backdrop-blur-sm rounded-xl shadow-md border border-white/60 hover:shadow-xl hover:bg-white hover:scale-105 transition-all duration-300 min-w-[280px] group cursor-pointer"
                 >
                   <div className="flex items-center space-x-4">
-                    <div className="text-2xl group-hover:scale-125 transition-transform duration-300">
-                      {partner.logo}
+                    <div className="w-12 h-12 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                      <img 
+                        src={partner.logo} 
+                        alt={`${partner.name} logo`}
+                        className="max-w-full max-h-full object-contain"
+                        style={{ filter: 'brightness(0.9)' }}
+                      />
                     </div>
                     <div>
                       <div className="font-bold text-gray-900 text-lg group-hover:text-blue-600 transition-colors duration-300">
