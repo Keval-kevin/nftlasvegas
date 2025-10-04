@@ -8,7 +8,8 @@ import ScrollToTop from "@/components/ScrollToTop";
 import { GoogleAnalytics } from "@/components/Analytics/GoogleAnalytics";
 import { PerformanceMonitor } from "@/components/PerformanceMonitor";
 import { ResponsiveTestingHelper } from "@/components/ResponsiveTestingHelper";
-import Index from "./pages/Index";
+import IndexNFT from "./pages/IndexNFT";
+import Onboarding from "./pages/Onboarding";
 import About from "./pages/About";
 import Solutions from "./pages/Solutions";
 import BusinessProcessSolutions from "./pages/BusinessProcessSolutions";
@@ -47,7 +48,8 @@ const App = () => (
             linkedInPartnerId="XXXXXXX"
           />
           <Routes>
-            <Route path="/" element={<Index />} />
+            <Route path="/" element={<IndexNFT />} />
+            <Route path="/onboarding" element={<Onboarding />} />
             <Route path="/about" element={<About />} />
             <Route path="/solutions" element={<Solutions />} />
             <Route path="/business-process-solutions" element={<BusinessProcessSolutions />} />

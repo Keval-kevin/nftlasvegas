@@ -1,8 +1,54 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  /* NFT Las Vegas Brand Colors - Easenext Inspired */
+  --background: 222 47% 11%;
+  --foreground: 210 40% 98%;
+  
+  --primary: 217 91% 60%;
+  --primary-foreground: 222 47% 11%;
+  --primary-glow: 221 83% 70%;
+  
+  --secondary: 263 70% 50%;
+  --secondary-foreground: 210 40% 98%;
+  
+  --accent: 280 80% 60%;
+  --accent-foreground: 210 40% 98%;
+  
+  --muted: 217 33% 17%;
+  --muted-foreground: 215 20% 65%;
+  
+  --card: 222 47% 11%;
+  --card-foreground: 210 40% 98%;
+  
+  --popover: 222 47% 11%;
+  --popover-foreground: 210 40% 98%;
+  
+  --border: 217 33% 17%;
+  --input: 217 33% 17%;
+  --ring: 217 91% 60%;
+  
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 210 40% 98%;
+  
+  --radius: 0.75rem;
+  
+  /* Gradients */
+  --gradient-primary: linear-gradient(135deg, hsl(217 91% 60%), hsl(263 70% 50%));
+  --gradient-secondary: linear-gradient(180deg, hsl(217 91% 60% / 0.1), hsl(263 70% 50% / 0.1));
+  --gradient-hero: linear-gradient(135deg, hsl(222 47% 11%), hsl(237 50% 20%), hsl(263 50% 25%));
+  
+  /* Shadows */
+  --shadow-glow: 0 0 40px hsl(217 91% 60% / 0.4);
+  --shadow-elegant: 0 10px 30px -10px hsl(217 91% 60% / 0.3);
+  
+  /* Transitions */
+  --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
 
 @layer base {
   * {
