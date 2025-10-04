@@ -3,6 +3,7 @@ import { Footer } from "@/components/Footer";
 import { SEOHead } from "@/components/SEO/SEOHead";
 import { Button } from "@/components/ui/button";
 import { CheckCircle2 } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Onboarding = () => {
   return (
@@ -48,9 +49,10 @@ const Onboarding = () => {
 
                 <div className="flex flex-col sm:flex-row gap-4">
                   <Button 
+                    asChild
                     className="flex-1 bg-gradient-to-r from-primary to-secondary hover:shadow-glow text-lg py-6"
                   >
-                    Schedule Discovery Call
+                    <Link to="/contact">Schedule Discovery Call</Link>
                   </Button>
                   <Button 
                     variant="outline"
