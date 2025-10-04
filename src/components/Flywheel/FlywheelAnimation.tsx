@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { DollarSign, Code, Package, Rocket, Globe } from "lucide-react";
+import nftLogo from "@/assets/nft-logo.jpeg";
 
 const pillars = [
-  { icon: DollarSign, label: "Funding", color: "from-primary to-primary-glow" },
-  { icon: Code, label: "Tech", color: "from-secondary to-accent" },
-  { icon: Package, label: "Manufacturing", color: "from-accent to-secondary" },
-  { icon: Rocket, label: "Launch", color: "from-primary to-secondary" },
-  { icon: Globe, label: "Distribution", color: "from-secondary to-primary" },
+  { icon: DollarSign, label: "Funding", color: "from-primary to-primary-glow", link: "/funding-enablement" },
+  { icon: Code, label: "Tech", color: "from-secondary to-accent", link: "/tech-development-nft" },
+  { icon: Package, label: "Manufacturing", color: "from-accent to-secondary", link: "/product-manufacturing" },
+  { icon: Rocket, label: "Launch", color: "from-primary to-secondary", link: "/platform-launch" },
+  { icon: Globe, label: "Distribution", color: "from-secondary to-primary", link: "/distribution-nft" },
 ];
 
 export const FlywheelAnimation = () => {
@@ -23,8 +25,8 @@ export const FlywheelAnimation = () => {
     <div className="relative w-full max-w-2xl mx-auto h-[500px] flex items-center justify-center">
       {/* Center Hub */}
       <div className="absolute inset-0 flex items-center justify-center">
-        <div className="w-32 h-32 rounded-full bg-gradient-to-br from-primary to-secondary shadow-[0_0_60px_rgba(59,130,246,0.6)] flex items-center justify-center border-4 border-white/20">
-          <span className="text-white font-bold text-lg">NFT LV</span>
+        <div className="w-32 h-32 rounded-full bg-gradient-to-br from-primary to-secondary shadow-[0_0_60px_rgba(59,130,246,0.6)] flex items-center justify-center border-4 border-white/20 overflow-hidden">
+          <img src={nftLogo} alt="NFT Las Vegas" className="w-full h-full object-cover" />
         </div>
       </div>
 
@@ -40,8 +42,9 @@ export const FlywheelAnimation = () => {
           const y = Math.sin((angle * Math.PI) / 180) * radius;
 
           return (
-            <div
+            <Link
               key={pillar.label}
+              to={pillar.link}
               className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
               style={{
                 transform: `translate(calc(-50% + ${x}px), calc(-50% + ${y}px)) rotate(-${rotation}deg)`,
@@ -51,7 +54,7 @@ export const FlywheelAnimation = () => {
                 <pillar.icon className="w-8 h-8 text-white mb-1 group-hover:scale-125 transition-transform" />
                 <span className="text-xs text-white font-semibold">{pillar.label}</span>
               </div>
-            </div>
+            </Link>
           );
         })}
       </div>
