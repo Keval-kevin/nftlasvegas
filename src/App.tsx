@@ -10,6 +10,9 @@ import { PerformanceMonitor } from "@/components/PerformanceMonitor";
 import { ResponsiveTestingHelper } from "@/components/ResponsiveTestingHelper";
 import IndexNFT from "./pages/IndexNFT";
 import Onboarding from "./pages/Onboarding";
+import AboutNFT from "./pages/AboutNFT";
+import SolutionsNFT from "./pages/SolutionsNFT";
+import ServicesNFT from "./pages/ServicesNFT";
 import About from "./pages/About";
 import Solutions from "./pages/Solutions";
 import BusinessProcessSolutions from "./pages/BusinessProcessSolutions";
@@ -50,8 +53,13 @@ const App = () => (
           <Routes>
             <Route path="/" element={<IndexNFT />} />
             <Route path="/onboarding" element={<Onboarding />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/solutions" element={<Solutions />} />
+            <Route path="/about" element={<AboutNFT />} />
+            <Route path="/solutions" element={<SolutionsNFT />} />
+            <Route path="/services" element={<ServicesNFT />} />
+            
+            {/* Legacy routes for backward compatibility */}
+            <Route path="/about-old" element={<About />} />
+            <Route path="/solutions-old" element={<Solutions />} />
             <Route path="/business-process-solutions" element={<BusinessProcessSolutions />} />
             <Route path="/healthcare-solutions" element={<HealthcareSolutions />} />
             <Route path="/ai-automation-solutions" element={<AIAutomationSolutions />} />

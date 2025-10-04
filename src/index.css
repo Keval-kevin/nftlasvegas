@@ -242,7 +242,7 @@
 
   /* Enhanced Color Effects */
   .text-gradient {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #667eea 100%);
+    background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--accent)) 50%, hsl(var(--secondary)) 100%);
     background-size: 200% 200%;
     animation: gradient-shift 3s ease infinite;
     -webkit-background-clip: text;
@@ -251,9 +251,22 @@
   }
 
   .bg-gradient-animated {
-    background: linear-gradient(-45deg, #667eea, #764ba2, #f093fb, #f5576c);
+    background: linear-gradient(-45deg, hsl(var(--primary)), hsl(var(--secondary)), hsl(var(--accent)), hsl(var(--primary)));
     background-size: 400% 400%;
     animation: gradient-shift 8s ease infinite;
+  }
+
+  /* Shadow Effects */
+  .shadow-glow {
+    box-shadow: var(--shadow-glow);
+  }
+
+  .shadow-elegant {
+    box-shadow: var(--shadow-elegant);
+  }
+
+  .hover\:shadow-glow:hover {
+    box-shadow: var(--shadow-glow);
   }
 
   /* Enhanced Touch-friendly elements with better accessibility */
