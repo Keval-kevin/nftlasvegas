@@ -3,6 +3,7 @@ import { FlywheelAnimation } from "@/components/Flywheel/FlywheelAnimation";
 import { SolutionsCarousel } from "@/components/Solutions/SolutionsCarousel";
 import { ThreeStepJourney } from "@/components/Journey/ThreeStepJourney";
 import { FinalCTABand } from "@/components/CTA/FinalCTABand";
+import { StarterPackDownload } from "@/components/StarterPackDownload";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { SEOHead } from "@/components/SEO/SEOHead";
@@ -40,6 +41,13 @@ const IndexNFT = () => {
           <SolutionsCarousel />
           
           <ThreeStepJourney />
+          
+          {/* Starter Pack Download Section */}
+          <section className="section-padding bg-muted/30">
+            <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+              <StarterPackDownload />
+            </div>
+          </section>
           
           <FinalCTABand />
         </main>

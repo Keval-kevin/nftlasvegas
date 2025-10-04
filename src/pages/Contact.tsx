@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { StarterPackDownload } from "@/components/StarterPackDownload";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -398,6 +399,13 @@ const Contact = () => {
                 </div>
               </div>
             </Card>
+          </div>
+        </section>
+
+        {/* Starter Pack Download Section */}
+        <section className="py-16 px-4 sm:px-6 lg:px-8">
+          <div className="max-w-4xl mx-auto">
+            <StarterPackDownload />
           </div>
         </section>
 
