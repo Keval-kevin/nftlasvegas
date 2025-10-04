@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Download, FileText, Calendar, CheckCircle, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
+import nftLogo from '@/assets/nft-logo.jpeg';
 
 export const StarterPackDownload = () => {
   const [open, setOpen] = useState(false);
@@ -85,17 +86,19 @@ export const StarterPackDownload = () => {
         <div className="absolute inset-0 bg-[linear-gradient(45deg,rgba(var(--primary),0.02)_1px,transparent_1px),linear-gradient(-45deg,rgba(var(--primary),0.02)_1px,transparent_1px)] bg-[size:30px_30px]" />
         
         <div className="relative z-10">
-          <div className="flex items-start justify-between mb-4">
-            <div className="flex items-center gap-3">
-              <div className="p-3 rounded-xl bg-primary/10 text-primary">
-                <Download className="w-6 h-6" />
-              </div>
-              <div>
-                <h3 className="text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-                  NFT Las Vegas™ Starter Pack
-                </h3>
-                <p className="text-sm text-muted-foreground mt-1">Version 1.0 • Complete Onboarding Bundle</p>
-              </div>
+          <div className="flex flex-col md:flex-row items-center gap-6 mb-6">
+            <div className="flex-shrink-0">
+              <img 
+                src={nftLogo} 
+                alt="NFT Las Vegas Logo" 
+                className="w-24 h-24 rounded-full object-cover border-4 border-primary/20 shadow-lg"
+              />
+            </div>
+            <div className="flex-1 text-center md:text-left">
+              <h3 className="text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+                NFT Las Vegas™ Starter Pack
+              </h3>
+              <p className="text-sm text-muted-foreground mt-1">Version 1.0 • Complete Onboarding Bundle</p>
             </div>
           </div>
 
@@ -123,7 +126,10 @@ export const StarterPackDownload = () => {
               Download Starter Pack
             </Button>
             <Button variant="outline" asChild>
-              <a href="/contact">Book a Discovery Call</a>
+              <a href="/book-call">Book a Discovery Call</a>
+            </Button>
+            <Button variant="outline" asChild>
+              <a href="/onboarding">Start Onboarding</a>
             </Button>
           </div>
         </div>
@@ -229,7 +235,7 @@ export const StarterPackDownload = () => {
                   </a>
                 </Button>
                 <Button size="sm" asChild>
-                  <a href="/contact">
+                  <a href="/book-call">
                     <Calendar className="w-3 h-3 mr-1" />
                     Book Call
                   </a>
