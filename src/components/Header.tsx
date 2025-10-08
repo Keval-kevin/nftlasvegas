@@ -73,7 +73,7 @@ export const Header = () => {
             <Link to="/" className="flex items-center gap-3">
               
               <span className="text-xl font-bold bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent hidden sm:block">
-                NFT Las Vegas™
+                NFT Las Vegas™ Distribution Label
               </span>
             </Link>
           </div>
