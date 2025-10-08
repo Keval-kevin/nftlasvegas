@@ -76,7 +76,7 @@ export const Header = () => {
               <img 
                 src={nftVegasLogo} 
                 alt="NFT Las Vegas Distribution Label" 
-                className="h-10 hidden sm:block"
+                className="h-12 hidden sm:block"
               />
             </Link>
           </div>
