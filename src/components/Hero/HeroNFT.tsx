@@ -27,9 +27,12 @@ export const HeroNFT = () => {
               <span className="block animate-fade-in animate-delay-200 bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent">Marketing, Branding & Tech Development</span>
             </h1>
             
-            
+            {/* Tagline */}
+            <p className="text-xl sm:text-2xl md:text-3xl text-muted-foreground/90 mb-8 max-w-4xl mx-auto font-medium animate-fade-in" style={{
+            animationDelay: '0.4s'
+          }}>From startups to global brands, we engineer scalable ecosystems of innovation.</p>
 
-            <p className="text-base sm:text-lg text-muted-foreground/80 mb-12 max-w-3xl mx-auto" style={{
+            <p className="text-base sm:text-lg text-muted-foreground/80 mb-12 max-w-3xl mx-auto animate-fade-in" style={{
             animationDelay: '0.5s'
           }}>Full-stack venture enablement combining blockchain, AI, and enterprise infrastructure to build future-proof ecosystems that scale. Whether you're a startup looking to make your mark or an enterprise seeking digital transformation, we have the expertise to help you succeed. Contact us today to start your journey towards unprecedented growth and innovation.</p>
 
