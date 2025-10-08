@@ -71,13 +71,13 @@ export const Header = () => {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <Link to="/" className="flex items-center gap-3">
-              
-              <img 
-                src={nftVegasLogo} 
-                alt="NFT Las Vegas Distribution Label" 
-                className="h-10 hidden sm:block"
-              />
+            <Link to="/" className="flex flex-col items-start">
+              <span className="text-xl font-extrabold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent leading-tight">
+                NFT LAS VEGAS™
+              </span>
+              <span className="text-xs font-medium text-muted-foreground tracking-wider">
+                DISTRIBUTION LABEL
+              </span>
             </Link>
           </div>
 
