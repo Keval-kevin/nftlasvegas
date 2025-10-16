@@ -2,7 +2,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { SEOHead } from "@/components/SEO/SEOHead";
 import { Sparkles, Target, Rocket, Users } from "lucide-react";
-import quinceyImage from "@/assets/quincey-lee.png";
+import quinceyImage from "@/assets/quincey-lee-2025.jpg";
 import { useState, useEffect } from "react";
 
 const AboutNFT = () => {
