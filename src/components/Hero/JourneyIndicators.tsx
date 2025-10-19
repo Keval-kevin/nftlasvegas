@@ -33,9 +33,6 @@ export const JourneyIndicators = () => {
           Your complete journey from idea to market
         </p>
       </div>
-
-      {/* Connecting line */}
-      <div className="absolute top-[calc(50%+3rem)] left-0 right-0 h-0.5 bg-gradient-to-r from-primary/20 via-secondary/40 to-accent/20 -translate-y-1/2 hidden sm:block" />
       
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 relative">
         {journeySteps.map((step, index) => {
@@ -57,9 +54,6 @@ export const JourneyIndicators = () => {
                       <Icon className="w-7 h-7 text-secondary" />
                     </div>
                   </div>
-                  
-                  {/* Connecting dot */}
-                  <div className="absolute -right-1/2 top-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-secondary/80 border-2 border-background hidden sm:block last:hidden" />
                 </div>
                 
                 {/* Content */}
