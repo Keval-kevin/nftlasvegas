@@ -4,25 +4,38 @@ export const JourneyIndicators = () => {
   const journeySteps = [
     {
       icon: Lightbulb,
-      title: "Ideation",
-      description: "From concept to clarity"
+      title: "Week 1-2",
+      subtitle: "Strategy & Design",
+      description: "Brand identity, wireframes & roadmap"
     },
     {
       icon: Rocket,
-      title: "Launch",
-      description: "Build & go to market"
+      title: "Week 3-4",
+      subtitle: "Build & Launch",
+      description: "MVP development & go-live"
     },
     {
       icon: TrendingUp,
-      title: "Scale",
-      description: "Grow & expand globally"
+      title: "Ongoing",
+      subtitle: "Scale & Optimize",
+      description: "Growth, funding & expansion"
     }
   ];
 
   return (
     <div className="relative max-w-5xl mx-auto animate-fade-in" style={{ animationDelay: '0.7s' }}>
+      {/* Header message */}
+      <div className="text-center mb-8">
+        <p className="text-lg sm:text-xl text-secondary font-semibold">
+          MVP Launched in Just 4 Weeks
+        </p>
+        <p className="text-sm text-muted-foreground mt-2">
+          Your complete journey from idea to market
+        </p>
+      </div>
+
       {/* Connecting line */}
-      <div className="absolute top-1/2 left-0 right-0 h-0.5 bg-gradient-to-r from-primary/20 via-secondary/40 to-accent/20 -translate-y-1/2 hidden sm:block" />
+      <div className="absolute top-[calc(50%+3rem)] left-0 right-0 h-0.5 bg-gradient-to-r from-primary/20 via-secondary/40 to-accent/20 -translate-y-1/2 hidden sm:block" />
       
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 relative">
         {journeySteps.map((step, index) => {
@@ -51,8 +64,11 @@ export const JourneyIndicators = () => {
                 
                 {/* Content */}
                 <div className="text-center">
-                  <h3 className="text-xl font-bold text-foreground mb-2 group-hover:text-secondary transition-colors duration-300">
+                  <div className="text-sm font-semibold text-primary mb-1">
                     {step.title}
+                  </div>
+                  <h3 className="text-lg font-bold text-foreground mb-2 group-hover:text-secondary transition-colors duration-300">
+                    {step.subtitle}
                   </h3>
                   <p className="text-sm text-muted-foreground">
                     {step.description}
