@@ -2,8 +2,7 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
-import nftLogo from "@/assets/nft-logo.jpeg";
-import nftVegasLogo from "@/assets/nft-vegas-logo.png";
+import nftVegasLogoPink from "@/assets/nft-vegas-logo-pink.png";
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -71,13 +70,12 @@ export const Header = () => {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <Link to="/" className="flex flex-col items-start">
-              <span className="text-xl font-extrabold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent leading-tight">
-                NFT LAS VEGAS™
-              </span>
-              <span className="text-xs font-medium text-muted-foreground tracking-wider">
-                DISTRIBUTION LABEL
-              </span>
+            <Link to="/" className="block">
+              <img 
+                src={nftVegasLogoPink} 
+                alt="NFT Las Vegas™ Distribution Label" 
+                className="h-12 w-auto"
+              />
             </Link>
           </div>
 
