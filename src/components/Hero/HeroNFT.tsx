@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, Sparkles } from "lucide-react";
 import { Link } from "react-router-dom";
 import { ParticleBackground } from "./ParticleBackground";
+import { JourneyIndicators } from "./JourneyIndicators";
 import { useState, useEffect } from "react";
 export const HeroNFT = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -58,26 +59,8 @@ export const HeroNFT = () => {
               </Link>
             </div>
 
-            {/* Trust Indicators */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-4xl mx-auto" style={{
-            animationDelay: '0.7s'
-          }}>
-              {[{
-              number: "100+",
-              label: "Projects Delivered"
-            }, {
-              number: "$50M+",
-              label: "Funding Enabled"
-            }, {
-              number: "25+",
-              label: "Countries Served"
-            }].map((stat, index) => <div key={stat.label} className="p-6 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10 hover:bg-white/10 hover:border-primary/30 transition-all duration-300" style={{
-              animationDelay: `${0.8 + index * 0.1}s`
-            }}>
-                  <div className="text-3xl sm:text-4xl font-bold text-primary mb-2">{stat.number}</div>
-                  <div className="text-sm text-muted-foreground">{stat.label}</div>
-                </div>)}
-            </div>
+            {/* Journey Indicators */}
+            <JourneyIndicators />
           </div>
         </div>
       </div>
