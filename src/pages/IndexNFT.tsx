@@ -1,5 +1,5 @@
 import { HeroNFT } from "@/components/Hero/HeroNFT";
-import { EcosystemOrbit } from "@/components/Flywheel/EcosystemOrbit";
+import { EcosystemChart } from "@/components/Flywheel/EcosystemChart";
 import { SolutionsCarousel } from "@/components/Solutions/SolutionsCarousel";
 import { ThreeStepJourney } from "@/components/Journey/ThreeStepJourney";
 import { FinalCTABand } from "@/components/CTA/FinalCTABand";
@@ -24,9 +24,7 @@ const IndexNFT = () => {
           <HeroNFT />
           
           {/* Complete Ecosystem Section */}
-          <section className="section-padding bg-background">
-            <EcosystemOrbit />
-          </section>
+          <EcosystemChart />
 
           <SolutionsCarousel />
           
