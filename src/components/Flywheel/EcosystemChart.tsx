@@ -74,15 +74,15 @@ export const EcosystemChart = () => {
     if (!phase) return null;
 
     return (
-      <div className="bg-white/95 backdrop-blur-sm border border-border rounded-lg p-4 shadow-glow max-w-xs">
-        <p className="text-sm font-bold text-foreground mb-1">{phase.phase}</p>
+      <div className="bg-slate-900/95 backdrop-blur-sm border border-white/20 rounded-lg p-4 shadow-glow max-w-xs">
+        <p className="text-sm font-bold text-white mb-1">{phase.phase}</p>
         <p className="text-xs text-muted-foreground mb-3">{phase.benefit}</p>
         <div className="flex items-center gap-2 mb-3">
           <span className="text-xs text-muted-foreground">Growth potential:</span>
           <span className="text-xs font-semibold text-secondary">{getGrowthLevel(phase.index)}</span>
         </div>
         {showMilestones && (
-          <div className="text-xs text-violet-600 mb-3 italic">
+          <div className="text-xs text-violet-300 mb-3 italic">
             Milestone: {phase.milestone}
           </div>
         )}
@@ -117,16 +117,16 @@ export const EcosystemChart = () => {
         </div>
 
         {/* Chart Card */}
-        <div className="p-6 md:p-8 rounded-2xl bg-card border border-border shadow-xl">
+        <div className="p-6 md:p-8 rounded-2xl bg-slate-900/70 border border-white/10 shadow-xl">
           {/* Controls */}
           <div className="flex flex-wrap justify-end items-center gap-3 mb-6">
             <button
               onClick={() => setShowAreaFill(!showAreaFill)}
               className={`px-3 py-1.5 rounded-full text-xs font-medium transition-all duration-200 ${
                 showAreaFill
-                  ? 'bg-primary/10 text-foreground border border-primary/30'
-                  : 'bg-transparent text-muted-foreground border border-border'
-              } hover:bg-primary/15`}
+                  ? 'bg-white/10 text-white border border-white/20'
+                  : 'bg-transparent text-muted-foreground border border-white/5'
+              } hover:bg-white/15`}
             >
               Show area fill
             </button>
@@ -134,9 +134,9 @@ export const EcosystemChart = () => {
               onClick={() => setShowMilestones(!showMilestones)}
               className={`px-3 py-1.5 rounded-full text-xs font-medium transition-all duration-200 ${
                 showMilestones
-                  ? 'bg-primary/10 text-foreground border border-primary/30'
-                  : 'bg-transparent text-muted-foreground border border-border'
-              } hover:bg-primary/15`}
+                  ? 'bg-white/10 text-white border border-white/20'
+                  : 'bg-transparent text-muted-foreground border border-white/5'
+              } hover:bg-white/15`}
             >
               Show milestones
             </button>
@@ -160,12 +160,12 @@ export const EcosystemChart = () => {
                 </linearGradient>
               </defs>
               
-              <CartesianGrid strokeDasharray="3 3" stroke="rgba(0,0,0,0.1)" />
+              <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" />
               
               <XAxis 
                 dataKey="phase" 
-                stroke="rgba(0,0,0,0.3)" 
-                tick={{ fill: 'rgba(0,0,0,0.6)', fontSize: 11 }}
+                stroke="rgba(255,255,255,0.3)" 
+                tick={{ fill: 'rgba(255,255,255,0.6)', fontSize: 11 }}
                 angle={-20}
                 textAnchor="end"
                 height={80}
@@ -176,13 +176,13 @@ export const EcosystemChart = () => {
               <YAxis 
                 domain={[0, 100]}
                 ticks={[0, 25, 50, 75, 100]}
-                stroke="rgba(0,0,0,0.3)" 
-                tick={{ fill: 'rgba(0,0,0,0.6)', fontSize: 12 }}
+                stroke="rgba(255,255,255,0.3)" 
+                tick={{ fill: 'rgba(255,255,255,0.6)', fontSize: 12 }}
                 label={{ 
                   value: 'Growth Potential (Index)', 
                   angle: -90, 
                   position: 'insideLeft', 
-                  fill: 'rgba(0,0,0,0.6)',
+                  fill: 'rgba(255,255,255,0.6)',
                   style: { textAnchor: 'middle' }
                 }}
               />
@@ -208,15 +208,15 @@ export const EcosystemChart = () => {
                 dot={{ 
                   fill: '#8b5cf6', 
                   r: 5,
-                  stroke: '#000',
-                  strokeWidth: 1,
+                  stroke: '#fff',
+                  strokeWidth: 2,
                   cursor: 'pointer'
                 }}
                 activeDot={{ 
                   r: 7, 
                   fill: '#ec4899',
-                  stroke: '#000',
-                  strokeWidth: 1,
+                  stroke: '#fff',
+                  strokeWidth: 2,
                   cursor: 'pointer',
                   onClick: (_: any, payload: any) => handlePhaseClick(payload.payload.phase)
                 }}
@@ -255,8 +255,8 @@ export const EcosystemChart = () => {
         </div>
 
         {/* CTA Band */}
-        <div className="mt-8 p-6 rounded-xl bg-gradient-to-r from-primary/10 to-secondary/10 border border-border text-center">
-          <p className="text-lg font-semibold text-foreground mb-4">
+        <div className="mt-8 p-6 rounded-xl bg-gradient-to-r from-primary/10 to-secondary/10 border border-white/10 text-center">
+          <p className="text-lg font-semibold text-white mb-4">
             Ready to map your growth potential?
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
@@ -266,7 +266,7 @@ export const EcosystemChart = () => {
               </Button>
             </Link>
             <Link to="/contact">
-              <Button variant="outline" className="border-border hover:bg-muted">
+              <Button variant="outline" className="border-white/20 text-white hover:bg-white/10">
                 Book a Discovery Call
               </Button>
             </Link>
