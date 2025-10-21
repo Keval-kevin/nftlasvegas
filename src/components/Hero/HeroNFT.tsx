@@ -18,7 +18,7 @@ export const HeroNFT = () => {
             {/* Badge */}
             <div className="inline-flex items-center gap-2 px-6 py-3 bg-white/10 backdrop-blur-sm border border-primary/30 text-primary-foreground rounded-full text-sm font-medium mb-8 hover:bg-white/20 transition-all duration-300 group">
               <Sparkles className="w-4 h-4 animate-pulse text-yellow-400 group-hover:rotate-12 transition-transform" />
-              <span className="text-pink-300">Innovation for the next generation of global ventures</span>
+              <span className="text-[#b347eb]">Only at NFT Las Vegas™</span>
               <div className="w-2 h-2 bg-green-400 rounded-full animate-ping" />
             </div>
 
