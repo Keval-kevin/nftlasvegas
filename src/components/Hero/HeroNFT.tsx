@@ -35,7 +35,7 @@ export const HeroNFT = () => {
 
             <p className="text-base sm:text-lg text-muted-foreground/80 mb-12 max-w-3xl mx-auto animate-fade-in" style={{
             animationDelay: '0.5s'
-          }}>Full-stack venture enablement combining blockchain, AI, and enterprise infrastructure to build future-proof ecosystems that scale. Whether you're a startup looking to make your mark or an enterprise seeking digital transformation, we have the expertise to help you succeed. Contact us today to start your journey towards unprecedented growth and innovation.</p>
+          }}>Full-stack venture enablement combining blockchain, AI, and enterprise infrastructure to create self-sustainable economies.</p>
 
             {/* CTAs */}
             <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center mb-16" style={{
