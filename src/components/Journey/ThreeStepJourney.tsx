@@ -20,7 +20,7 @@ export const ThreeStepJourney = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-            <span className="text-gradient">Why NFT</span>
+            Your Journey to <span className="text-gradient">Las Vegas™</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             A proven three-phase approach that takes you from concept to market leader
