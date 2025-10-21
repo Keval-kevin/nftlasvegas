@@ -23,7 +23,7 @@ export const ThreeStepJourney = () => {
             Why <span className="text-gradient">NFT Las Vegas™</span>?
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            A proven three-phase approach that takes you from concept to market leader
+            Your Growth Journey with Us
           </p>
         </div>
 
