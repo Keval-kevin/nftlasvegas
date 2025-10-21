@@ -9,17 +9,17 @@ export const HeroNFT = () => {
   useEffect(() => {
     setIsVisible(true);
   }, []);
-  return <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-[hsl(222,47%,11%)] via-[hsl(237,50%,20%)] to-[hsl(263,50%,25%)]">
+  return <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50">
       <ParticleBackground />
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-20 lg:py-32">
         <div className="text-center">
           <div className={`transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             {/* Badge */}
-            <div className="inline-flex items-center gap-2 px-6 py-3 bg-white/10 backdrop-blur-sm border border-primary/30 text-primary-foreground rounded-full text-sm font-medium mb-8 hover:bg-white/20 transition-all duration-300 group">
-              <Sparkles className="w-4 h-4 animate-pulse text-yellow-400 group-hover:rotate-12 transition-transform" />
-              <span className="text-[#b347eb]">Only at NFT Las Vegas™</span>
-              <div className="w-2 h-2 bg-green-400 rounded-full animate-ping" />
+            <div className="inline-flex items-center gap-2 px-6 py-3 bg-primary/10 backdrop-blur-sm border border-primary/30 text-foreground rounded-full text-sm font-medium mb-8 hover:bg-primary/20 transition-all duration-300 group">
+              <Sparkles className="w-4 h-4 animate-pulse text-yellow-500 group-hover:rotate-12 transition-transform" />
+              <span className="text-primary">Only at NFT Las Vegas™</span>
+              <div className="w-2 h-2 bg-green-500 rounded-full animate-ping" />
             </div>
 
             {/* Main Headline */}
@@ -52,7 +52,7 @@ export const HeroNFT = () => {
               </Link>
               
               <Link to="/onboarding">
-                <Button size="lg" variant="outline" className="group text-lg px-10 py-6 border-2 border-primary/50 hover:border-primary bg-white/5 backdrop-blur-sm hover:bg-white/10 shadow-lg transform hover:scale-105 transition-all duration-400 rounded-full text-foreground w-full sm:w-auto">
+                <Button size="lg" variant="outline" className="group text-lg px-10 py-6 border-2 border-primary/50 hover:border-primary bg-white/80 backdrop-blur-sm hover:bg-white shadow-lg transform hover:scale-105 transition-all duration-400 rounded-full text-foreground w-full sm:w-auto">
                   Start Onboarding
                   <div className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/10 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
                 </Button>
