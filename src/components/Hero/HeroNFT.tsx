@@ -25,7 +25,7 @@ export const HeroNFT = () => {
             {/* Main Headline */}
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-foreground mb-8 leading-tight">
               <span className="block animate-fade-in">Your All-in-One Partner for</span>
-              <span className="block animate-fade-in animate-delay-200 bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent">Marketing, Branding & Tech Development</span>
+              <span className="block animate-fade-in animate-delay-200 bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent">the Next Generation of Innovation</span>
             </h1>
             
             {/* Tagline */}
