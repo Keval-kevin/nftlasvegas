@@ -87,8 +87,8 @@ export const AdvancedSEO: React.FC<AdvancedSEOProps> = ({
       <meta name="twitter:image" content={image} />
 
       {/* Additional Meta Tags */}
-      <meta name="theme-color" content="#3b82f6" />
-      <meta name="msapplication-TileColor" content="#3b82f6" />
+      <meta name="theme-color" content="#0b1020" />
+      <meta name="msapplication-TileColor" content="#0b1020" />
       <meta name="apple-mobile-web-app-capable" content="yes" />
       <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
       <meta name="format-detection" content="telephone=no" />

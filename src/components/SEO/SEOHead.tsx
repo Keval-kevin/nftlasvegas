@@ -81,8 +81,8 @@ export const SEOHead = ({
       <meta name="twitter:image" content={`${url}${image}`} />
 
       {/* Additional SEO Meta Tags */}
-      <meta name="theme-color" content="#2563eb" />
-      <meta name="msapplication-TileColor" content="#2563eb" />
+      <meta name="theme-color" content="#0b1020" />
+      <meta name="msapplication-TileColor" content="#0b1020" />
       <meta name="application-name" content="Easenext" />
 
       {/* Structured Data */}
