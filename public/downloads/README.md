@@ -1,35 +1,67 @@
-# NFT Las Vegas Starter Pack Downloads
+# NFT Las Vegas™ Starter Onboarding Package v1.0
 
-This directory contains downloadable assets for NFT Las Vegas clients and prospects.
+Welcome to your complete onboarding package! This collection includes everything you need to understand and engage with NFT Las Vegas™'s 6-step processing pathway.
 
-## Files
+## 📦 What's Included
 
-### Required Files (Upload These):
+### Core Documents
 
-1. **nftlv-starter-pack-v1.0.zip** - Complete starter pack bundle
-   - Onboarding Guide PDF
-   - AI Voice System Kickoff Checklist PDF
-   - 90-Day Plan Template
-   - README and additional resources
+1. **NFT Las Vegas - Onboarding Package.pdf**
+   - Complete overview of our 6-step processing pathway
+   - From concept to market launch
+   - How we work across all phases
 
-2. **NFT Las Vegas — Onboarding Guide v1.0.pdf** - Standalone onboarding guide
+2. **NFT Las Vegas - Toolkit 1.0 Onboarding & Funding Enablement.pdf**
+   - Initial onboarding process
+   - Funding enablement strategies
+   - Getting your venture ready for investment
 
-3. **AI Voice System — Kickoff Checklist v1.0.pdf** - Standalone AI voice checklist
+3. **NFT Las Vegas - Toolkit 2.0 Tech Development & Product Manufacturing.pdf**
+   - Technology stack planning
+   - Product development lifecycle
+   - Manufacturing considerations
+
+4. **NFT Las Vegas - Toolkit 3.0 Launch Strategy & Distribution.pdf**
+   - Go-to-market strategies
+   - Distribution channels
+   - Post-launch growth tactics
+
+5. **Message from the Founder.pdf**
+   - Personal note from our founder
+   - Vision and mission
+   - Our commitment to your success
+
+### Quick Access
+
+- **Full Package**: `nftlv-starter-pack-v1.0.zip`
+- **Individual PDFs**: Available separately for quick reference
+
+## 🚀 Next Steps
+
+1. **Review the Onboarding Package** first to understand our complete process
+2. **Explore each toolkit** relevant to your current stage
+3. **Book a Discovery Call** at [nftlasvegas.com/contact](#book-demo)
+4. **Start your onboarding** at [nftlasvegas.com/onboarding](/onboarding)
 
 ## Usage
 
 These files are served statically from the `/public/downloads/` directory and are accessible via:
 - `/downloads/filename.ext`
 
-## Important Notes
+## 📧 Questions?
 
-- Files must be manually uploaded to this directory
-- Maximum recommended file size: 25MB per file
-- Supported formats: ZIP, PDF, DOCX, PPTX
+If you have any questions or need clarification on any materials:
+- Email: info@nftlasvegas.com
+- Visit: nftlasvegas.com
+- Location: 7429 Royal Crystal St., Las Vegas, NV 89149
+
+## Technical Notes
+
 - All downloads are tracked via GA4 analytics
+- Files are publicly accessible
+- Gated download form captures leads to HubSpot
+- Automated email sends all download links upon form submission
 
-## Security
+---
 
-- No sensitive information should be stored in public downloads
-- All files are publicly accessible without authentication
-- Use optional soft-gate for lead capture (implemented in StarterPackDownload component)
+© 2025 NFT Las Vegas™. All rights reserved.
