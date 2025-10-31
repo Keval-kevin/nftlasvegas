@@ -5,6 +5,7 @@ import { Label } from '@/components/ui/label';
 import { Checkbox } from '@/components/ui/checkbox';
 import { useToast } from '@/hooks/use-toast';
 import nftLogo from '@/assets/nft-logo.jpeg';
+import { multiDownload } from '@/lib/utils';
 
 export const StarterPackDownload = () => {
   const [open, setOpen] = useState(false);
@@ -32,13 +33,15 @@ export const StarterPackDownload = () => {
       pack_version: 'v1.0',
       download_method: hasUnlocked ? 'direct' : 'gated'
     });
-    
-    const link = document.getElementById('dl-pack') as HTMLAnchorElement;
-    if (link) {
-      link.click();
-    }
-  };
 
+    multiDownload([
+      '/downloads/NFT Las Vegas - Onboarding Package.pdf',
+      '/downloads/NFT Las Vegas - Toolkit 1.0 Onboarding & Funding Enablement.pdf',
+      '/downloads/NFT Las Vegas - Toolkit 2.0 Tech Development & Product Manufacturing.pdf',
+      '/downloads/NFT Las Vegas - Toolkit 3.0 Launch Strategy & Distribution.pdf',
+      '/downloads/Message from the Founder.pdf',
+    ]);
+  };
   const handleDownloadClick = () => {
     if (hasUnlocked) {
       startDownload();
@@ -97,7 +100,6 @@ export const StarterPackDownload = () => {
         • Toolkit 2.0: ${window.location.origin}/downloads/NFT Las Vegas - Toolkit 2.0 Tech Development & Product Manufacturing.pdf
         • Toolkit 3.0: ${window.location.origin}/downloads/NFT Las Vegas - Toolkit 3.0 Launch Strategy & Distribution.pdf
         • Message from Founder: ${window.location.origin}/downloads/Message from the Founder.pdf
-        • Full Starter Pack: ${window.location.origin}/downloads/nftlv-starter-pack-v1.0.zip
       `
     };
 
@@ -189,17 +191,6 @@ export const StarterPackDownload = () => {
 
   return (
     <>
-      {/* Hidden download link */}
-      <a
-        id="dl-pack"
-        href="/downloads/nftlv-starter-pack-v1.0.zip?v=1.0"
-        download="NFT-Las-Vegas-Starter-Pack-v1.0.zip"
-        rel="noopener"
-        className="hidden"
-        aria-hidden="true"
-      >
-        Download
-      </a>
 
       {/* Main Component */}
       <section className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-primary/5 via-background to-secondary/5 p-8 shadow-lg border border-primary/10 hover:shadow-xl transition-all duration-300">

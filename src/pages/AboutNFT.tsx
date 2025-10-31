@@ -17,6 +17,7 @@ import quinceyImage from "@/assets/quincey-lee-2025.jpg";
 import { useIntersectionObserver } from "@/hooks/use-intersection-observer";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { SixPhaseJourney } from "@/components/Journey/SixPhaseJourney";
+import { multiDownload } from "@/lib/utils";
 
 const AboutNFT = () => {
   const heroObserver = useIntersectionObserver({ threshold: 0.1 });
@@ -74,11 +75,15 @@ const AboutNFT = () => {
                         <ArrowRight className="ml-2 h-5 w-5" />
                       </Link>
                     </Button>
-                    <Button asChild variant="outline" size="lg" className="text-lg px-8">
-                      <a href="/downloads/nftlv-starter-pack-v1.0.zip" download>
-                        <Download className="mr-2 h-5 w-5" />
-                        Download Onboarding Package
-                      </a>
+                    <Button onClick={() => multiDownload([
+                      '/downloads/NFT Las Vegas - Onboarding Package.pdf',
+                      '/downloads/NFT Las Vegas - Toolkit 1.0 Onboarding & Funding Enablement.pdf',
+                      '/downloads/NFT Las Vegas - Toolkit 2.0 Tech Development & Product Manufacturing.pdf',
+                      '/downloads/NFT Las Vegas - Toolkit 3.0 Launch Strategy & Distribution.pdf',
+                      '/downloads/Message from the Founder.pdf',
+                    ])} variant="outline" size="lg" className="text-lg px-8">
+                      <Download className="mr-2 h-5 w-5" />
+                      Download Onboarding Package
                     </Button>
                   </div>
                 </div>
