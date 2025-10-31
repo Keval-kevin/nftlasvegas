@@ -17,7 +17,7 @@ const caseStudies = [
     client: "Amilo Halos",
     industry: "Early Learning",
     blurb: "Family-led early learning brand building trust for a toddler education app through authentic storytelling.",
-    logo: "/assets/case-studies/amilo-halos-logo.jpg",
+    logo: "/case-studies/amilo-halos-logo.jpg",
     tags: ["Early Learning", "Content Production", "Testimonial Campaign"],
     challenge: "Amilo Halos, a family-led brand focused on early childhood learning and emotional bonding, sought a way to build trust and visibility for their upcoming toddler education app. The brand needed to bridge real-life use cases with authentic testimonials to introduce their platform in a compelling and credible way.",
     approach: "NFT Las Vegas™ designed and directed a custom testimonial shoot featuring the founding family using the app in their day-to-day life. We crafted a talent agreement that allowed the family to represent themselves while promoting the brand authentically. The shoot included guided interviews, product interaction, and social content that aligned with their mission.",
@@ -41,7 +41,7 @@ const caseStudies = [
     client: "Enthralla, Inc.",
     industry: "EdTech",
     blurb: "Toddler education app launch with full CRM onboarding, cross-channel setup, and founder enablement.",
-    logo: "/assets/case-studies/enthralla-logo.jpg",
+    logo: "/case-studies/enthralla-logo.jpg",
     tags: ["EdTech", "HubSpot", "GTM", "Paid Social"],
     challenge: "Enthralla, Inc. was preparing to launch an early-learning education app designed for toddlers, based on breakthrough cognitive insights like subitizing. The founder needed full-service CRM onboarding, digital strategy, social setup, and a launch campaign — all while supporting an older founder with limited tech background.",
     approach: "NFT Las Vegas™ created a multi-phase onboarding plan for Enthralla, including custom HubSpot CRM setup, strategic ad campaign design, and platform training. We also managed social media identity creation across Meta, Google, TikTok, and more — guiding the founder through every step with care and precision.",
@@ -108,11 +108,14 @@ const CaseStudiesNFT = () => {
                 className="group cursor-pointer hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
               >
                 <CardHeader>
-                  <div className="bg-white rounded-lg p-4 mb-4 inline-flex items-center justify-center w-fit">
+                <div className="bg-white rounded-lg p-4 mb-4 inline-flex items-center justify-center w-[200px] h-[64px] shadow-sm">
                     <img 
                       src={caseStudy.logo} 
                       alt={`${caseStudy.title} logo`}
-                      className="h-12 w-auto object-contain"
+                      className="h-12 sm:h-14 w-auto object-contain"
+                      loading="lazy"
+                      decoding="async"
+                      onError={(e) => { e.currentTarget.src = '/placeholder.svg'; }}
                     />
                   </div>
                   <CardTitle className="text-2xl group-hover:text-primary transition-colors">
@@ -178,11 +181,14 @@ const CaseStudiesNFT = () => {
                 {/* Sticky Header */}
                 <DialogHeader className="sticky top-0 bg-background pb-4 border-b z-10">
                   <div className="flex items-center gap-4">
-                    <div className="bg-white rounded-lg p-3 flex-shrink-0">
+                    <div className="bg-white rounded-lg p-3 flex-shrink-0 w-[180px] h-[56px] flex items-center justify-center shadow-sm">
                       <img 
                         src={selectedCase.logo} 
                         alt={`${selectedCase.title} logo`}
-                        className="h-10 w-auto object-contain"
+                        className="h-10 sm:h-12 w-auto object-contain"
+                        loading="lazy"
+                        decoding="async"
+                        onError={(e) => { e.currentTarget.src = '/placeholder.svg'; }}
                       />
                     </div>
                     <div>
