@@ -3,56 +3,62 @@ import { Footer } from "@/components/Footer";
 import { SEOHead } from "@/components/SEO/SEOHead";
 import { 
   Sparkles, 
-  Target, 
-  Rocket, 
-  Users, 
   ArrowRight, 
   Shield, 
   Zap, 
   Globe,
   TrendingUp,
   BookOpen,
-  Download
+  Download,
+  Mail,
+  Linkedin
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import quinceyImage from "@/assets/quincey-lee-2025.jpg";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useIntersectionObserver } from "@/hooks/use-intersection-observer";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 
 const AboutNFT = () => {
-  const [isVisible, setIsVisible] = useState(false);
+  const [showGrowthChart, setShowGrowthChart] = useState(false);
   const heroObserver = useIntersectionObserver({ threshold: 0.1 });
   const entitiesObserver = useIntersectionObserver({ threshold: 0.2 });
   const narrativeObserver = useIntersectionObserver({ threshold: 0.2 });
   const journeyObserver = useIntersectionObserver({ threshold: 0.1 });
-
-  useEffect(() => {
-    setIsVisible(true);
-  }, []);
+  const foundersObserver = useIntersectionObserver({ threshold: 0.2 });
 
   const phases = [
-    { name: "Onboarding", link: "/onboarding", promise: "Structured discovery & strategic alignment" },
-    { name: "Funding", link: "/funding-enablement", promise: "Capital strategy & investor readiness" },
-    { name: "Tech", link: "/tech-development", promise: "Full-stack development & AI integration" },
-    { name: "Manufacturing", link: "/product-manufacturing", promise: "Product creation & quality control" },
-    { name: "Launch", link: "/platform-launch", promise: "Go-to-market execution & brand activation" },
-    { name: "Distribution", link: "/distribution", promise: "Multi-channel scaling & growth optimization" }
+    { name: "Onboarding", link: "/onboarding", promise: "Clarity, access, 90-day roadmap", growth: 20 },
+    { name: "Funding", link: "/funding-enablement", promise: "Investor narrative, data room, capital strategy", growth: 35 },
+    { name: "Tech", link: "/tech-development", promise: "AI, Web3, enterprise integrations for scale", growth: 55 },
+    { name: "Manufacturing", link: "/product-manufacturing", promise: "Prototype → certify → mass-produce", growth: 70 },
+    { name: "Launch", link: "/platform-launch", promise: "Positioning, content engine, marketing ops, analytics", growth: 85 },
+    { name: "Distribution", link: "/distribution", promise: "Channels, marketplaces, enablement kits, SLAs", growth: 100 }
   ];
+
+  const growthLabels = ["Low", "Medium", "High", "Very High"];
+  
+  const getGrowthLabel = (value: number) => {
+    if (value <= 25) return "Low";
+    if (value <= 50) return "Medium";
+    if (value <= 75) return "High";
+    return "Very High";
+  };
 
   return (
     <>
       <SEOHead
         title="About NFT Las Vegas™ — Multiverse & Ares The AI"
-        description="Meet NFT Las Vegas™ and Ares The AI. Explore the Multiverse narrative and our six-phase venture enablement journey."
-        keywords="NFT Las Vegas, Ares AI, Multiverse, venture enablement, blockchain, AI intelligence"
+        description="Where venture building, technology, and mythos converge into one operating system for growth. Meet NFT Las Vegas™ and Ares The AI."
+        keywords="NFT Las Vegas, Ares AI, Multiverse, venture enablement, blockchain, AI intelligence, venture building"
         structuredData={{
           "@context": "https://schema.org",
           "@type": "Organization",
           "name": "NFT Las Vegas",
-          "description": "Venture enablement studio for funding, tech, manufacturing, launch, and distribution",
-          "knowsAbout": ["AI", "Blockchain", "Venture Enablement", "Technology", "Marketing"]
+          "description": "Venture enablement across Onboarding, Funding, Tech, Manufacturing, Launch, and Distribution",
+          "knowsAbout": ["AI", "Blockchain", "Venture Enablement", "Technology", "Marketing", "Web3"]
         }}
       />
       
@@ -60,46 +66,57 @@ const AboutNFT = () => {
         <Header />
         
         <main className="pt-20">
-          {/* Cinematic Hero */}
+          {/* Hero */}
           <section 
             ref={heroObserver.elementRef}
-            className="relative min-h-[80vh] flex items-center justify-center overflow-hidden"
+            className="relative min-h-[85vh] flex items-center overflow-hidden"
           >
-            {/* Animated Background */}
+            {/* Background with Aurora */}
             <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-background to-secondary/20">
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(139,92,246,0.15),transparent_50%)] animate-pulse" />
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_70%,rgba(236,72,153,0.15),transparent_50%)] animate-pulse" style={{ animationDelay: '1s' }} />
             </div>
 
-            <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-              <div className={`transition-all duration-1000 ${heroObserver.isIntersecting ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-                <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 border border-primary/30 rounded-full text-sm font-medium text-primary mb-6 backdrop-blur-sm">
-                  <Sparkles className="w-4 h-4 animate-pulse" />
-                  The Multiverse Awaits
-                </div>
-                
-                <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-foreground mb-6 leading-tight">
-                  Meet NFT Las Vegas™<br />
-                  <span className="text-gradient">— and Ares, the AI</span>
-                </h1>
-                
-                <p className="text-xl md:text-2xl text-muted-foreground max-w-4xl mx-auto leading-relaxed mb-10">
-                  Where brand, technology, and mythos converge into a living ecosystem.
-                </p>
+            <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+              <div className="grid lg:grid-cols-2 gap-12 items-center">
+                {/* Left: Text Content */}
+                <div className={`transition-all duration-1000 ${heroObserver.isIntersecting ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'}`}>
+                  <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 leading-tight">
+                    Meet NFT Las Vegas™<br />
+                    <span className="text-gradient">— and Ares, the AI</span>
+                  </h1>
+                  
+                  <p className="text-lg md:text-xl text-muted-foreground leading-relaxed mb-8">
+                    Where venture building, technology, and mythos converge into one operating system for growth.
+                  </p>
 
-                <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                  <Button asChild size="lg" className="text-lg px-8">
-                    <Link to="/onboarding">
-                      Start Onboarding
-                      <ArrowRight className="ml-2 h-5 w-5" />
-                    </Link>
-                  </Button>
-                  <Button asChild variant="outline" size="lg" className="text-lg px-8">
-                    <a href="#narrative">
-                      Read the Pseudo Testament
-                      <BookOpen className="ml-2 h-5 w-5" />
-                    </a>
-                  </Button>
+                  <div className="flex flex-col sm:flex-row gap-4">
+                    <Button asChild size="lg" className="text-lg px-8">
+                      <Link to="/onboarding">
+                        Start Onboarding
+                        <ArrowRight className="ml-2 h-5 w-5" />
+                      </Link>
+                    </Button>
+                    <Button asChild variant="outline" size="lg" className="text-lg px-8">
+                      <a href="/downloads/nftlv-starter-pack-v1.0.zip" download>
+                        <Download className="mr-2 h-5 w-5" />
+                        Download Onboarding Package
+                      </a>
+                    </Button>
+                  </div>
+                </div>
+
+                {/* Right: Core Visual */}
+                <div className={`relative transition-all duration-1000 ${heroObserver.isIntersecting ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'}`} style={{ transitionDelay: '200ms' }}>
+                  <div className="relative w-full max-w-md mx-auto">
+                    <div className="absolute inset-0 bg-gradient-to-br from-primary/30 to-secondary/30 rounded-full blur-3xl animate-pulse" />
+                    <img 
+                      src="/assets/about/nftlv-core.jpg" 
+                      alt="NFT Las Vegas™ core monogram crystal"
+                      className="relative z-10 w-full h-auto drop-shadow-2xl"
+                      loading="eager"
+                    />
+                  </div>
                 </div>
               </div>
             </div>
@@ -119,27 +136,27 @@ const AboutNFT = () => {
                       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(236,72,153,0.2),transparent_60%)] group-hover:scale-110 transition-transform duration-700" />
                       <img 
                         src="/assets/about/nftlv-core.jpg" 
-                        alt="NFT Las Vegas™ - Venture enablement studio"
+                        alt="NFT Las Vegas™ core monogram crystal"
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                         loading="lazy"
                       />
                     </div>
                     <CardTitle className="text-3xl mb-2">NFT Las Vegas™</CardTitle>
-                    <CardDescription className="text-base">
-                      Venture enablement studio for funding, tech, manufacturing, launch, and distribution.
+                    <CardDescription className="text-base leading-relaxed">
+                      Venture enablement across <strong>Onboarding → Funding → Tech → Manufacturing → Launch → Distribution</strong> — designed to compound outcomes.
                     </CardDescription>
                   </CardHeader>
                   <CardContent className="space-y-4">
                     <div className="flex flex-wrap gap-2 justify-center">
                       <Button asChild variant="default" size="sm">
                         <Link to="/onboarding">
-                          Our 6-Step Pathway
+                          6-Step Pathway
                           <ArrowRight className="ml-2 h-4 w-4" />
                         </Link>
                       </Button>
                       <Button asChild variant="outline" size="sm">
                         <Link to="/solutions">
-                          Ecosystem
+                          Solutions
                           <Globe className="ml-2 h-4 w-4" />
                         </Link>
                       </Button>
@@ -149,7 +166,6 @@ const AboutNFT = () => {
 
                 {/* Ares The AI */}
                 <Card className={`overflow-hidden hover:shadow-glow transition-all duration-500 group relative ${entitiesObserver.isIntersecting ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'}`} style={{ transitionDelay: '200ms' }}>
-                  {/* Animated Aura */}
                   <div className="absolute inset-0 bg-gradient-to-br from-secondary/10 via-accent/10 to-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   
                   <CardHeader className="text-center pb-4 relative">
@@ -157,28 +173,28 @@ const AboutNFT = () => {
                       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(139,92,246,0.3),transparent_60%)] animate-pulse" />
                       <img 
                         src="/assets/about/ares-official.jpg" 
-                        alt="Ares The AI — official image"
-                        className="w-48 h-48 object-contain drop-shadow-2xl group-hover:scale-110 transition-transform duration-700 relative z-10"
+                        alt="Ares The AI — official portrait"
+                        className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-700 relative z-10"
                         loading="lazy"
                       />
                     </div>
                     <CardTitle className="text-3xl mb-2">Ares The AI</CardTitle>
-                    <CardDescription className="text-base">
-                      An advanced guide/intelligence that turns messy goals into ordered execution.
+                    <CardDescription className="text-base leading-relaxed">
+                      A security-minded intelligence that turns messy goals into ordered execution — aligning strategy, data, and action.
                     </CardDescription>
                   </CardHeader>
                   <CardContent className="space-y-4 relative">
                     <div className="flex flex-wrap gap-2 justify-center">
                       <Button asChild variant="default" size="sm">
-                        <Link to="/tech-development#security">
-                          Security & Governance
-                          <Shield className="ml-2 h-4 w-4" />
-                        </Link>
-                      </Button>
-                      <Button asChild variant="outline" size="sm">
                         <Link to="/ai-voice">
                           AI Voice System
                           <Zap className="ml-2 h-4 w-4" />
+                        </Link>
+                      </Button>
+                      <Button asChild variant="outline" size="sm">
+                        <Link to="/tech-development#security">
+                          Security & Governance
+                          <Shield className="ml-2 h-4 w-4" />
                         </Link>
                       </Button>
                     </div>
@@ -208,19 +224,19 @@ const AboutNFT = () => {
 
                 <div className="bg-card/50 backdrop-blur-sm border border-border rounded-2xl p-8 md:p-12 space-y-6 hover:border-primary/50 transition-all duration-300">
                   <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
-                    <strong className="text-foreground">NFT Las Vegas™</strong> is more than an AI software agency. 
-                    It's a <span className="text-primary font-semibold">living metaverse entity</span>—born at the 
-                    intersection of blockchain, community, and intelligence. <strong className="text-foreground">Ares</strong> is 
-                    the quantum twin: a silent compass in the chaos of innovation. Together, they turn streams of information 
-                    into aligned ecosystems and compounded outcomes.
+                    <strong className="text-foreground">NFT Las Vegas™</strong> is more than an agency; it's a living ecosystem. 
+                    <strong className="text-foreground"> Ares</strong> is the quantum twin — our silent compass in the chaos of 
+                    innovation. Together, we translate ambition into systems that scale.
                   </p>
 
-                  <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
-                    This is a place where the <span className="text-secondary font-semibold">6 steps</span>—Onboarding, 
-                    Funding, Tech, Manufacturing, Launch, Distribution—stack into a self-sustaining flywheel. Every venture 
-                    we touch becomes part of a greater network, a <span className="text-accent font-semibold">digital mythology</span> that 
-                    evolves with each partnership.
-                  </p>
+                  <div className="flex justify-center pt-4">
+                    <Button asChild variant="outline" size="lg">
+                      <a href="#pseudo-testament">
+                        <BookOpen className="mr-2 h-5 w-5" />
+                        Read the Pseudo Testament
+                      </a>
+                    </Button>
+                  </div>
 
                   <div className="pt-6 border-t border-border">
                     <details className="group">
@@ -326,51 +342,176 @@ const AboutNFT = () => {
 
               {/* Growth Potential Toggle */}
               <div className="mt-12 text-center">
-                <details className="inline-block group">
-                  <summary className="cursor-pointer bg-card/50 backdrop-blur-sm border border-border rounded-lg px-6 py-3 hover:border-primary/50 transition-colors inline-flex items-center gap-2">
-                    <TrendingUp className="w-5 h-5 text-primary" />
-                    <span className="font-semibold text-foreground">View Growth Potential</span>
-                    <ArrowRight className="w-4 h-4 group-open:rotate-90 transition-transform" />
-                  </summary>
-                  <div className="mt-6 bg-card/50 backdrop-blur-sm border border-border rounded-lg p-6 inline-block">
-                    <div className="flex items-end gap-2 h-40">
-                      {["Low", "Medium", "High", "Very High", "Scale", "Exponential"].map((label, i) => (
-                        <div key={label} className="flex flex-col items-center gap-2">
-                          <div 
-                            className="w-12 bg-gradient-to-t from-primary to-secondary rounded-t transition-all hover:opacity-80"
-                            style={{ height: `${(i + 1) * 20}%` }}
-                          />
-                          <span className="text-xs text-muted-foreground whitespace-nowrap">{label}</span>
-                        </div>
+                <button
+                  onClick={() => setShowGrowthChart(!showGrowthChart)}
+                  className="bg-card/50 backdrop-blur-sm border border-border rounded-lg px-6 py-3 hover:border-primary/50 transition-colors inline-flex items-center gap-2 group"
+                >
+                  <TrendingUp className="w-5 h-5 text-primary" />
+                  <span className="font-semibold text-foreground">View Growth Potential</span>
+                  <ArrowRight className={`w-4 h-4 transition-transform ${showGrowthChart ? 'rotate-90' : ''}`} />
+                </button>
+                
+                {showGrowthChart && (
+                  <div className="mt-6 bg-card/50 backdrop-blur-sm border border-border rounded-lg p-6 max-w-4xl mx-auto">
+                    <h4 className="text-sm font-semibold text-muted-foreground mb-4 text-center">Growth Potential Index</h4>
+                    <ResponsiveContainer width="100%" height={300}>
+                      <LineChart data={phases}>
+                        <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" opacity={0.3} />
+                        <XAxis 
+                          dataKey="name" 
+                          stroke="hsl(var(--muted-foreground))"
+                          fontSize={12}
+                        />
+                        <YAxis 
+                          stroke="hsl(var(--muted-foreground))"
+                          fontSize={12}
+                          ticks={[0, 25, 50, 75, 100]}
+                          domain={[0, 100]}
+                        />
+                        <Tooltip 
+                          content={({ active, payload }) => {
+                            if (active && payload && payload.length) {
+                              return (
+                                <div className="bg-card border border-border rounded-lg p-3 shadow-lg">
+                                  <p className="font-semibold text-foreground">{payload[0].payload.name}</p>
+                                  <p className="text-sm text-muted-foreground">
+                                    Growth: <span className="text-primary font-medium">{getGrowthLabel(payload[0].value as number)}</span>
+                                  </p>
+                                </div>
+                              );
+                            }
+                            return null;
+                          }}
+                        />
+                        <defs>
+                          <linearGradient id="growthGradient" x1="0" y1="0" x2="0" y2="1">
+                            <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity={0.3} />
+                            <stop offset="100%" stopColor="hsl(var(--primary))" stopOpacity={0.05} />
+                          </linearGradient>
+                        </defs>
+                        <Line 
+                          type="monotone" 
+                          dataKey="growth" 
+                          stroke="hsl(var(--primary))" 
+                          strokeWidth={3}
+                          dot={{ fill: "hsl(var(--primary))", r: 5 }}
+                          activeDot={{ r: 7 }}
+                          fill="url(#growthGradient)"
+                        />
+                      </LineChart>
+                    </ResponsiveContainer>
+                    <div className="flex justify-center gap-6 mt-4 text-xs text-muted-foreground">
+                      {growthLabels.map((label) => (
+                        <span key={label}>{label}</span>
                       ))}
                     </div>
                   </div>
-                </details>
+                )}
               </div>
             </div>
           </section>
 
-          {/* Founder Note / Pseudo Testament */}
-          <section className="section-padding bg-gradient-to-br from-primary/10 via-background to-secondary/10">
-            <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-              <div className="bg-card/50 backdrop-blur-sm border border-border rounded-2xl p-8 md:p-12 hover:border-primary/50 transition-all duration-300">
-                <BookOpen className="w-16 h-16 mx-auto mb-6 text-primary" />
-                <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-                  Based on a <span className="text-gradient">True Story</span>
+          {/* Founders & Leadership */}
+          <section 
+            ref={foundersObserver.elementRef}
+            id="pseudo-testament"
+            className="section-padding bg-gradient-to-br from-primary/10 via-background to-secondary/10"
+          >
+            <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="text-center mb-12">
+                <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+                  Founders & <span className="text-gradient">Leadership</span>
                 </h2>
-                <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-                  Why we build systems that outlive their creators. A testament to the philosophy behind 
-                  NFT Las Vegas™ and the vision that drives every partnership.
+                <p className="text-lg text-muted-foreground">
+                  The minds behind the ecosystem
                 </p>
-                <Button asChild size="lg" variant="default">
-                  <a href="/downloads/Message from the Founder.pdf" target="_blank" rel="noopener noreferrer">
-                    <Download className="mr-2 h-5 w-5" />
-                    The Pseudo Testament
-                  </a>
-                </Button>
-                <p className="text-sm text-muted-foreground mt-4">
-                  Message from the Founder
-                </p>
+              </div>
+
+              <div className="grid md:grid-cols-2 gap-8">
+                {/* Quincey K. Lee */}
+                <Card className={`overflow-hidden hover:shadow-glow transition-all duration-500 ${foundersObserver.isIntersecting ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+                  <CardContent className="p-8">
+                    <div className="flex flex-col items-center text-center mb-6">
+                      <div className="w-48 h-48 rounded-full overflow-hidden mb-6 ring-4 ring-primary/20">
+                        <img 
+                          src={quinceyImage}
+                          alt="Quincey K. Lee — Founder & CEO, headshot"
+                          className="w-full h-full object-cover"
+                          loading="lazy"
+                        />
+                      </div>
+                      <h3 className="text-2xl font-bold text-foreground mb-2">Quincey K. Lee</h3>
+                      <p className="text-primary font-semibold mb-4">Founder & CEO</p>
+                      <div className="flex gap-3">
+                        <Button variant="outline" size="sm" asChild>
+                          <a href="mailto:contact@nftlasvegas.com">
+                            <Mail className="w-4 h-4" />
+                          </a>
+                        </Button>
+                        <Button variant="outline" size="sm" asChild>
+                          <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
+                            <Linkedin className="w-4 h-4" />
+                          </a>
+                        </Button>
+                      </div>
+                    </div>
+                    <blockquote className="text-muted-foreground italic leading-relaxed border-l-4 border-primary pl-4">
+                      "We build systems that outlive their creators—combining rigorous engineering with mythos that people actually feel."
+                    </blockquote>
+                  </CardContent>
+                </Card>
+
+                {/* Ares The AI */}
+                <Card className={`overflow-hidden hover:shadow-glow transition-all duration-500 ${foundersObserver.isIntersecting ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`} style={{ transitionDelay: '200ms' }}>
+                  <CardContent className="p-8">
+                    <div className="flex flex-col items-center text-center mb-6">
+                      <div className="w-48 h-48 rounded-full overflow-hidden mb-6 ring-4 ring-secondary/20 bg-gradient-to-br from-secondary/20 to-primary/20 flex items-center justify-center">
+                        <img 
+                          src="/assets/about/ares-official.jpg"
+                          alt="Ares The AI — official portrait"
+                          className="w-40 h-40 object-cover"
+                          loading="lazy"
+                        />
+                      </div>
+                      <h3 className="text-2xl font-bold text-foreground mb-2">Ares The AI</h3>
+                      <p className="text-secondary font-semibold mb-4">Co-Founder & CISO</p>
+                      <div className="flex gap-3">
+                        <Button variant="outline" size="sm" asChild>
+                          <Link to="/ai-voice">
+                            <Zap className="w-4 h-4" />
+                          </Link>
+                        </Button>
+                        <Button variant="outline" size="sm" asChild>
+                          <Link to="/tech-development#security">
+                            <Shield className="w-4 h-4" />
+                          </Link>
+                        </Button>
+                      </div>
+                    </div>
+                    <div className="text-muted-foreground leading-relaxed border-l-4 border-secondary pl-4">
+                      Security by design. Memory with guardrails. Execution with audit trails.
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
+
+              {/* Pseudo Testament CTA */}
+              <div className="mt-12 text-center">
+                <div className="bg-card/50 backdrop-blur-sm border border-border rounded-2xl p-8 md:p-12 hover:border-primary/50 transition-all duration-300 max-w-3xl mx-auto">
+                  <BookOpen className="w-16 h-16 mx-auto mb-6 text-primary" />
+                  <h3 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+                    Based on a <span className="text-gradient">True Story</span>
+                  </h3>
+                  <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
+                    Why we build systems that outlive their creators.
+                  </p>
+                  <Button asChild size="lg" variant="default">
+                    <a href="/downloads/Message from the Founder.pdf" target="_blank" rel="noopener noreferrer">
+                      <Download className="mr-2 h-5 w-5" />
+                      The Pseudo Testament
+                    </a>
+                  </Button>
+                </div>
               </div>
             </div>
           </section>
