@@ -88,8 +88,8 @@ const AboutNFT = () => {
                   <div className="relative w-full max-w-md mx-auto">
                     <div className="absolute inset-0 bg-gradient-to-br from-primary/30 to-secondary/30 rounded-full blur-3xl animate-pulse" />
                     <img 
-                      src="/assets/about/nftlv-logo.jpeg" 
-                      alt="NFT Las Vegas™ logo with geometric crystal"
+                      src="/assets/about/nftlv-core.jpg" 
+                      alt="NFT Las Vegas™ core monogram crystal"
                       className="relative z-10 w-full h-auto drop-shadow-2xl"
                       loading="eager"
                     />
@@ -112,9 +112,9 @@ const AboutNFT = () => {
                     <div className="w-full h-64 mb-6 rounded-lg overflow-hidden bg-gradient-to-br from-primary/10 to-secondary/10 flex items-center justify-center relative">
                       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(236,72,153,0.2),transparent_60%)] group-hover:scale-110 transition-transform duration-700" />
                       <img 
-                        src="/assets/about/nftlv-logo.jpeg" 
-                        alt="NFT Las Vegas™ logo with geometric crystal"
-                        className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-700"
+                        src="/assets/about/nftlv-core.jpg" 
+                        alt="NFT Las Vegas™ core monogram crystal"
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                         loading="lazy"
                       />
                     </div>
