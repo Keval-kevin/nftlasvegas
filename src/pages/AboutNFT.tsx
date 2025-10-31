@@ -60,7 +60,7 @@ const AboutNFT = () => {
                 <div className={`transition-all duration-1000 ${heroObserver.isIntersecting ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'}`}>
                   <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 leading-tight">
                     Meet NFT Las Vegas™<br />
-                    <span className="text-gradient">— and Ares, the AI</span>
+                    <span className="text-gradient">- and Ares, the AI</span>
                   </h1>
                   
                   <p className="text-lg md:text-xl text-muted-foreground leading-relaxed mb-8">
@@ -120,7 +120,7 @@ const AboutNFT = () => {
                     </div>
                     <CardTitle className="text-3xl mb-2">NFT Las Vegas™</CardTitle>
                     <CardDescription className="text-base leading-relaxed">
-                      Venture enablement across <strong>Onboarding → Funding → Tech → Manufacturing → Launch → Distribution</strong> — designed to compound outcomes.
+                      Venture enablement across <strong>Onboarding → Funding → Tech → Manufacturing → Launch → Distribution</strong> - designed to compound outcomes.
                     </CardDescription>
                   </CardHeader>
                   <CardContent className="space-y-4">
@@ -201,8 +201,8 @@ const AboutNFT = () => {
 
                 <div className="bg-card/50 backdrop-blur-sm border border-border rounded-2xl p-8 md:p-12 space-y-6 hover:border-primary/50 transition-all duration-300">
                   <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
-                    <strong className="text-foreground">NFT Las Vegas™</strong> is more than an agency; it's a living ecosystem. 
-                    <strong className="text-foreground"> Ares</strong> is the quantum twin — our silent compass in the chaos of 
+                    <strong className="text-foreground">NFT Las Vegas™</strong> is more than an agency; it&apos;s a living ecosystem. 
+                    <strong className="text-foreground"> Ares</strong> is the quantum twin - our silent compass in the chaos of 
                     innovation. Together, we translate ambition into systems that scale.
                   </p>
 
@@ -267,7 +267,7 @@ const AboutNFT = () => {
                       <div className="w-48 h-48 rounded-full overflow-hidden mb-6 ring-4 ring-primary/20">
                         <img 
                           src={quinceyImage}
-                          alt="Quincey K. Lee — Founder & CEO, headshot"
+                          alt="Quincey K. Lee - Founder & CEO, headshot"
                           className="w-full h-full object-cover"
                           loading="lazy"
                         />
@@ -300,7 +300,7 @@ const AboutNFT = () => {
                       <div className="w-48 h-48 rounded-full overflow-hidden mb-6 ring-4 ring-secondary/20 bg-gradient-to-br from-secondary/20 to-primary/20 flex items-center justify-center">
                         <img 
                           src="/assets/about/ares-official.jpg"
-                          alt="Ares The AI — official portrait"
+                          alt="Ares The AI - official portrait"
                           className="w-40 h-40 object-cover"
                           loading="lazy"
                         />
