@@ -205,22 +205,22 @@ const Contact = () => {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div className="space-y-2">
                         <Label htmlFor="name">Full Name *</Label>
-                        <Input id="name" value={formData.name} onChange={e => handleInputChange("name", e.target.value)} required placeholder="John Doe" />
+                        <Input id="name" value={formData.name} onChange={e => handleInputChange("name", e.target.value)} required />
                       </div>
                       <div className="space-y-2">
                         <Label htmlFor="company">Company *</Label>
-                        <Input id="company" value={formData.company} onChange={e => handleInputChange("company", e.target.value)} required placeholder="Your Company" />
+                        <Input id="company" value={formData.company} onChange={e => handleInputChange("company", e.target.value)} required />
                       </div>
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div className="space-y-2">
                         <Label htmlFor="email">Work Email *</Label>
-                        <Input id="email" type="email" value={formData.email} onChange={e => handleInputChange("email", e.target.value)} required placeholder="john@company.com" />
+                        <Input id="email" type="email" value={formData.email} onChange={e => handleInputChange("email", e.target.value)} required />
                       </div>
                       <div className="space-y-2">
                         <Label htmlFor="phone">Phone (Optional)</Label>
-                        <Input id="phone" type="tel" value={formData.phone} onChange={e => handleInputChange("phone", e.target.value)} placeholder="+1 (555) 123-4567" />
+                        <Input id="phone" type="tel" value={formData.phone} onChange={e => handleInputChange("phone", e.target.value)} />
                       </div>
                     </div>
 
