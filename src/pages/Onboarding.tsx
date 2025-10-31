@@ -5,7 +5,6 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { CheckCircle2, ClipboardCheck, DollarSign, Code, Box, Rocket, Globe, Download } from "lucide-react";
 import { Link } from "react-router-dom";
-import { multiDownload } from "@/lib/utils";
 
 const Onboarding = () => {
   return (
@@ -59,17 +58,13 @@ const Onboarding = () => {
                   </Button>
                   <Button 
                     variant="outline"
-                    onClick={() => multiDownload([
-                      '/downloads/NFT Las Vegas - Onboarding Package.pdf',
-                      '/downloads/NFT Las Vegas - Toolkit 1.0 Onboarding & Funding Enablement.pdf',
-                      '/downloads/NFT Las Vegas - Toolkit 2.0 Tech Development & Product Manufacturing.pdf',
-                      '/downloads/NFT Las Vegas - Toolkit 3.0 Launch Strategy & Distribution.pdf',
-                      '/downloads/Message from the Founder.pdf',
-                    ])}
+                    asChild
                     className="flex-1 border-2 border-primary/50 hover:border-primary text-lg py-6"
                   >
-                    <Download className="mr-2 h-5 w-5" />
-                    Download Onboarding Guide
+                    <a href="/downloads/nftlv-starter-pack-v1.0.zip" download>
+                      <Download className="mr-2 h-5 w-5" />
+                      Download Onboarding Guide
+                    </a>
                   </Button>
                 </div>
               </div>
@@ -355,15 +350,11 @@ const Onboarding = () => {
                 <Button asChild size="lg" className="bg-gradient-to-r from-primary to-secondary hover:shadow-glow">
                   <Link to="/contact">Schedule Discovery Call</Link>
                 </Button>
-                <Button onClick={() => multiDownload([
-                  '/downloads/NFT Las Vegas - Onboarding Package.pdf',
-                  '/downloads/NFT Las Vegas - Toolkit 1.0 Onboarding & Funding Enablement.pdf',
-                  '/downloads/NFT Las Vegas - Toolkit 2.0 Tech Development & Product Manufacturing.pdf',
-                  '/downloads/NFT Las Vegas - Toolkit 3.0 Launch Strategy & Distribution.pdf',
-                  '/downloads/Message from the Founder.pdf',
-                ])} variant="outline" size="lg">
-                  <Download className="mr-2 h-5 w-5" />
-                  Download Starter Pack
+                <Button asChild variant="outline" size="lg">
+                  <a href="/downloads/nftlv-starter-pack-v1.0.zip" download>
+                    <Download className="mr-2 h-5 w-5" />
+                    Download Starter Pack
+                  </a>
                 </Button>
               </div>
             </div>
