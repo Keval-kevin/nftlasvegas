@@ -2,12 +2,10 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { SEOHead } from "@/components/SEO/SEOHead";
 import { 
-  Sparkles, 
   ArrowRight, 
   Shield, 
   Zap, 
   Globe,
-  TrendingUp,
   BookOpen,
   Download,
   Mail,
@@ -16,36 +14,15 @@ import {
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import quinceyImage from "@/assets/quincey-lee-2025.jpg";
-import { useState } from "react";
 import { useIntersectionObserver } from "@/hooks/use-intersection-observer";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
+import { SixPhaseJourney } from "@/components/Journey/SixPhaseJourney";
 
 const AboutNFT = () => {
-  const [showGrowthChart, setShowGrowthChart] = useState(false);
   const heroObserver = useIntersectionObserver({ threshold: 0.1 });
   const entitiesObserver = useIntersectionObserver({ threshold: 0.2 });
   const narrativeObserver = useIntersectionObserver({ threshold: 0.2 });
-  const journeyObserver = useIntersectionObserver({ threshold: 0.1 });
   const foundersObserver = useIntersectionObserver({ threshold: 0.2 });
-
-  const phases = [
-    { name: "Onboarding", link: "/onboarding", promise: "Clarity, access, 90-day roadmap", growth: 20 },
-    { name: "Funding", link: "/funding-enablement", promise: "Investor narrative, data room, capital strategy", growth: 35 },
-    { name: "Tech", link: "/tech-development", promise: "AI, Web3, enterprise integrations for scale", growth: 55 },
-    { name: "Manufacturing", link: "/product-manufacturing", promise: "Prototype → certify → mass-produce", growth: 70 },
-    { name: "Launch", link: "/platform-launch", promise: "Positioning, content engine, marketing ops, analytics", growth: 85 },
-    { name: "Distribution", link: "/distribution", promise: "Channels, marketplaces, enablement kits, SLAs", growth: 100 }
-  ];
-
-  const growthLabels = ["Low", "Medium", "High", "Very High"];
-  
-  const getGrowthLabel = (value: number) => {
-    if (value <= 25) return "Low";
-    if (value <= 50) return "Medium";
-    if (value <= 75) return "High";
-    return "Very High";
-  };
 
   return (
     <>
@@ -264,152 +241,7 @@ const AboutNFT = () => {
           </section>
 
           {/* Six-Phase Journey */}
-          <section 
-            ref={journeyObserver.elementRef}
-            className="section-padding bg-background"
-          >
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="text-center mb-16">
-                <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-                  The <span className="text-gradient">Six-Phase Journey</span>
-                </h2>
-                <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                  A systematic approach to venture acceleration and sustainable growth
-                </p>
-              </div>
-
-              {/* Desktop Horizontal Stepper */}
-              <div className="hidden lg:block mb-12">
-                <div className="relative">
-                  {/* Connection Line */}
-                  <div className="absolute top-12 left-0 right-0 h-0.5 bg-gradient-to-r from-primary via-secondary to-accent" />
-                  
-                  <div className="grid grid-cols-6 gap-4 relative">
-                    {phases.map((phase, index) => (
-                      <div 
-                        key={phase.name}
-                        className={`transition-all duration-700 ${journeyObserver.isIntersecting ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
-                        style={{ transitionDelay: `${index * 100}ms` }}
-                      >
-                        <Link to={phase.link} className="block group">
-                          <div className="flex flex-col items-center text-center">
-                            <div className="w-24 h-24 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center text-white font-bold text-lg mb-4 relative z-10 group-hover:scale-110 transition-transform shadow-lg">
-                              {index + 1}
-                            </div>
-                            <h3 className="font-bold text-foreground mb-2 group-hover:text-primary transition-colors">
-                              {phase.name}
-                            </h3>
-                            <p className="text-xs text-muted-foreground leading-tight">
-                              {phase.promise}
-                            </p>
-                            <ArrowRight className="w-4 h-4 text-primary mt-2 opacity-0 group-hover:opacity-100 transition-opacity" />
-                          </div>
-                        </Link>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-
-              {/* Mobile Vertical Stepper */}
-              <div className="lg:hidden space-y-6">
-                {phases.map((phase, index) => (
-                  <Link 
-                    key={phase.name}
-                    to={phase.link}
-                    className={`block transition-all duration-700 ${journeyObserver.isIntersecting ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'}`}
-                    style={{ transitionDelay: `${index * 100}ms` }}
-                  >
-                    <Card className="hover:shadow-glow transition-all group">
-                      <CardContent className="p-6 flex items-center gap-4">
-                        <div className="w-16 h-16 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center text-white font-bold text-lg flex-shrink-0 group-hover:scale-110 transition-transform">
-                          {index + 1}
-                        </div>
-                        <div className="flex-1">
-                          <h3 className="font-bold text-foreground mb-1 group-hover:text-primary transition-colors">
-                            {phase.name}
-                          </h3>
-                          <p className="text-sm text-muted-foreground">
-                            {phase.promise}
-                          </p>
-                        </div>
-                        <ArrowRight className="w-5 h-5 text-primary opacity-0 group-hover:opacity-100 transition-opacity" />
-                      </CardContent>
-                    </Card>
-                  </Link>
-                ))}
-              </div>
-
-              {/* Growth Potential Toggle */}
-              <div className="mt-12 text-center">
-                <button
-                  onClick={() => setShowGrowthChart(!showGrowthChart)}
-                  className="bg-card/50 backdrop-blur-sm border border-border rounded-lg px-6 py-3 hover:border-primary/50 transition-colors inline-flex items-center gap-2 group"
-                >
-                  <TrendingUp className="w-5 h-5 text-primary" />
-                  <span className="font-semibold text-foreground">View Growth Potential</span>
-                  <ArrowRight className={`w-4 h-4 transition-transform ${showGrowthChart ? 'rotate-90' : ''}`} />
-                </button>
-                
-                {showGrowthChart && (
-                  <div className="mt-6 bg-card/50 backdrop-blur-sm border border-border rounded-lg p-6 max-w-4xl mx-auto">
-                    <h4 className="text-sm font-semibold text-muted-foreground mb-4 text-center">Growth Potential Index</h4>
-                    <ResponsiveContainer width="100%" height={300}>
-                      <LineChart data={phases}>
-                        <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" opacity={0.3} />
-                        <XAxis 
-                          dataKey="name" 
-                          stroke="hsl(var(--muted-foreground))"
-                          fontSize={12}
-                        />
-                        <YAxis 
-                          stroke="hsl(var(--muted-foreground))"
-                          fontSize={12}
-                          ticks={[0, 25, 50, 75, 100]}
-                          domain={[0, 100]}
-                        />
-                        <Tooltip 
-                          content={({ active, payload }) => {
-                            if (active && payload && payload.length) {
-                              return (
-                                <div className="bg-card border border-border rounded-lg p-3 shadow-lg">
-                                  <p className="font-semibold text-foreground">{payload[0].payload.name}</p>
-                                  <p className="text-sm text-muted-foreground">
-                                    Growth: <span className="text-primary font-medium">{getGrowthLabel(payload[0].value as number)}</span>
-                                  </p>
-                                </div>
-                              );
-                            }
-                            return null;
-                          }}
-                        />
-                        <defs>
-                          <linearGradient id="growthGradient" x1="0" y1="0" x2="0" y2="1">
-                            <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity={0.3} />
-                            <stop offset="100%" stopColor="hsl(var(--primary))" stopOpacity={0.05} />
-                          </linearGradient>
-                        </defs>
-                        <Line 
-                          type="monotone" 
-                          dataKey="growth" 
-                          stroke="hsl(var(--primary))" 
-                          strokeWidth={3}
-                          dot={{ fill: "hsl(var(--primary))", r: 5 }}
-                          activeDot={{ r: 7 }}
-                          fill="url(#growthGradient)"
-                        />
-                      </LineChart>
-                    </ResponsiveContainer>
-                    <div className="flex justify-center gap-6 mt-4 text-xs text-muted-foreground">
-                      {growthLabels.map((label) => (
-                        <span key={label}>{label}</span>
-                      ))}
-                    </div>
-                  </div>
-                )}
-              </div>
-            </div>
-          </section>
+          <SixPhaseJourney />
 
           {/* Founders & Leadership */}
           <section 
