@@ -109,12 +109,12 @@ const AboutNFT = () => {
                 {/* NFT Las Vegas™ */}
                 <Card className={`overflow-hidden hover:shadow-glow transition-all duration-500 group ${entitiesObserver.isIntersecting ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'}`}>
                   <CardHeader className="text-center pb-4">
-                    <div className="w-full h-64 mb-6 rounded-lg overflow-hidden bg-gradient-to-br from-primary/10 to-secondary/10 flex items-center justify-center relative">
+                    <div className="w-full h-64 mb-6 rounded-lg overflow-hidden bg-gradient-to-br from-primary/10 to-secondary/10 flex items-center justify-center relative p-8">
                       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(236,72,153,0.2),transparent_60%)] group-hover:scale-110 transition-transform duration-700" />
                       <img 
-                        src="/assets/about/nftlv-core.jpg" 
-                        alt="NFT Las Vegas™ core monogram crystal"
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                        src="/assets/about/nftlv-logo.jpeg" 
+                        alt="NFT Las Vegas™ logo"
+                        className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-700 relative z-10"
                         loading="lazy"
                       />
                     </div>
