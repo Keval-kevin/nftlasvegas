@@ -59,13 +59,17 @@ const Onboarding = () => {
                   </Button>
                   <Button 
                     variant="outline"
-                    asChild
+                    onClick={() => multiDownload([
+                      '/downloads/NFT Las Vegas - Onboarding Package.pdf',
+                      '/downloads/NFT Las Vegas - Toolkit 1.0 Onboarding & Funding Enablement.pdf',
+                      '/downloads/NFT Las Vegas - Toolkit 2.0 Tech Development & Product Manufacturing.pdf',
+                      '/downloads/NFT Las Vegas - Toolkit 3.0 Launch Strategy & Distribution.pdf',
+                      '/downloads/Message from the Founder.pdf',
+                    ])}
                     className="flex-1 border-2 border-primary/50 hover:border-primary text-lg py-6"
                   >
-                    <a href="/downloads/nftlv-starter-pack-v1.0.zip" download>
-                      <Download className="mr-2 h-5 w-5" />
-                      Download Onboarding Guide
-                    </a>
+                    <Download className="mr-2 h-5 w-5" />
+                    Download Onboarding Guide
                   </Button>
                 </div>
               </div>
@@ -351,11 +355,15 @@ const Onboarding = () => {
                 <Button asChild size="lg" className="bg-gradient-to-r from-primary to-secondary hover:shadow-glow">
                   <Link to="/contact">Schedule Discovery Call</Link>
                 </Button>
-                <Button asChild variant="outline" size="lg">
-                  <a href="/downloads/nftlv-starter-pack-v1.0.zip" download>
-                    <Download className="mr-2 h-5 w-5" />
-                    Download Starter Pack
-                  </a>
+                <Button onClick={() => multiDownload([
+                  '/downloads/NFT Las Vegas - Onboarding Package.pdf',
+                  '/downloads/NFT Las Vegas - Toolkit 1.0 Onboarding & Funding Enablement.pdf',
+                  '/downloads/NFT Las Vegas - Toolkit 2.0 Tech Development & Product Manufacturing.pdf',
+                  '/downloads/NFT Las Vegas - Toolkit 3.0 Launch Strategy & Distribution.pdf',
+                  '/downloads/Message from the Founder.pdf',
+                ])} variant="outline" size="lg">
+                  <Download className="mr-2 h-5 w-5" />
+                  Download Starter Pack
                 </Button>
               </div>
             </div>

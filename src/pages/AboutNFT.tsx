@@ -363,11 +363,15 @@ const AboutNFT = () => {
                 Join ventures backed by AI intelligence, blockchain transparency, and proven execution.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button asChild size="lg" variant="default">
-                  <a href="/downloads/nftlv-starter-pack-v1.0.zip" download>
-                    <Download className="mr-2 h-5 w-5" />
-                    Download Onboarding Package
-                  </a>
+                <Button onClick={() => multiDownload([
+                  '/downloads/NFT Las Vegas - Onboarding Package.pdf',
+                  '/downloads/NFT Las Vegas - Toolkit 1.0 Onboarding & Funding Enablement.pdf',
+                  '/downloads/NFT Las Vegas - Toolkit 2.0 Tech Development & Product Manufacturing.pdf',
+                  '/downloads/NFT Las Vegas - Toolkit 3.0 Launch Strategy & Distribution.pdf',
+                  '/downloads/Message from the Founder.pdf',
+                ])} size="lg" variant="default">
+                  <Download className="mr-2 h-5 w-5" />
+                  Download Onboarding Package
                 </Button>
                 <Button asChild size="lg" variant="outline">
                   <Link to="/contact">
