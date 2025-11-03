@@ -4,6 +4,7 @@ import { SEOHead } from "@/components/SEO/SEOHead";
 import { Button } from "@/components/ui/button";
 import { Code, Brain, Blocks, Database, Cloud, Shield, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
+import { SalesforceCRM } from "@/components/SalesforceCRM";
 
 const services = [
   {
@@ -132,6 +133,9 @@ const TechDevelopmentNFT = () => {
               </div>
             </div>
           </section>
+
+          {/* Salesforce CRM Section */}
+          <SalesforceCRM />
 
           {/* Services Grid */}
           <section className="section-padding bg-background">
