@@ -145,13 +145,13 @@ const Contact = () => {
               <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto mb-10">
                 Tell us where you're headed—funding, technology, manufacturing, launch, distribution, or AI voice systems—and we'll make it real.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
-                <Button size="lg" onClick={() => scrollToSection('booking-section')} className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white px-8 py-6 text-lg shadow-lg hover:shadow-xl transition-all duration-300">
-                  Book a Discovery Call
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-stretch sm:items-center mb-8 max-w-2xl mx-auto px-4">
+                <Button size="lg" onClick={() => scrollToSection('booking-section')} className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white shadow-lg hover:shadow-xl transition-all duration-300">
+                  Book Discovery Call
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
-                <Button size="lg" variant="outline" onClick={() => scrollToSection('contact-form')} className="px-8 py-6 text-lg">
-                  Send a Message
+                <Button size="lg" variant="outline" onClick={() => scrollToSection('contact-form')}>
+                  Send Message
                 </Button>
               </div>
               <p className="text-sm text-muted-foreground">
@@ -202,29 +202,29 @@ const Contact = () => {
                       We don't sell data. Ever.
                     </p>
                   </div> : <form onSubmit={handleSubmit} className="space-y-6">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="space-y-4">
                       <div className="space-y-2">
                         <Label htmlFor="name">Full Name *</Label>
-                        <Input id="name" value={formData.name} onChange={e => handleInputChange("name", e.target.value)} required />
+                        <Input id="name" value={formData.name} onChange={e => handleInputChange("name", e.target.value)} required className="w-full" />
                       </div>
                       <div className="space-y-2">
                         <Label htmlFor="company">Company *</Label>
-                        <Input id="company" value={formData.company} onChange={e => handleInputChange("company", e.target.value)} required />
+                        <Input id="company" value={formData.company} onChange={e => handleInputChange("company", e.target.value)} required className="w-full" />
                       </div>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="space-y-4">
                       <div className="space-y-2">
                         <Label htmlFor="email">Work Email *</Label>
-                        <Input id="email" type="email" value={formData.email} onChange={e => handleInputChange("email", e.target.value)} required />
+                        <Input id="email" type="email" value={formData.email} onChange={e => handleInputChange("email", e.target.value)} required className="w-full" />
                       </div>
                       <div className="space-y-2">
                         <Label htmlFor="phone">Phone (Optional)</Label>
-                        <Input id="phone" type="tel" value={formData.phone} onChange={e => handleInputChange("phone", e.target.value)} />
+                        <Input id="phone" type="tel" value={formData.phone} onChange={e => handleInputChange("phone", e.target.value)} className="w-full" />
                       </div>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="space-y-4">
                       <div className="space-y-2">
                         <Label htmlFor="interest">Interest *</Label>
                         <Select value={formData.interest} onValueChange={value => handleInputChange("interest", value)}>
@@ -274,19 +274,19 @@ const Contact = () => {
                       </Select>
                     </div>
 
-                    {showAIVoiceFields && <>
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 p-4 bg-blue-50 rounded-lg border border-blue-200">
-                          <div className="space-y-2 md:col-span-2">
-                            <p className="text-sm font-semibold text-blue-900">AI Voice System Details</p>
+                     {showAIVoiceFields && <>
+                        <div className="space-y-4 p-4 bg-blue-50 dark:bg-blue-950/20 rounded-lg border border-blue-200 dark:border-blue-800">
+                          <div className="space-y-2">
+                            <p className="text-sm font-semibold text-blue-900 dark:text-blue-100">AI Voice System Details</p>
                           </div>
                           <div className="space-y-2">
                             <Label htmlFor="monthlyMinutes">Estimated Monthly Minutes</Label>
-                            <Input id="monthlyMinutes" type="number" value={formData.monthlyMinutes} onChange={e => handleInputChange("monthlyMinutes", e.target.value)} placeholder="e.g., 2000" />
+                            <Input id="monthlyMinutes" type="number" value={formData.monthlyMinutes} onChange={e => handleInputChange("monthlyMinutes", e.target.value)} placeholder="e.g., 2000" className="w-full" />
                           </div>
                           <div className="space-y-2">
                             <Label htmlFor="telephony">Current Telephony</Label>
                             <Select value={formData.telephony} onValueChange={value => handleInputChange("telephony", value)}>
-                              <SelectTrigger>
+                              <SelectTrigger className="w-full">
                                 <SelectValue placeholder="Select provider" />
                               </SelectTrigger>
                               <SelectContent>
@@ -297,10 +297,10 @@ const Contact = () => {
                               </SelectContent>
                             </Select>
                           </div>
-                          <div className="space-y-2 md:col-span-2">
+                          <div className="space-y-2">
                             <Label htmlFor="crm">CRM System</Label>
                             <Select value={formData.crm} onValueChange={value => handleInputChange("crm", value)}>
-                              <SelectTrigger>
+                              <SelectTrigger className="w-full">
                                 <SelectValue placeholder="Select CRM" />
                               </SelectTrigger>
                               <SelectContent>
@@ -338,7 +338,7 @@ const Contact = () => {
                       </Label>
                     </div>
 
-                    <Button type="submit" className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white py-6 text-lg" disabled={!formData.consent}>
+                    <Button type="submit" size="lg" className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white" disabled={!formData.consent}>
                       Send Your Inquiry
                       <ArrowRight className="ml-2 h-5 w-5" />
                     </Button>

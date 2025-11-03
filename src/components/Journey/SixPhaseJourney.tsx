@@ -150,24 +150,24 @@ export const SixPhaseJourney = () => {
   };
 
   return (
-    <section ref={observer.elementRef} className="section-padding bg-background">
+    <section ref={observer.elementRef} className="section-padding bg-background overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+        <div className="text-center mb-8 sm:mb-10 md:mb-12">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-3 sm:mb-4">
             The <span className="text-gradient">Six-Phase Journey</span>
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-6">
+          <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-4 sm:mb-6 px-4">
             A systematic approach to venture acceleration and sustainable growth.
           </p>
 
           {/* Toggle */}
-          <div className="inline-flex gap-2 p-1 bg-muted rounded-lg">
+          <div className="inline-flex gap-2 p-1 bg-muted rounded-lg touch-friendly">
             <Button
               variant={!showGrowthPotential ? "default" : "ghost"}
               size="sm"
               onClick={() => setShowGrowthPotential(false)}
-              className="rounded-md"
+              className="rounded-md text-xs sm:text-sm px-3 sm:px-4"
             >
               Journey
             </Button>
@@ -175,9 +175,9 @@ export const SixPhaseJourney = () => {
               variant={showGrowthPotential ? "default" : "ghost"}
               size="sm"
               onClick={() => setShowGrowthPotential(true)}
-              className="rounded-md"
+              className="rounded-md text-xs sm:text-sm px-3 sm:px-4"
             >
-              Growth Potential
+              Growth
             </Button>
           </div>
         </div>
@@ -261,8 +261,8 @@ export const SixPhaseJourney = () => {
               </div>
 
               {/* Helper Text */}
-              <p className="text-xs text-center text-muted-foreground mt-8">
-                Use ← → keys to explore the journey
+              <p className="text-xs text-center text-muted-foreground mt-6 sm:mt-8 px-4">
+                Use ← → keys or hover to explore
               </p>
             </div>
           ) : (
@@ -302,9 +302,9 @@ export const SixPhaseJourney = () => {
         </div>
 
         {/* Mobile: Accordion */}
-        <div className="md:hidden space-y-3">
+        <div className="md:hidden space-y-3 px-2">
           {/* Progress Bar */}
-          <div className="h-1 bg-muted rounded-full overflow-hidden mb-6">
+          <div className="h-1.5 bg-muted rounded-full overflow-hidden mb-6">
             <div 
               className="h-full bg-gradient-to-r from-primary via-secondary to-accent transition-all duration-1000 ease-out"
               style={{ width: `${progressFill}%` }}
@@ -369,7 +369,7 @@ export const SixPhaseJourney = () => {
               );
             })
           ) : (
-            <div className="py-4">
+            <div className="py-4 px-2">
               <ResponsiveContainer width="100%" height={250}>
                 <LineChart data={chartData}>
                   <defs>

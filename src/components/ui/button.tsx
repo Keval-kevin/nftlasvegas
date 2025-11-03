@@ -5,7 +5,7 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md font-medium ring-offset-background transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 touch-friendly interactive-element",
+  "inline-flex items-center justify-center gap-2 rounded-md font-medium ring-offset-background transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 touch-friendly interactive-element w-full sm:w-auto",
   {
     variants: {
       variant: {
@@ -17,14 +17,14 @@ const buttonVariants = cva(
         secondary:
           "bg-secondary text-secondary-foreground hover:bg-secondary/80 active:scale-95",
         ghost: "hover:bg-accent hover:text-accent-foreground active:scale-95",
-        link: "text-primary underline-offset-4 hover:underline",
+        link: "text-primary underline-offset-4 hover:underline w-auto",
         premium: "bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 text-white hover:from-blue-600 hover:via-indigo-600 hover:to-purple-600 shadow-lg hover:shadow-xl active:scale-95",
       },
       size: {
-        default: "min-h-touch text-fluid-sm px-4 py-2",
-        sm: "min-h-[36px] text-fluid-xs px-3 py-1.5",
-        lg: "min-h-[48px] text-fluid-base px-8 py-3",
-        icon: "min-h-touch min-w-touch",
+        default: "min-h-[44px] text-sm sm:text-base px-4 sm:px-6 py-2.5",
+        sm: "min-h-[36px] text-xs sm:text-sm px-3 sm:px-4 py-1.5",
+        lg: "min-h-[48px] sm:min-h-[52px] text-base sm:text-lg px-6 sm:px-8 py-3",
+        icon: "min-h-[44px] min-w-[44px] p-0",
       },
     },
     defaultVariants: {

@@ -76,16 +76,17 @@ const FundingEnablement = () => {
                     capital and expertise to accelerate your venture from concept to market leader.
                   </p>
 
-                  <div className="flex flex-col sm:flex-row gap-4">
-                    <Link to="/contact">
-                      <Button 
-                        size="lg"
-                        className="bg-gradient-to-r from-primary to-secondary hover:shadow-glow text-lg px-10 py-6"
-                      >
+                  <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 items-stretch sm:items-center">
+                    <Button 
+                      asChild
+                      size="lg"
+                      className="bg-gradient-to-r from-primary to-secondary hover:shadow-glow"
+                    >
+                      <Link to="/contact">
                         Request Funding Review
                         <ArrowRight className="ml-2 w-5 h-5" />
-                      </Button>
-                    </Link>
+                      </Link>
+                    </Button>
                   </div>
                 </div>
 

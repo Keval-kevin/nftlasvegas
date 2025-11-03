@@ -38,25 +38,25 @@ export const HeroNFT = () => {
           }}>Full-stack venture enablement combining blockchain, AI, and enterprise infrastructure to create self-sustainable economies.</p>
 
             {/* CTAs */}
-            <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center mb-16" style={{
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-stretch sm:items-center mb-16 w-full max-w-2xl mx-auto px-4 animate-fade-in" style={{
             animationDelay: '0.6s'
           }}>
-              <Link to="/onboarding">
-                <Button size="lg" className="group relative bg-gradient-to-r from-primary to-secondary hover:shadow-[0_0_40px_rgba(59,130,246,0.4)] text-lg px-10 py-6 shadow-xl transform hover:scale-105 transition-all duration-400 rounded-full w-full sm:w-auto">
-                  <span className="relative z-10 flex items-center justify-center font-semibold">
+              <Button asChild size="lg" className="group relative bg-gradient-to-r from-primary to-secondary hover:shadow-[0_0_40px_rgba(59,130,246,0.4)] shadow-xl hover:scale-105 transition-all duration-400 rounded-full">
+                <Link to="/onboarding">
+                  <span className="relative z-10 flex items-center justify-center font-semibold whitespace-nowrap">
                     Book Discovery Call
                     <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-2 transition-transform" />
                   </span>
                   <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
-                </Button>
-              </Link>
+                </Link>
+              </Button>
               
-              <Link to="/onboarding">
-                <Button size="lg" variant="outline" className="group text-lg px-10 py-6 border-2 border-primary/50 hover:border-primary bg-white/5 backdrop-blur-sm hover:bg-white/10 shadow-lg transform hover:scale-105 transition-all duration-400 rounded-full text-foreground w-full sm:w-auto">
-                  Start Onboarding
+              <Button asChild size="lg" variant="outline" className="group border-2 border-primary/50 hover:border-primary bg-white/5 backdrop-blur-sm hover:bg-white/10 shadow-lg hover:scale-105 transition-all duration-400 rounded-full text-foreground relative overflow-hidden">
+                <Link to="/onboarding">
+                  <span className="whitespace-nowrap">Start Onboarding</span>
                   <div className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/10 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
-                </Button>
-              </Link>
+                </Link>
+              </Button>
             </div>
 
             {/* Journey Indicators */}

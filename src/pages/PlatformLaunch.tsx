@@ -248,25 +248,27 @@ const PlatformLaunch = () => {
               <p className="text-lg text-muted-foreground mb-8">
                 Let's create a go-to-market strategy that generates momentum and drives growth.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link to="/contact">
-                  <Button 
-                    size="lg"
-                    className="bg-gradient-to-r from-primary to-secondary hover:shadow-glow text-lg px-10 py-6"
-                  >
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-stretch sm:items-center max-w-2xl mx-auto">
+                <Button 
+                  asChild
+                  size="lg"
+                  className="bg-gradient-to-r from-primary to-secondary hover:shadow-glow"
+                >
+                  <Link to="/contact">
                     Schedule Launch Planning
                     <ArrowRight className="ml-2 w-5 h-5" />
-                  </Button>
-                </Link>
-                <Link to="/case-studies">
-                  <Button 
-                    size="lg"
-                    variant="outline"
-                    className="border-2 border-primary/50 hover:border-primary text-lg px-10 py-6"
-                  >
-                    View Launch Case Studies
-                  </Button>
-                </Link>
+                  </Link>
+                </Button>
+                <Button 
+                  asChild
+                  size="lg"
+                  variant="outline"
+                  className="border-2 border-primary/50 hover:border-primary"
+                >
+                  <Link to="/case-studies">
+                    View Launch Studies
+                  </Link>
+                </Button>
               </div>
             </div>
           </section>

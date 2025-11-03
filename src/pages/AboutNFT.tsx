@@ -67,17 +67,17 @@ const AboutNFT = () => {
                     Where venture building, technology, and mythos converge into one operating system for growth.
                   </p>
 
-                  <div className="flex flex-col sm:flex-row gap-4">
-                    <Button asChild size="lg" className="text-lg px-8">
-                      <Link to="/onboarding">
+                  <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 items-stretch sm:items-center w-full sm:w-auto">
+                    <Button asChild size="lg">
+                      <Link to="/onboarding" className="whitespace-nowrap">
                         Start Onboarding
                         <ArrowRight className="ml-2 h-5 w-5" />
                       </Link>
                     </Button>
-                    <Button asChild variant="outline" size="lg" className="text-lg px-8">
-                      <a href="/downloads/nftlv-starter-pack-v1.0.zip" download>
+                    <Button asChild variant="outline" size="lg">
+                      <a href="/downloads/nftlv-starter-pack-v1.0.zip" download className="whitespace-nowrap">
                         <Download className="mr-2 h-5 w-5" />
-                        Download Onboarding Package
+                        Download Package
                       </a>
                     </Button>
                   </div>
@@ -357,16 +357,16 @@ const AboutNFT = () => {
               <p className="text-lg text-muted-foreground mb-8">
                 Join ventures backed by AI intelligence, blockchain transparency, and proven execution.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-stretch sm:items-center max-w-2xl mx-auto">
                 <Button asChild size="lg" variant="default">
-                  <a href="/downloads/nftlv-starter-pack-v1.0.zip" download>
+                  <a href="/downloads/nftlv-starter-pack-v1.0.zip" download className="whitespace-nowrap">
                     <Download className="mr-2 h-5 w-5" />
-                    Download Onboarding Package
+                    Download Package
                   </a>
                 </Button>
                 <Button asChild size="lg" variant="outline">
-                  <Link to="/contact">
-                    Book a Discovery Call
+                  <Link to="/contact" className="whitespace-nowrap">
+                    Book Discovery Call
                     <ArrowRight className="ml-2 h-5 w-5" />
                   </Link>
                 </Button>

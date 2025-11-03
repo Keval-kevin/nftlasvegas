@@ -91,11 +91,11 @@ const AIVoice = () => {
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
               From simple call flows to memory-aware conversations—fully integrated with your CRM and calendar.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button asChild size="lg" className="text-lg">
-                <Link to="/contact">Start with a Discovery Call</Link>
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-stretch sm:items-center max-w-2xl mx-auto">
+              <Button asChild size="lg">
+                <Link to="/contact">Start with Discovery Call</Link>
               </Button>
-              <Button asChild variant="outline" size="lg" className="text-lg">
+              <Button asChild variant="outline" size="lg">
                 <a href="#plans">Compare Plans</a>
               </Button>
             </div>

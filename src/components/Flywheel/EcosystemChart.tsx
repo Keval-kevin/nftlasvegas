@@ -101,49 +101,49 @@ export const EcosystemChart = () => {
   };
 
   return (
-    <section className="w-full py-16 md:py-24 bg-background">
-      <div className="max-w-[1100px] mx-auto px-6 md:px-8">
+    <section className="w-full py-12 sm:py-16 md:py-20 lg:py-24 bg-background">
+      <div className="max-w-[1100px] mx-auto px-4 sm:px-6 md:px-8">
         {/* Header */}
-        <div className="text-center mb-12">
-          <p className="text-sm text-secondary font-medium mb-3 tracking-wide uppercase">
+        <div className="text-center mb-8 sm:mb-10 md:mb-12">
+          <p className="text-xs sm:text-sm text-secondary font-medium mb-2 sm:mb-3 tracking-wide uppercase">
             Compounded outcomes, one integrated journey.
           </p>
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-3 sm:mb-4 px-4">
             Your Journey to Market Dominance
           </h2>
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+          <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto px-4">
             See how your brand's growth potential compounds as you move through the NFT Las Vegas™ ecosystem.
           </p>
         </div>
 
         {/* Chart Card */}
-        <div className="p-6 md:p-8 rounded-2xl bg-slate-900/70 border border-white/10 shadow-xl">
+        <div className="p-4 sm:p-6 md:p-8 rounded-2xl bg-slate-900/70 border border-white/10 shadow-xl overflow-hidden">
           {/* Controls */}
-          <div className="flex flex-wrap justify-end items-center gap-3 mb-6">
+          <div className="flex flex-wrap justify-center sm:justify-end items-center gap-2 sm:gap-3 mb-4 sm:mb-6">
             <button
               onClick={() => setShowAreaFill(!showAreaFill)}
-              className={`px-3 py-1.5 rounded-full text-xs font-medium transition-all duration-200 ${
+              className={`px-3 py-1.5 rounded-full text-xs font-medium transition-all duration-200 touch-friendly ${
                 showAreaFill
                   ? 'bg-white/10 text-white border border-white/20'
                   : 'bg-transparent text-muted-foreground border border-white/5'
               } hover:bg-white/15`}
             >
-              Show area fill
+              Area fill
             </button>
             <button
               onClick={() => setShowMilestones(!showMilestones)}
-              className={`px-3 py-1.5 rounded-full text-xs font-medium transition-all duration-200 ${
+              className={`px-3 py-1.5 rounded-full text-xs font-medium transition-all duration-200 touch-friendly ${
                 showMilestones
                   ? 'bg-white/10 text-white border border-white/20'
                   : 'bg-transparent text-muted-foreground border border-white/5'
               } hover:bg-white/15`}
             >
-              Show milestones
+              Milestones
             </button>
           </div>
 
           {/* Chart */}
-          <ResponsiveContainer width="100%" height={400}>
+          <ResponsiveContainer width="100%" height={300} className="sm:!h-[350px] md:!h-[400px]">
             <ComposedChart 
               data={PHASES_DATA}
               margin={{ top: 20, right: 30, left: 20, bottom: 60 }}
@@ -255,21 +255,21 @@ export const EcosystemChart = () => {
         </div>
 
         {/* CTA Band */}
-        <div className="mt-8 p-6 rounded-xl bg-gradient-to-r from-primary/10 to-secondary/10 border border-white/10 text-center">
-          <p className="text-lg font-semibold text-white mb-4">
+        <div className="mt-6 sm:mt-8 p-4 sm:p-6 rounded-xl bg-gradient-to-r from-primary/10 to-secondary/10 border border-white/10 text-center">
+          <p className="text-base sm:text-lg font-semibold text-white mb-3 sm:mb-4 px-2">
             Ready to map your growth potential?
           </p>
-          <div className="flex flex-col sm:flex-row gap-3 justify-center">
-            <Link to="/onboarding">
-              <Button className="bg-secondary hover:bg-secondary/90 text-white">
+          <div className="flex flex-col sm:flex-row gap-3 justify-center items-stretch sm:items-center max-w-md mx-auto">
+            <Button asChild className="bg-secondary hover:bg-secondary/90 text-white">
+              <Link to="/onboarding">
                 Start Onboarding
-              </Button>
-            </Link>
-            <Link to="/contact">
-              <Button variant="outline" className="border-white/20 text-white hover:bg-white/10">
-                Book a Discovery Call
-              </Button>
-            </Link>
+              </Link>
+            </Button>
+            <Button asChild variant="outline" className="border-white/20 text-white hover:bg-white/10">
+              <Link to="/contact">
+                Book Discovery Call
+              </Link>
+            </Button>
           </div>
         </div>
       </div>

@@ -59,8 +59,8 @@ export const Footer = () => {
     }]
   }];
   return <footer id="contact" className="bg-gray-900 text-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-14 lg:py-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 sm:gap-10 lg:gap-12">
           {/* Company Info */}
           <div className="lg:col-span-2 animate-slide-in-left">
             <h3 className="text-2xl lg:text-3xl font-bold text-white mb-4 hover-scale cursor-pointer">
