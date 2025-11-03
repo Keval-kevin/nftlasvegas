@@ -207,18 +207,11 @@ const AboutNFT = () => {
                   </p>
 
                   <div className="flex justify-center pt-4">
-                    <Button 
-                      variant="outline" 
-                      size="lg"
-                      onClick={() => {
-                        const element = document.getElementById('pseudo-testament');
-                        if (element) {
-                          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                        }
-                      }}
-                    >
-                      <BookOpen className="mr-2 h-5 w-5" />
-                      Read the Pseudo Testament
+                    <Button asChild variant="outline" size="lg">
+                      <a href="/downloads/Message from the Founder.pdf" download>
+                        <BookOpen className="mr-2 h-5 w-5" />
+                        Read the Pseudo Testament
+                      </a>
                     </Button>
                   </div>
 
