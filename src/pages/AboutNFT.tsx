@@ -338,7 +338,7 @@ const AboutNFT = () => {
                     Why we build systems that outlive their creators.
                   </p>
                   <Button asChild size="lg" variant="default">
-                    <a href="/downloads/Message from the Founder.pdf" target="_blank" rel="noopener noreferrer">
+                    <a href="/downloads/Message from the Founder.pdf" download>
                       <Download className="mr-2 h-5 w-5" />
                       The Pseudo Testament
                     </a>
