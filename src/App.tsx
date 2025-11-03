@@ -26,6 +26,9 @@ import AIVoiceStarter from "./pages/AIVoiceStarter";
 import AIVoiceProfessional from "./pages/AIVoiceProfessional";
 import AIVoiceAdvanced from "./pages/AIVoiceAdvanced";
 import AIVoiceEnterprise from "./pages/AIVoiceEnterprise";
+import TermsAndConditions from "./pages/TermsAndConditions";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import AccessibilityStatement from "./pages/AccessibilityStatement";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -63,6 +66,9 @@ const App = () => (
             <Route path="/ai-voice/enterprise" element={<AIVoiceEnterprise />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/book-a-call" element={<BookACall />} />
+            <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+            <Route path="/accessibility-statement" element={<AccessibilityStatement />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </TooltipProvider>

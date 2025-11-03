@@ -124,9 +124,33 @@ export const Footer = () => {
 
         {/* Bottom Bar */}
         <div className="border-t border-gray-800 mt-12 lg:mt-16 pt-8">
-          <div className="flex flex-col md:flex-row justify-between items-center animate-fade-in animate-delay-500">
-            <div className="text-gray-400 text-sm mb-4 md:mb-0">
-              © 2025 NFT Las Vegas™. All rights reserved.
+          <div className="flex flex-col md:flex-row justify-between items-center gap-6 animate-fade-in animate-delay-500">
+            <div className="flex flex-col md:flex-row items-center gap-4 md:gap-6">
+              <div className="text-gray-400 text-sm">
+                © 2025 NFT Las Vegas™. All rights reserved.
+              </div>
+              <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-4 text-sm">
+                <Link 
+                  to="/terms-and-conditions" 
+                  className="text-gray-400 hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-900 rounded px-2 py-1"
+                >
+                  Terms & Conditions
+                </Link>
+                <span className="hidden sm:inline text-gray-600">•</span>
+                <Link 
+                  to="/privacy-policy" 
+                  className="text-gray-400 hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-900 rounded px-2 py-1"
+                >
+                  Privacy Policy
+                </Link>
+                <span className="hidden sm:inline text-gray-600">•</span>
+                <Link 
+                  to="/accessibility-statement" 
+                  className="text-gray-400 hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-900 rounded px-2 py-1"
+                >
+                  Accessibility
+                </Link>
+              </div>
             </div>
             <div className="flex space-x-6">
               {[{
