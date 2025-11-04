@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Area, ComposedChart, ReferenceDot } from "recharts";
 import { Button } from "@/components/ui/button";
 import { Link, useNavigate } from "react-router-dom";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 const PHASES_DATA = [
   { 
@@ -63,9 +64,17 @@ const getGrowthLevel = (index: number): string => {
 
 export const EcosystemChart = () => {
   const navigate = useNavigate();
+  const isMobile = useIsMobile();
   const [showAreaFill, setShowAreaFill] = useState(true);
   const [showMilestones, setShowMilestones] = useState(true);
   const [hoveredPhase, setHoveredPhase] = useState<string | null>(null);
+  
+  // Hide milestones by default on mobile to reduce clutter
+  useEffect(() => {
+    if (isMobile) {
+      setShowMilestones(false);
+    }
+  }, [isMobile]);
 
   const CustomTooltip = ({ active, payload }: any) => {
     if (!active || !payload || !payload[0]) return null;
@@ -143,10 +152,15 @@ export const EcosystemChart = () => {
           </div>
 
           {/* Chart */}
-          <ResponsiveContainer width="100%" height={300} className="sm:!h-[350px] md:!h-[400px]">
+          <ResponsiveContainer width="100%" height={isMobile ? 280 : 400}>
             <ComposedChart 
               data={PHASES_DATA}
-              margin={{ top: 20, right: 30, left: 20, bottom: 60 }}
+              margin={{ 
+                top: isMobile ? 10 : 20, 
+                right: isMobile ? 10 : 30, 
+                left: isMobile ? 0 : 20, 
+                bottom: isMobile ? 50 : 60 
+              }}
             >
               <defs>
                 <linearGradient id="lineGradient" x1="0" y1="0" x2="1" y2="0">
@@ -165,10 +179,10 @@ export const EcosystemChart = () => {
               <XAxis 
                 dataKey="phase" 
                 stroke="rgba(255,255,255,0.3)" 
-                tick={{ fill: 'rgba(255,255,255,0.6)', fontSize: 11 }}
-                angle={-20}
+                tick={{ fill: 'rgba(255,255,255,0.6)', fontSize: isMobile ? 9 : 11 }}
+                angle={isMobile ? -35 : -20}
                 textAnchor="end"
-                height={80}
+                height={isMobile ? 70 : 80}
                 onClick={(data: any) => data && handlePhaseClick(data.value)}
                 style={{ cursor: 'pointer' }}
               />
@@ -177,14 +191,14 @@ export const EcosystemChart = () => {
                 domain={[0, 100]}
                 ticks={[0, 25, 50, 75, 100]}
                 stroke="rgba(255,255,255,0.3)" 
-                tick={{ fill: 'rgba(255,255,255,0.6)', fontSize: 12 }}
-                label={{ 
+                tick={{ fill: 'rgba(255,255,255,0.6)', fontSize: isMobile ? 9 : 12 }}
+                label={!isMobile ? { 
                   value: 'Growth Potential (Index)', 
                   angle: -90, 
                   position: 'insideLeft', 
                   fill: 'rgba(255,255,255,0.6)',
                   style: { textAnchor: 'middle' }
-                }}
+                } : undefined}
               />
               
               <Tooltip content={<CustomTooltip />} />
@@ -226,26 +240,33 @@ export const EcosystemChart = () => {
                 onMouseLeave={() => setHoveredPhase(null)}
               />
 
-              {showMilestones && PHASES_DATA.map((phase, idx) => (
-                <ReferenceDot
-                  key={phase.phase}
-                  x={phase.phase}
-                  y={phase.index}
-                  r={0}
-                  label={{
-                    value: phase.milestone,
-                    position: idx % 2 === 0 ? 'top' : 'bottom',
-                    fill: '#a78bfa',
-                    fontSize: 10,
-                    offset: 15
-                  }}
-                />
-              ))}
+              {showMilestones && PHASES_DATA.map((phase, idx) => {
+                // Shorten milestone text on mobile
+                const milestoneText = isMobile 
+                  ? phase.milestone.split(' - ')[0] // Take first part only on mobile
+                  : phase.milestone;
+                
+                return (
+                  <ReferenceDot
+                    key={phase.phase}
+                    x={phase.phase}
+                    y={phase.index}
+                    r={0}
+                    label={{
+                      value: milestoneText,
+                      position: 'top',
+                      fill: '#a78bfa',
+                      fontSize: isMobile ? 8 : 10,
+                      offset: isMobile ? 10 : 15
+                    }}
+                  />
+                );
+              })}
             </ComposedChart>
           </ResponsiveContainer>
 
           {/* Journey Labels */}
-          <div className="flex justify-between mt-4 px-4 text-xs text-muted-foreground">
+          <div className="flex justify-between mt-4 px-2 sm:px-4 text-[10px] sm:text-xs text-muted-foreground">
             {PHASES_DATA.map((phase) => (
               <div key={phase.phase} className="text-center" style={{ width: `${100 / PHASES_DATA.length}%` }}>
                 {phase.journeyLabel}
