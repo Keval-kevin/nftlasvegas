@@ -117,3 +117,64 @@ Add to your CI pipeline to catch SEO issues early:
   }
 }
 ```
+
+---
+
+## Security.txt Validator
+
+Validates the security.txt file according to RFC 9116 standards for responsible security vulnerability disclosure.
+
+### Usage
+
+Run the validation script:
+
+```bash
+node scripts/validate-security-txt.js
+```
+
+### What It Checks
+
+**Required Fields (RFC 9116):**
+- `Contact`: At least one contact method (email or URL)
+- `Expires`: Expiration date in ISO 8601 format
+
+**Recommended Fields:**
+- `Policy`: URL to security disclosure policy
+- `Canonical`: Canonical URL of the security.txt file
+- `Preferred-Languages`: Languages for security reports
+- `Encryption`: PGP key for encrypted communications
+
+**Validation Rules:**
+- Expiration date must be in the future
+- Expiration should be ≤1 year from now (RFC recommendation)
+- URLs must use HTTPS (not HTTP)
+- Email addresses must be valid mailto: URIs
+- Canonical URL must match file location
+- Field names must be from RFC 9116 specification
+
+### Security.txt Location
+
+The file must be located at:
+- `https://yourdomain.com/.well-known/security.txt` (recommended)
+- `https://yourdomain.com/security.txt` (also valid)
+
+### Example security.txt
+
+```text
+Contact: mailto:security@example.com
+Contact: https://example.com/security
+Expires: 2026-01-01T00:00:00.000Z
+Preferred-Languages: en
+Canonical: https://example.com/.well-known/security.txt
+Policy: https://example.com/security-policy
+```
+
+### Exit Codes
+
+- `0`: Validation passed (warnings allowed)
+- `1`: Validation failed (errors found)
+
+### Learn More
+
+- [RFC 9116 Specification](https://www.rfc-editor.org/rfc/rfc9116.html)
+- [Security.txt Official Site](https://securitytxt.org/)

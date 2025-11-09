@@ -1,0 +1,24 @@
+# Our security address
+Contact: mailto:security@nftlasvegas.io
+Contact: https://nftlasvegas.io/contact
+
+# Our security policy
+Policy: https://nftlasvegas.io/security-policy
+
+# Canonical URL for this file
+Canonical: https://nftlasvegas.io/.well-known/security.txt
+
+# Preferred languages for security reports
+Preferred-Languages: en
+
+# Expiration date for this file (1 year from now: 2026-11-09)
+Expires: 2026-11-09T00:00:00.000Z
+
+# Our PGP key for encrypted communications (optional - add if you have one)
+# Encryption: https://nftlasvegas.io/pgp-key.txt
+
+# Security acknowledgments page
+Acknowledgments: https://nftlasvegas.io/security-acknowledgments
+
+# Hiring page for security roles
+Hiring: https://nftlasvegas.io/contact
