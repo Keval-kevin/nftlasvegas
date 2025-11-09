@@ -43,6 +43,21 @@ const featuredPartners = [
     name: "X Ads",
     logo: "/partners/x-ads.webp",
     description: "Preferred partner for paid media on X (formerly Twitter)"
+  },
+  {
+    name: "EaseNext",
+    logo: "/partners/easenext-logo.png",
+    description: "Technology innovation and digital transformation partner"
+  },
+  {
+    name: "HubSpot",
+    logo: "/partners/hubspot-logo.png",
+    description: "CRM and marketing automation platform partner"
+  },
+  {
+    name: "Salesforce",
+    logo: "/partners/salesforce-logo.svg",
+    description: "Leading enterprise CRM and customer success platform"
   }
 ];
 

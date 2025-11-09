@@ -68,6 +68,27 @@ const partners = [
     logo: "/partners/x-ads.webp",
     tagline: "Official advertising platform of X",
     description: "NFT Las Vegas™ is honored to collaborate with X Ads, the official advertising platform of X (formerly Twitter), to deliver strategic, high-impact media solutions across a dynamic global audience.\n\nThrough this partnership, our ecosystem gains privileged access to advanced campaign tools, audience intelligence, and priority placement opportunities, enabling our clients to scale reach, drive measurable engagement, and cultivate real-time cultural relevance on one of the world's most influential social platforms.\n\nThis alliance reflects our ongoing commitment to aligning with cutting-edge partners that amplify the voice of innovation across industries."
+  },
+  {
+    id: "easenext",
+    name: "EaseNext",
+    logo: "/partners/easenext-logo.png",
+    tagline: "Technology innovation partner",
+    description: "EaseNext empowers businesses with cutting-edge technology solutions and digital transformation strategies. Their expertise in software development, cloud infrastructure, and AI-driven automation helps organizations scale efficiently and compete in modern markets with confidence and precision."
+  },
+  {
+    id: "hubspot",
+    name: "HubSpot",
+    logo: "/partners/hubspot-logo.png",
+    tagline: "CRM and marketing automation platform",
+    description: "HubSpot provides world-class CRM, marketing, sales, and service software that helps businesses grow better. Through strategic implementation and training, we help clients leverage HubSpot's powerful ecosystem to streamline operations, nurture leads, and drive sustainable revenue growth."
+  },
+  {
+    id: "salesforce",
+    name: "Salesforce",
+    logo: "/partners/salesforce-logo.svg",
+    tagline: "Leading enterprise CRM solution",
+    description: "Salesforce is the world's #1 CRM platform, enabling businesses to connect with customers in revolutionary ways. Our certified experts help clients harness Salesforce's robust capabilities to optimize sales processes, enhance customer experiences, and unlock data-driven insights at scale."
   }
 ];
 
