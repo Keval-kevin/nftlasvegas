@@ -26,6 +26,12 @@ export const GoogleAnalytics = ({
   const location = useLocation();
 
   useEffect(() => {
+    // Check cookie consent before initializing analytics
+    const consent = localStorage.getItem("cookie-consent");
+    if (consent !== "accepted") {
+      return; // Don't load analytics if consent not given
+    }
+
     // Initialize Google Analytics 4
     if (measurementId && measurementId !== "G-XXXXXXXXXX") {
       const script1 = document.createElement('script');
@@ -92,6 +98,12 @@ export const GoogleAnalytics = ({
 
   // Track page views on route changes
   useEffect(() => {
+    // Check cookie consent before tracking
+    const consent = localStorage.getItem("cookie-consent");
+    if (consent !== "accepted") {
+      return;
+    }
+
     if (window.gtag && measurementId !== "G-XXXXXXXXXX") {
       window.gtag('config', measurementId, {
         page_title: document.title,
@@ -114,6 +126,9 @@ export const GoogleAnalytics = ({
 
 // Utility functions for tracking events
 export const trackEvent = (eventName: string, parameters?: object) => {
+  const consent = localStorage.getItem("cookie-consent");
+  if (consent !== "accepted") return;
+
   if (window.gtag) {
     window.gtag('event', eventName, parameters);
   }
@@ -123,6 +138,9 @@ export const trackEvent = (eventName: string, parameters?: object) => {
 };
 
 export const trackConversion = (conversionName: string, value?: number) => {
+  const consent = localStorage.getItem("cookie-consent");
+  if (consent !== "accepted") return;
+
   if (window.gtag) {
     window.gtag('event', 'conversion', {
       send_to: conversionName,
