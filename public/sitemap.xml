@@ -3,110 +3,152 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://nftlasvegas.io/</loc>
-    <lastmod>2025-10-04</lastmod>
+    <lastmod>2025-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://nftlasvegas.io/onboarding</loc>
-    <lastmod>2025-10-04</lastmod>
+    <lastmod>2025-11-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://nftlasvegas.io/about</loc>
-    <lastmod>2025-10-04</lastmod>
+    <lastmod>2025-11-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
+    <loc>https://nftlasvegas.io/multiverse</loc>
+    <lastmod>2025-11-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://nftlasvegas.io/nonprofit</loc>
+    <lastmod>2025-11-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://nftlasvegas.io/takeover</loc>
+    <lastmod>2025-11-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://nftlasvegas.io/bookstore</loc>
+    <lastmod>2025-11-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://nftlasvegas.io/solutions</loc>
-    <lastmod>2025-10-04</lastmod>
+    <lastmod>2025-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://nftlasvegas.io/services</loc>
-    <lastmod>2025-10-04</lastmod>
+    <lastmod>2025-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://nftlasvegas.io/funding-enablement</loc>
-    <lastmod>2025-10-04</lastmod>
+    <lastmod>2025-11-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://nftlasvegas.io/tech-development</loc>
-    <lastmod>2025-10-04</lastmod>
+    <lastmod>2025-11-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://nftlasvegas.io/product-manufacturing</loc>
-    <lastmod>2025-10-04</lastmod>
+    <lastmod>2025-11-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://nftlasvegas.io/platform-launch</loc>
-    <lastmod>2025-10-04</lastmod>
+    <lastmod>2025-11-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://nftlasvegas.io/distribution</loc>
-    <lastmod>2025-10-04</lastmod>
+    <lastmod>2025-11-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://nftlasvegas.io/case-studies</loc>
-    <lastmod>2025-10-04</lastmod>
+    <lastmod>2025-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://nftlasvegas.io/ai-voice</loc>
-    <lastmod>2025-10-04</lastmod>
+    <lastmod>2025-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://nftlasvegas.io/ai-voice/starter</loc>
-    <lastmod>2025-10-04</lastmod>
+    <lastmod>2025-11-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://nftlasvegas.io/ai-voice/professional</loc>
-    <lastmod>2025-10-04</lastmod>
+    <lastmod>2025-11-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://nftlasvegas.io/ai-voice/advanced</loc>
-    <lastmod>2025-10-04</lastmod>
+    <lastmod>2025-11-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://nftlasvegas.io/ai-voice/enterprise</loc>
-    <lastmod>2025-10-04</lastmod>
+    <lastmod>2025-11-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://nftlasvegas.io/contact</loc>
-    <lastmod>2025-10-04</lastmod>
+    <lastmod>2025-11-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://nftlasvegas.io/book-a-call</loc>
-    <lastmod>2025-10-04</lastmod>
+    <lastmod>2025-11-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://nftlasvegas.io/terms-and-conditions</loc>
+    <lastmod>2025-11-09</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://nftlasvegas.io/privacy-policy</loc>
+    <lastmod>2025-11-09</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://nftlasvegas.io/accessibility-statement</loc>
+    <lastmod>2025-11-09</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
   </url>
 </urlset>

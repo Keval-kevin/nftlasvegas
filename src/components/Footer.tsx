@@ -156,6 +156,15 @@ export const Footer = () => {
                 >
                   Accessibility
                 </Link>
+                <span className="hidden sm:inline text-gray-600">•</span>
+                <a 
+                  href="/sitemap.xml" 
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray-400 hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-900 rounded px-2 py-1"
+                >
+                  Sitemap
+                </a>
               </div>
             </div>
             <div className="flex space-x-6">
