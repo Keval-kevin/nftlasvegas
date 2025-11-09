@@ -49,7 +49,7 @@ const Multiverse = () => {
                     </Link>
                   </Button>
                   <Button asChild size="lg" variant="outline" className="rounded-full">
-                    <a href="http://linktr.ee/nftlasvegas" target="_blank" rel="noopener noreferrer">
+                    <a href="https://linktr.ee/nftlasvegas" target="_blank" rel="noopener noreferrer">
                       <Sparkles className="mr-2 h-5 w-5" />
                       Read the Pseudo Testament
                     </a>
@@ -156,7 +156,7 @@ const Multiverse = () => {
                 Dive deeper into the mythology and discover the full narrative
               </p>
               <Button asChild size="lg" className="bg-gradient-to-r from-primary to-secondary hover:shadow-glow text-white rounded-full">
-                <a href="http://linktr.ee/nftlasvegas" target="_blank" rel="noopener noreferrer">
+                <a href="https://linktr.ee/nftlasvegas" target="_blank" rel="noopener noreferrer">
                   <Sparkles className="mr-2 h-5 w-5" />
                   Read the Pseudo Testament
                 </a>

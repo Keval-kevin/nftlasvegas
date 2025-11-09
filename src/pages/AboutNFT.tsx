@@ -208,7 +208,7 @@ const AboutNFT = () => {
 
                   <div className="flex justify-center pt-4">
                     <Button asChild variant="outline" size="lg">
-                      <a href="/downloads/Message from the Founder.pdf" download>
+                      <a href="https://linktr.ee/nftlasvegas" target="_blank" rel="noopener noreferrer">
                         <BookOpen className="mr-2 h-5 w-5" />
                         Read the Pseudo Testament
                       </a>
