@@ -1,6 +1,10 @@
-# Sitemap Generator
+# SEO Scripts
 
-This script automatically generates the sitemap.xml file based on routes defined in `src/App.tsx`.
+This directory contains scripts for managing and validating SEO files.
+
+## Sitemap Generator
+
+Automatically generates the sitemap.xml file based on routes defined in `src/App.tsx`.
 
 ## Usage
 
@@ -55,3 +59,61 @@ The script will:
 - Main pages: priority 0.9, weekly/monthly updates
 - Content pages: priority 0.7-0.8, monthly updates
 - Legal pages: priority 0.5, yearly updates
+
+---
+
+## Robots.txt Validator
+
+Validates the robots.txt file for proper formatting, sitemap configuration, and SEO best practices.
+
+### Usage
+
+Run the validation script:
+
+```bash
+node scripts/validate-robots.js
+```
+
+### What It Checks
+
+**Format Validation:**
+- File exists and is readable
+- Contains valid directives
+- Proper line formatting
+- No empty file
+
+**Sitemap Validation:**
+- Sitemap directive exists
+- URL is absolute (includes protocol)
+- Domain matches expected base URL
+- sitemap.xml file exists
+- XML structure is valid
+- URL count is reasonable (<50,000)
+
+**User-Agent Validation:**
+- At least one User-agent directive exists
+- Wildcard user-agent (*) is present
+- Common bots are configured (Googlebot, Bingbot)
+
+**Consistency Checks:**
+- Domain consistency between robots.txt and sitemap.xml
+- URLs in sitemap match the declared domain
+- Valid directive names
+
+### Exit Codes
+
+- `0`: Validation passed (warnings allowed)
+- `1`: Validation failed (errors found)
+
+### Integration with CI/CD
+
+Add to your CI pipeline to catch SEO issues early:
+
+```json
+{
+  "scripts": {
+    "validate-seo": "node scripts/validate-robots.js && node scripts/generate-sitemap.js",
+    "pretest": "npm run validate-seo"
+  }
+}
+```
