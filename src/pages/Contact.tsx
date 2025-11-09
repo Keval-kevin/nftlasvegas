@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { z } from "zod";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { StarterPackDownload } from "@/components/StarterPackDownload";
@@ -13,6 +14,22 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Phone, Mail, MapPin, Users, Briefcase, Newspaper, HeadphonesIcon, ArrowRight, Upload, CheckCircle2 } from "lucide-react";
 import { sendInquiryEmail } from "@/service/sendInquiryEmail";
 import { SEOHead } from "@/components/SEO/SEOHead";
+
+const contactSchema = z.object({
+  name: z.string().trim().min(1, "Name is required").max(100, "Name must be less than 100 characters"),
+  company: z.string().trim().min(1, "Company is required").max(100, "Company must be less than 100 characters"),
+  email: z.string().trim().email("Invalid email address").max(255, "Email must be less than 255 characters"),
+  phone: z.string().trim().max(20, "Phone must be less than 20 characters").optional(),
+  interest: z.string().optional(),
+  budget: z.string().optional(),
+  timeline: z.string().optional(),
+  message: z.string().trim().min(1, "Message is required").max(2000, "Message must be less than 2000 characters"),
+  monthlyMinutes: z.string().max(10).optional(),
+  telephony: z.string().optional(),
+  crm: z.string().optional(),
+  consent: z.boolean().refine(val => val === true, "You must accept the privacy policy"),
+  file: z.any().optional()
+});
 
 // GA4 Event tracking
 const trackGA4Event = (eventName: string, params?: Record<string, any>) => {
@@ -56,13 +73,32 @@ const Contact = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
+    // Validate form data
+    const validation = contactSchema.safeParse(formData);
+    if (!validation.success) {
+      const errors = validation.error.flatten().fieldErrors;
+      const firstError = Object.values(errors)[0]?.[0];
+      alert(firstError || "Please check your input");
+      return;
+    }
+
     // Track GA4 event
     trackGA4Event('contact_submit', {
       interest: formData.interest,
       budget: formData.budget,
       timeline: formData.timeline
     });
-    sendInquiryEmail(formData).then(() => {
+
+    const sanitizedData = {
+      name: validation.data.name,
+      email: validation.data.email,
+      company: validation.data.company,
+      phone: validation.data.phone,
+      message: validation.data.message,
+      contactMethod: formData.interest
+    };
+
+    sendInquiryEmail(sanitizedData).then(() => {
       setIsSubmitted(true);
       setTimeout(() => {
         setIsSubmitted(false);

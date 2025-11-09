@@ -1,10 +1,19 @@
 import { useState, useEffect } from 'react';
+import { z } from 'zod';
 import { Download, FileText, Calendar, CheckCircle, X, Mail } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { Checkbox } from '@/components/ui/checkbox';
 import { useToast } from '@/hooks/use-toast';
 import nftLogo from '@/assets/nft-logo.jpeg';
+
+const starterPackSchema = z.object({
+  firstName: z.string().trim().min(1, "First name is required").max(50, "First name must be less than 50 characters"),
+  lastName: z.string().trim().min(1, "Last name is required").max(50, "Last name must be less than 50 characters"),
+  email: z.string().trim().email("Invalid email address").max(255, "Email must be less than 255 characters"),
+  company: z.string().trim().max(100, "Company name must be less than 100 characters").optional(),
+  website: z.string().max(0) // honeypot field must be empty
+});
 
 export const StarterPackDownload = () => {
   const [open, setOpen] = useState(false);
@@ -87,23 +96,7 @@ export const StarterPackDownload = () => {
 
   const sendEmailWithLinks = async (email: string, name: string) => {
     // Fallback email service using EmailJS
-    const templateParams = {
-      to_email: email,
-      to_name: name,
-      download_links: `
-        • Full Onboarding Package: ${window.location.origin}/downloads/nftlv-starter-pack-v1.0.zip
-        
-        Package includes:
-        • Onboarding Suite (6-Step Processing Pathway)
-        • Toolkit 1.0 - Onboarding + Funding Enablement
-        • Toolkit 2.0 - Tech Development + Product Manufacturing
-        • Toolkit 3.0 - Launch Strategy + Distribution
-        • Message from the Founder
-      `
-    };
-
-    // This would use EmailJS or similar service
-    console.log('Email would be sent with:', templateParams);
+    // Email sending would be handled by EmailJS or similar service in production
     return true;
   };
 
@@ -111,24 +104,31 @@ export const StarterPackDownload = () => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
     
-    // Honeypot check
-    const honeypot = formData.get('website') as string;
-    if (honeypot) {
-      console.log('Bot detected');
+    // Prepare data for validation
+    const data = {
+      firstName: formData.get('firstName') as string,
+      lastName: formData.get('lastName') as string,
+      email: formData.get('email') as string,
+      company: formData.get('company') as string,
+      website: formData.get('website') as string // honeypot
+    };
+
+    // Validate with Zod schema
+    const validation = starterPackSchema.safeParse(data);
+    if (!validation.success) {
+      const errors = validation.error.flatten().fieldErrors;
+      const firstError = Object.values(errors)[0]?.[0];
+      toast({
+        title: "Validation Error",
+        description: firstError || "Please check your input.",
+        variant: "destructive"
+      });
       return;
     }
 
-    // Validate business email
-    const email = formData.get('email') as string;
-    const firstName = formData.get('firstName') as string;
-    const lastName = formData.get('lastName') as string;
-    
-    if (!email || !email.includes('@') || !firstName || !lastName) {
-      toast({
-        title: "Required Fields Missing",
-        description: "Please fill in all required fields.",
-        variant: "destructive"
-      });
+    // Check honeypot (should be empty)
+    if (validation.data.website) {
+      // Bot detected - silently reject
       return;
     }
 
@@ -146,15 +146,15 @@ export const StarterPackDownload = () => {
     try {
       // Track lead event
       trackEvent('onboarding_pack_lead', {
-        email,
-        company: formData.get('company') || 'Not provided'
+        email: validation.data.email,
+        company: validation.data.company || 'Not provided'
       });
 
       // Submit to HubSpot
       await sendToHubSpot(formData);
 
       // Send email with links
-      await sendEmailWithLinks(email, firstName);
+      await sendEmailWithLinks(validation.data.email, validation.data.firstName);
 
       // Set localStorage
       if (typeof window !== 'undefined') {

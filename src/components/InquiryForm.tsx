@@ -1,5 +1,6 @@
 
 import { useState } from "react";
+import { z } from "zod";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -8,6 +9,15 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { X, Send, CheckCircle, User, Mail, Building, Phone, MessageSquare } from "lucide-react";
 import {sendInquiryEmail} from "../service/sendInquiryEmail"
+
+const inquirySchema = z.object({
+  name: z.string().trim().min(1, "Name is required").max(100, "Name must be less than 100 characters"),
+  email: z.string().trim().email("Invalid email address").max(255, "Email must be less than 255 characters"),
+  company: z.string().trim().max(100, "Company name must be less than 100 characters").optional(),
+  phone: z.string().trim().max(20, "Phone must be less than 20 characters").optional(),
+  message: z.string().trim().min(1, "Message is required").max(2000, "Message must be less than 2000 characters"),
+  contactMethod: z.enum(["email", "call"])
+});
 
 interface InquiryFormProps {
   isOpen: boolean;
@@ -38,9 +48,26 @@ export const InquiryForm = ({
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
+    
+    // Validate form data
+    const validation = inquirySchema.safeParse(formData);
+    if (!validation.success) {
+      const errors = validation.error.flatten().fieldErrors;
+      const firstError = Object.values(errors)[0]?.[0];
+      alert(firstError || "Please check your input");
+      return;
+    }
 
-    sendInquiryEmail(formData).then(() => {
+    const sanitizedData = {
+      name: validation.data.name,
+      email: validation.data.email,
+      company: validation.data.company || "",
+      phone: validation.data.phone || "",
+      message: validation.data.message,
+      contactMethod: validation.data.contactMethod
+    };
+
+    sendInquiryEmail(sanitizedData).then(() => {
       setIsSubmitted(true);
       setTimeout(() => {
         setIsSubmitted(false);
