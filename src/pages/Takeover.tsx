@@ -163,7 +163,7 @@ const Takeover = () => {
                 Join us in empowering the Web3 community in Las Vegas. Connect with innovators, support education, and showcase your brand to the next generation of builders.
               </p>
               <Button asChild size="lg" className="bg-gradient-to-r from-primary to-secondary hover:shadow-glow text-white rounded-full">
-                <a href="https://www.nftlasvegas.io/_files/ugd/916fb2_1a0aed501ae248ada6d39ae5fa08cac2.pdf" target="_blank" rel="noopener noreferrer">
+                <a href="/downloads/NFT_Las_Vegas_Distribution_Label_-_Sponsorship_Application_Form.pdf" download>
                   <ExternalLink className="mr-2 h-5 w-5" />
                   Download Sponsorship Application
                 </a>
