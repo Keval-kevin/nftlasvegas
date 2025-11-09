@@ -99,6 +99,45 @@ const AboutNFT = () => {
             </div>
           </section>
 
+          {/* Based on a True Story Section */}
+          <section className="section-padding bg-background border-y border-border/50">
+            <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+              <div className="flex flex-col items-center gap-6 py-12">
+                {/* Book Icon */}
+                <div className="w-16 h-16 flex items-center justify-center">
+                  <BookOpen className="w-16 h-16 text-primary" strokeWidth={1.5} />
+                </div>
+                
+                {/* Heading */}
+                <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground">
+                  Based on a <span className="bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent">True Story</span>
+                </h2>
+                
+                {/* Subtitle */}
+                <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl">
+                  Why we build systems that outlive their creators.
+                </p>
+                
+                {/* CTA Button */}
+                <Button 
+                  asChild 
+                  size="lg"
+                  className="mt-4 text-lg px-8 py-6 bg-primary hover:bg-primary/90 text-primary-foreground font-semibold"
+                >
+                  <a 
+                    href="https://linktr.ee/nftlasvegas" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-3"
+                  >
+                    <Download className="w-5 h-5" />
+                    The Pseudo Testament
+                  </a>
+                </Button>
+              </div>
+            </div>
+          </section>
+
           {/* Dual Entity Cards */}
           <section 
             ref={entitiesObserver.elementRef}
