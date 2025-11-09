@@ -38,6 +38,14 @@ const partners = [
   "Alibaba", "Tencent", "Rakuten", "Mercado Libre"
 ];
 
+const featuredPartners = [
+  {
+    name: "X Ads",
+    logo: "/partners/x-ads.webp",
+    description: "Preferred partner for paid media on X (formerly Twitter)"
+  }
+];
+
 const DistributionNFT = () => {
   return (
     <>
@@ -200,17 +208,46 @@ const DistributionNFT = () => {
                 </p>
               </div>
 
-              <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4">
-                {partners.map((partner) => (
-                  <div 
-                    key={partner}
-                    className="aspect-square bg-card/50 backdrop-blur-sm border border-border rounded-xl flex items-center justify-center hover:border-primary/50 transition-all duration-300 hover:shadow-glow group"
-                  >
-                    <span className="text-sm font-medium text-muted-foreground group-hover:text-foreground transition-colors">
-                      {partner}
-                    </span>
-                  </div>
-                ))}
+              {/* Featured Partners with Logos */}
+              <div className="mb-12">
+                <h3 className="text-xl font-semibold text-center mb-8 text-muted-foreground">Featured Media Partners</h3>
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-4xl mx-auto">
+                  {featuredPartners.map((partner) => (
+                    <div 
+                      key={partner.name}
+                      className="bg-card/50 backdrop-blur-sm border border-border rounded-xl p-6 hover:border-primary/50 transition-all duration-300 hover:shadow-glow"
+                    >
+                      <div className="bg-background rounded-lg p-6 mb-4 flex items-center justify-center min-h-[100px] border border-border">
+                        <img 
+                          src={partner.logo} 
+                          alt={`${partner.name} logo`}
+                          className="h-16 w-auto object-contain"
+                          loading="lazy"
+                          decoding="async"
+                        />
+                      </div>
+                      <h4 className="font-semibold text-lg mb-2 text-center">{partner.name}</h4>
+                      <p className="text-sm text-muted-foreground text-center">{partner.description}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Other Partners Grid */}
+              <div>
+                <h3 className="text-xl font-semibold text-center mb-8 text-muted-foreground">Additional Partners</h3>
+                <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4">
+                  {partners.map((partner) => (
+                    <div 
+                      key={partner}
+                      className="aspect-square bg-card/50 backdrop-blur-sm border border-border rounded-xl flex items-center justify-center hover:border-primary/50 transition-all duration-300 hover:shadow-glow group"
+                    >
+                      <span className="text-sm font-medium text-muted-foreground group-hover:text-foreground transition-colors">
+                        {partner}
+                      </span>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           </section>

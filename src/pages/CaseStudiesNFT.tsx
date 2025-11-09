@@ -7,7 +7,7 @@ import { Badge } from "@/components/ui/badge";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { useState } from "react";
-import { X, ArrowRight, Quote, Target, Lightbulb, TrendingUp as TrendingUpIcon, CheckCircle2 } from "lucide-react";
+import { X, ArrowRight, Quote, Target, Lightbulb, TrendingUp as TrendingUpIcon, CheckCircle2, Users } from "lucide-react";
 
 const caseStudies = [
   {
@@ -61,8 +61,19 @@ const caseStudies = [
 ];
 
 
+const partners = [
+  {
+    id: "x-ads",
+    name: "X Ads",
+    logo: "/partners/x-ads.webp",
+    tagline: "Official advertising platform of X",
+    description: "NFT Las Vegas™ is honored to collaborate with X Ads, the official advertising platform of X (formerly Twitter), to deliver strategic, high-impact media solutions across a dynamic global audience.\n\nThrough this partnership, our ecosystem gains privileged access to advanced campaign tools, audience intelligence, and priority placement opportunities, enabling our clients to scale reach, drive measurable engagement, and cultivate real-time cultural relevance on one of the world's most influential social platforms.\n\nThis alliance reflects our ongoing commitment to aligning with cutting-edge partners that amplify the voice of innovation across industries."
+  }
+];
+
 const CaseStudiesNFT = () => {
   const [selectedCase, setSelectedCase] = useState<typeof caseStudies[0] | null>(null);
+  const [selectedPartner, setSelectedPartner] = useState<typeof partners[0] | null>(null);
 
   return (
     <>
@@ -156,6 +167,59 @@ const CaseStudiesNFT = () => {
                 </CardContent>
               </Card>
             ))}
+          </div>
+
+          {/* Partner Network Section */}
+          <div className="mb-16">
+            <div className="max-w-3xl mx-auto mb-12 text-center">
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 border border-primary/30 rounded-full text-sm font-medium text-primary mb-6">
+                <Users className="w-4 h-4" />
+                Partner Network
+              </div>
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">
+                Strategic Partnerships
+              </h2>
+              <p className="text-lg text-muted-foreground">
+                We collaborate with industry-leading platforms to deliver exceptional results for our clients
+              </p>
+            </div>
+
+            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+              {partners.map((partner) => (
+                <Card 
+                  key={partner.id} 
+                  className="group cursor-pointer hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+                  onClick={() => setSelectedPartner(partner)}
+                >
+                  <CardHeader>
+                    <div className="bg-background rounded-lg p-6 mb-4 inline-flex items-center justify-center w-full min-h-[100px] shadow-sm border border-border">
+                      <img 
+                        src={partner.logo} 
+                        alt={`${partner.name} logo`}
+                        className="h-16 sm:h-20 w-auto object-contain"
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    </div>
+                    <CardTitle className="text-xl group-hover:text-primary transition-colors">
+                      {partner.name}
+                    </CardTitle>
+                    <p className="text-sm text-muted-foreground mt-2">
+                      {partner.tagline}
+                    </p>
+                  </CardHeader>
+                  <CardContent>
+                    <Button 
+                      className="w-full"
+                      variant="outline"
+                    >
+                      Learn More
+                      <ArrowRight className="w-4 h-4 ml-2" />
+                    </Button>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
           </div>
 
           {/* Mini CTA */}
@@ -283,6 +347,54 @@ const CaseStudiesNFT = () => {
 
                 <div className="pt-4 flex gap-4 justify-end">
                   <Button onClick={() => setSelectedCase(null)} variant="outline">
+                    Close
+                  </Button>
+                </div>
+              </div>
+            )}
+          </DialogContent>
+        </Dialog>
+
+        {/* Partner Detail Modal */}
+        <Dialog open={!!selectedPartner} onOpenChange={() => setSelectedPartner(null)}>
+          <DialogContent className="max-w-[720px] max-h-[90vh] overflow-y-auto">
+            {selectedPartner && (
+              <div className="space-y-6">
+                <DialogHeader>
+                  <div className="bg-background rounded-lg p-6 mb-4 inline-flex items-center justify-center w-full min-h-[120px] shadow-sm border border-border">
+                    <img 
+                      src={selectedPartner.logo} 
+                      alt={`${selectedPartner.name} logo`}
+                      className="h-20 sm:h-24 w-auto object-contain"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
+                  <DialogTitle className="text-2xl md:text-3xl">{selectedPartner.name}</DialogTitle>
+                  <p className="text-muted-foreground text-lg">{selectedPartner.tagline}</p>
+                </DialogHeader>
+
+                <div className="prose prose-sm max-w-none">
+                  {selectedPartner.description.split('\n\n').map((paragraph, index) => (
+                    <p key={index} className="text-muted-foreground leading-relaxed mb-4">
+                      {paragraph}
+                    </p>
+                  ))}
+                </div>
+
+                <div className="pt-6 border-t bg-muted/30 rounded-lg p-6 text-center">
+                  <h4 className="text-xl font-semibold mb-2">Interested in Our Partner Network?</h4>
+                  <p className="text-muted-foreground mb-4">Connect with us to learn how our partnerships can benefit your business</p>
+                  <Button 
+                    size="lg"
+                    onClick={() => window.location.href = '/contact'}
+                  >
+                    Get in Touch
+                  </Button>
+                </div>
+
+                <div className="pt-4 flex gap-4 justify-end">
+                  <Button onClick={() => setSelectedPartner(null)} variant="outline">
                     Close
                   </Button>
                 </div>
