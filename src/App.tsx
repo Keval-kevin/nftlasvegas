@@ -32,8 +32,10 @@ import AIVoiceAdvanced from "./pages/AIVoiceAdvanced";
 import AIVoiceEnterprise from "./pages/AIVoiceEnterprise";
 import TermsAndConditions from "./pages/TermsAndConditions";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
+import CookiePolicy from "./pages/CookiePolicy";
 import AccessibilityStatement from "./pages/AccessibilityStatement";
 import NotFound from "./pages/NotFound";
+import { CookieConsent } from "./components/CookieConsent";
 
 const queryClient = new QueryClient();
 
@@ -44,6 +46,7 @@ const App = () => (
         <TooltipProvider delayDuration={300} skipDelayDuration={100}>
           <Toaster />
           <ScrollToTop />
+          <CookieConsent />
           <PerformanceMonitor />
           <ResponsiveTestingHelper />
           <GoogleAnalytics 
@@ -76,6 +79,7 @@ const App = () => (
             <Route path="/book-a-call" element={<BookACall />} />
             <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+            <Route path="/cookie-policy" element={<CookiePolicy />} />
             <Route path="/accessibility-statement" element={<AccessibilityStatement />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
