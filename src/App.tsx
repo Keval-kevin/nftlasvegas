@@ -11,6 +11,10 @@ import { ResponsiveTestingHelper } from "@/components/ResponsiveTestingHelper";
 import IndexNFT from "./pages/IndexNFT";
 import Onboarding from "./pages/Onboarding";
 import AboutNFT from "./pages/AboutNFT";
+import Multiverse from "./pages/Multiverse";
+import Nonprofit from "./pages/Nonprofit";
+import Takeover from "./pages/Takeover";
+import Bookstore from "./pages/Bookstore";
 import SolutionsNFT from "./pages/SolutionsNFT";
 import ServicesNFT from "./pages/ServicesNFT";
 import FundingEnablement from "./pages/FundingEnablement";
@@ -51,6 +55,10 @@ const App = () => (
             <Route path="/" element={<IndexNFT />} />
             <Route path="/onboarding" element={<Onboarding />} />
             <Route path="/about" element={<AboutNFT />} />
+            <Route path="/multiverse" element={<Multiverse />} />
+            <Route path="/nonprofit" element={<Nonprofit />} />
+            <Route path="/takeover" element={<Takeover />} />
+            <Route path="/bookstore" element={<Bookstore />} />
             <Route path="/solutions" element={<SolutionsNFT />} />
             <Route path="/services" element={<ServicesNFT />} />
             <Route path="/funding-enablement" element={<FundingEnablement />} />

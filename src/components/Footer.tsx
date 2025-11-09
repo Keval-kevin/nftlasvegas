@@ -42,20 +42,23 @@ export const Footer = () => {
   }, {
     title: "Company",
     links: [{
-      name: "About NFT Las Vegas",
-      href: "/about"
+      name: "Multiverse",
+      href: "/multiverse"
+    }, {
+      name: "Non Profit",
+      href: "/nonprofit"
+    }, {
+      name: "Takeover",
+      href: "/takeover"
+    }, {
+      name: "Bookstore",
+      href: "/bookstore"
     }, {
       name: "Our Solutions",
       href: "/solutions"
     }, {
-      name: "Partners",
-      href: "#partners"
-    }, {
       name: "Contact Us",
       href: "/contact"
-    }, {
-      name: "Sitemap",
-      href: "/sitemap"
     }]
   }];
   return <footer id="contact" className="bg-gray-900 text-white">

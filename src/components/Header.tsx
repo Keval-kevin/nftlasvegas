@@ -50,8 +50,8 @@ export const Header = () => {
     name: "Home",
     href: "/"
   }, {
-    name: "About",
-    href: "/about"
+    name: "Multiverse",
+    href: "/multiverse"
   }, {
     name: "Solutions",
     href: "/solutions"
@@ -59,8 +59,14 @@ export const Header = () => {
     name: "Services",
     href: "/services"
   }, {
-    name: "AI Voice System",
-    href: "/ai-voice"
+    name: "Non Profit",
+    href: "/nonprofit"
+  }, {
+    name: "Takeover",
+    href: "/takeover"
+  }, {
+    name: "Bookstore",
+    href: "/bookstore"
   }, {
     name: "Case Studies",
     href: "/case-studies"
