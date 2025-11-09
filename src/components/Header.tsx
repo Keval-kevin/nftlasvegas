@@ -50,6 +50,9 @@ export const Header = () => {
     name: "Home",
     href: "/"
   }, {
+    name: "About",
+    href: "/about"
+  }, {
     name: "Multiverse",
     href: "/multiverse"
   }, {

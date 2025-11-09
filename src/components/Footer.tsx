@@ -42,6 +42,9 @@ export const Footer = () => {
   }, {
     title: "Company",
     links: [{
+      name: "About",
+      href: "/about"
+    }, {
       name: "Multiverse",
       href: "/multiverse"
     }, {
