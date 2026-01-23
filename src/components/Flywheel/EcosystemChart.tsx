@@ -7,51 +7,45 @@ import { useIsMobile } from "@/hooks/use-mobile";
 const PHASES_DATA = [
   { 
     phase: "Onboarding", 
-    index: 10,
+    index: 5,
     benefit: "Clarity, access, and a 90-day roadmap.",
     route: "/onboarding",
-    milestone: "Journey Starts",
-    journeyLabel: "Start"
+    milestone: "Journey Starts"
   },
   { 
     phase: "Funding", 
-    index: 28,
+    index: 22,
     benefit: "Investor narrative, data room, capital strategy.",
     route: "/funding-enablement",
-    milestone: "Funding Ready",
-    journeyLabel: "Validate"
+    milestone: "Funding Ready"
   },
   { 
     phase: "Tech", 
-    index: 45,
+    index: 42,
     benefit: "AI, Web3, and enterprise integrations designed for scale.",
     route: "/tech-development",
-    milestone: "MVP Assembled",
-    journeyLabel: "Build"
+    milestone: "MVP Assembled"
   },
   { 
     phase: "Manufacturing", 
-    index: 62,
+    index: 65,
     benefit: "Prototype → certify → mass produce with reliable partners.",
     route: "/product-manufacturing",
-    milestone: "Production Ready",
-    journeyLabel: "Make"
+    milestone: "Production Ready"
   },
   { 
     phase: "Launch", 
-    index: 82,
+    index: 85,
     benefit: "Positioning, content engine, marketing ops, analytics.",
     route: "/platform-launch",
-    milestone: "Public Launch",
-    journeyLabel: "Announce"
+    milestone: "Public Launch"
   },
   { 
     phase: "Distribution", 
     index: 100,
     benefit: "Channels, marketplaces, enablement kits, & SLAs.",
     route: "/distribution",
-    milestone: "Channel Live",
-    journeyLabel: "Scale"
+    milestone: "Scale"
   }
 ];
 
@@ -265,14 +259,6 @@ export const EcosystemChart = () => {
             </ComposedChart>
           </ResponsiveContainer>
 
-          {/* Journey Labels */}
-          <div className="flex justify-between mt-4 px-2 sm:px-4 text-[10px] sm:text-xs text-muted-foreground">
-            {PHASES_DATA.map((phase) => (
-              <div key={phase.phase} className="text-center" style={{ width: `${100 / PHASES_DATA.length}%` }}>
-                {phase.journeyLabel}
-              </div>
-            ))}
-          </div>
         </div>
 
         {/* CTA Band */}
