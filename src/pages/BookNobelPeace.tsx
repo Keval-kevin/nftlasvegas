@@ -17,7 +17,7 @@ const BookNobelPeace = () => {
         "Educators and futurists",
         "Readers interested in ethical innovation"
       ]}
-      coverImage="/books/nobel-peace-page.jpg"
+      coverImage="/books/nobel-peace-cover.jpg"
       checkoutUrl="https://portal.nftlasvegas.io/hs/payments/HY7WrGZHzR?referrer=PAYMENT_LINK"
       metaDescription="Rearchitecting global impact and recognition in the decentralized age of acceleration. Explore peace, technology, and collective intelligence."
     />

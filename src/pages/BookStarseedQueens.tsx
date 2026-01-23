@@ -17,7 +17,7 @@ const BookStarseedQueens = () => {
         "Readers drawn to metaphysical romance",
         "Starseeds, queens, and multidimensional thinkers"
       ]}
-      coverImage="/books/starseed-queens-page.jpg"
+      coverImage="/books/starseed-queens-cover.jpg"
       checkoutUrl="https://portal.nftlasvegas.io/hs/payments/9nZhfpXf?referrer=PAYMENT_LINK"
       metaDescription="A bold, playful guide to love as alignment, empowerment, and creative self-expression for starseeds and multidimensional thinkers."
     />

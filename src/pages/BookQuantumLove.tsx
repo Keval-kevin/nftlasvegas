@@ -17,7 +17,7 @@ const BookQuantumLove = () => {
         "Metaverse and sci-fi enthusiasts",
         "Readers curious about love beyond physical boundaries"
       ]}
-      coverImage="/books/quantum-love-page.jpg"
+      coverImage="/books/quantum-love-cover.jpg"
       checkoutUrl="https://portal.nftlasvegas.io/hs/payments/hJJR2gDrTNRJhf?referrer=PAYMENT_LINK"
       metaDescription="Explore love, identity, and desire through digital worlds and infinite realities in this speculative romance from the NFT Las Vegas™ Multiverse."
     />

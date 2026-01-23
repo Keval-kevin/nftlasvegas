@@ -17,7 +17,7 @@ const BookQuinceyObsession = () => {
         "Lovers of dramatic storytelling",
         "Those who enjoy bold creative worlds"
       ]}
-      coverImage="/books/quincey-obsession-page.jpg"
+      coverImage="/books/quincey-obsession-cover.jpg"
       checkoutUrl="https://portal.nftlasvegas.io/hs/payments/2HF7TFv9DDNdCk?referrer=PAYMENT_LINK"
       metaDescription="A story of love, entanglement and billionaire affairs. A provocative fictional romance where ambition, desire, power, and technology collide."
     />
