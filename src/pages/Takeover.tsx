@@ -11,7 +11,8 @@ const Takeover = () => {
     "Be promoted in NFT Las Vegas™ initiatives and affiliate events throughout the year",
     "Connect with academic institutions, student orgs, and influential blockchain builders",
     "Gain brand exposure across flyers, banners, digital content, merchandise, giveaways, and speaking opportunities depending on your tier",
-    "Support the registration and continuous development of UNLV NFT as a 501(c)(3) nonprofit, fueling youth-led Web3 education and innovation in Nevada"
+    "Support the registration and continuous development of UNLV NFT as a 501(c)(3) nonprofit, fueling youth-led Web3 education and innovation in Nevada",
+    "Join a growing network of Web3 leaders shaping the future of decentralized technology in Las Vegas"
   ];
 
   return (
@@ -28,13 +29,6 @@ const Takeover = () => {
         <main className="pt-20">
           {/* Hero Section */}
           <section className="relative min-h-[60vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-primary/20 via-secondary/20 to-background">
-            <div className="absolute inset-0 z-0">
-              <img 
-                src="https://static.wixstatic.com/media/916fb2_4180662d58b648e9a0cfed7893a444f6f000.jpg/v1/fill/w_1200,h_800,al_c,q_85,usm_0.33_1.00_0.00,enc_avif,quality_auto/916fb2_4180662d58b648e9a0cfed7893a444f6f000.jpg"
-                alt="Web3 Wednesdays Event"
-                className="w-full h-full object-cover opacity-20"
-              />
-            </div>
             
             <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
               <div className="animate-fade-in">
@@ -127,7 +121,7 @@ const Takeover = () => {
                 </p>
               </div>
 
-              <div className="grid md:grid-cols-2 gap-6 mb-12">
+              <div className="grid md:grid-cols-3 gap-6 mb-12">
                 {sponsorBenefits.map((benefit, idx) => (
                   <Card key={idx} className="border-primary/20 hover:border-primary transition-all duration-300 hover:shadow-lg">
                     <CardContent className="p-6 flex items-start gap-4">
@@ -139,17 +133,6 @@ const Takeover = () => {
                   </Card>
                 ))}
               </div>
-
-              <Card className="border-secondary/20 bg-gradient-to-br from-secondary/5 to-primary/5">
-                <CardContent className="p-8 text-center">
-                  <p className="text-lg text-muted-foreground mb-2">
-                    Whether you're a startup accelerator, VC firm, DAO, or leading tech company —
-                  </p>
-                  <p className="text-xl font-semibold mb-6">
-                    Web3 Wednesdays is your gateway to visibility, partnership, and trusted impact.
-                  </p>
-                </CardContent>
-              </Card>
             </div>
           </section>
 
