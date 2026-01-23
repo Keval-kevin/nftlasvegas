@@ -8,13 +8,13 @@ import { Link } from "react-router-dom";
 const fundingTypes = [
   {
     icon: Users,
-    title: "Angel Funding",
-    description: "Connect with angel investors who believe in your vision and can provide seed capital to get started.",
+    title: "Business Loans",
+    description: "Connect with lenders who can provide working capital and growth financing for your venture.",
     benefits: [
-      "Seed capital: $25K - $500K",
-      "Mentorship from experienced investors",
-      "Network access and introductions",
-      "Flexible terms and quick decisions"
+      "Working capital: $25K - $500K",
+      "Flexible repayment terms",
+      "Quick application process",
+      "Various loan structures available"
     ],
     color: "from-primary to-primary-glow"
   },
@@ -88,25 +88,6 @@ const FundingEnablement = () => {
                       </Link>
                     </Button>
                   </div>
-                </div>
-
-                {/* Animated Stats */}
-                <div className="grid grid-cols-2 gap-6">
-                  {[
-                    { value: "$50M+", label: "Total Funding Secured" },
-                    { value: "150+", label: "Ventures Funded" },
-                    { value: "3X", label: "Average ROI" },
-                    { value: "18 mo", label: "Avg. Time to Exit" }
-                  ].map((stat, index) => (
-                    <div 
-                      key={stat.label}
-                      className="bg-card/50 backdrop-blur-sm border border-border rounded-2xl p-6 hover:border-primary/50 transition-all duration-300 hover:shadow-glow"
-                      style={{ animationDelay: `${index * 0.1}s` }}
-                    >
-                      <div className="text-4xl font-bold text-primary mb-2">{stat.value}</div>
-                      <div className="text-sm text-muted-foreground">{stat.label}</div>
-                    </div>
-                  ))}
                 </div>
               </div>
             </div>

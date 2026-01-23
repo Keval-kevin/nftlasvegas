@@ -2,7 +2,7 @@
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
 import ScrollToTop from "@/components/ScrollToTop";
 import { GoogleAnalytics } from "@/components/Analytics/GoogleAnalytics";
@@ -10,7 +10,6 @@ import { PerformanceMonitor } from "@/components/PerformanceMonitor";
 import { ResponsiveTestingHelper } from "@/components/ResponsiveTestingHelper";
 import IndexNFT from "./pages/IndexNFT";
 import Onboarding from "./pages/Onboarding";
-import AboutNFT from "./pages/AboutNFT";
 import Multiverse from "./pages/Multiverse";
 import Nonprofit from "./pages/Nonprofit";
 import Takeover from "./pages/Takeover";
@@ -20,7 +19,6 @@ import BookQuantumLove from "./pages/BookQuantumLove";
 import BookNobelPeace from "./pages/BookNobelPeace";
 import BookStarseedQueens from "./pages/BookStarseedQueens";
 import BookQuinceyObsession from "./pages/BookQuinceyObsession";
-import SolutionsNFT from "./pages/SolutionsNFT";
 import ServicesNFT from "./pages/ServicesNFT";
 import FundingEnablement from "./pages/FundingEnablement";
 import TechDevelopmentNFT from "./pages/TechDevelopmentNFT";
@@ -28,6 +26,7 @@ import ProductManufacturing from "./pages/ProductManufacturing";
 import PlatformLaunch from "./pages/PlatformLaunch";
 import DistributionNFT from "./pages/DistributionNFT";
 import CaseStudiesNFT from "./pages/CaseStudiesNFT";
+import Partnerships from "./pages/Partnerships";
 import Contact from "./pages/Contact";
 import BookACall from "./pages/BookACall";
 import AIVoice from "./pages/AIVoice";
@@ -62,7 +61,7 @@ const App = () => (
           <Routes>
             <Route path="/" element={<IndexNFT />} />
             <Route path="/onboarding" element={<Onboarding />} />
-            <Route path="/about" element={<AboutNFT />} />
+            <Route path="/about" element={<Navigate to="/multiverse" replace />} />
             <Route path="/multiverse" element={<Multiverse />} />
             <Route path="/nonprofit" element={<Nonprofit />} />
             <Route path="/takeover" element={<Takeover />} />
@@ -72,7 +71,7 @@ const App = () => (
             <Route path="/bookstore/nobel-peace" element={<BookNobelPeace />} />
             <Route path="/bookstore/starseed-queens" element={<BookStarseedQueens />} />
             <Route path="/bookstore/quincey-obsession" element={<BookQuinceyObsession />} />
-            <Route path="/solutions" element={<SolutionsNFT />} />
+            <Route path="/solutions" element={<Navigate to="/services" replace />} />
             <Route path="/services" element={<ServicesNFT />} />
             <Route path="/funding-enablement" element={<FundingEnablement />} />
             <Route path="/tech-development" element={<TechDevelopmentNFT />} />
@@ -80,6 +79,7 @@ const App = () => (
             <Route path="/platform-launch" element={<PlatformLaunch />} />
             <Route path="/distribution" element={<DistributionNFT />} />
             <Route path="/case-studies" element={<CaseStudiesNFT />} />
+            <Route path="/partnerships" element={<Partnerships />} />
             <Route path="/ai-voice" element={<AIVoice />} />
             <Route path="/ai-voice/starter" element={<AIVoiceStarter />} />
             <Route path="/ai-voice/professional" element={<AIVoiceProfessional />} />

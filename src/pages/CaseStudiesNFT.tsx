@@ -7,101 +7,44 @@ import { Badge } from "@/components/ui/badge";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { useState } from "react";
-import { X, ArrowRight, Quote, Target, Lightbulb, TrendingUp as TrendingUpIcon, CheckCircle2, Users } from "lucide-react";
+import { ArrowRight, Quote, Target, Lightbulb, TrendingUp as TrendingUpIcon, CheckCircle2 } from "lucide-react";
 
 const caseStudies = [
   {
     id: 1,
-    slug: "amilo-halos",
-    title: "Amilo Halos",
-    client: "Amilo Halos",
-    industry: "Early Learning",
-    blurb: "Family-led early learning brand building trust for a toddler education app through authentic storytelling.",
-    logo: "/case-studies/amilo-halos-logo.jpg",
-    tags: ["Early Learning", "Content Production", "Testimonial Campaign"],
-    challenge: "Amilo Halos, a family-led brand focused on early childhood learning and emotional bonding, sought a way to build trust and visibility for their upcoming toddler education app. The brand needed to bridge real-life use cases with authentic testimonials to introduce their platform in a compelling and credible way.",
-    approach: "NFT Las Vegas™ designed and directed a custom testimonial shoot featuring the founding family using the app in their day-to-day life. We crafted a talent agreement that allowed the family to represent themselves while promoting the brand authentically. The shoot included guided interviews, product interaction, and social content that aligned with their mission.",
-    results: [
-      "Full campaign content produced for launch",
-      "Talent signed under a scalable pricing structure",
-      "Positioned Amilo Halos as a brand with real users and heartfelt storytelling",
-      "Ongoing partnership with plans for additional media sessions"
-    ],
-    testimonial: {
-      text: "We're so grateful to be working with a team that really understands the mission behind Amilo Halos. The shoot felt genuine, and it helped bring our vision to life with care and precision.",
-      author: "Chaymarie Tyana Bailey",
-      position: "Co-Founder of Amilo Halos"
-    },
-    servicesUsed: ["Content Strategy", "Live-Action Production", "Talent Agreements", "Social Assets"]
-  },
-  {
-    id: 2,
     slug: "enthralla",
     title: "Enthralla, Inc.",
     client: "Enthralla, Inc.",
     industry: "EdTech",
-    blurb: "Toddler education app launch with full CRM onboarding, cross-channel setup, and founder enablement.",
+    blurb: "End-to-end venture architecture for a next-generation early learning platform.",
     logo: "/case-studies/enthralla-logo.jpg",
-    tags: ["EdTech", "HubSpot", "GTM", "Paid Social"],
-    challenge: "Enthralla, Inc. was preparing to launch an early-learning education app designed for toddlers, based on breakthrough cognitive insights like subitizing. The founder needed full-service CRM onboarding, digital strategy, social setup, and a launch campaign — all while supporting an older founder with limited tech background.",
-    approach: "NFT Las Vegas™ created a multi-phase onboarding plan for Enthralla, including custom HubSpot CRM setup, strategic ad campaign design, and platform training. We also managed social media identity creation across Meta, Google, TikTok, and more — guiding the founder through every step with care and precision.",
+    tags: ["App Development", "Web Development", "Go-To-Market"],
+    challenge: "Enthralla, Inc. was building Subitize, an early-learning application grounded in cognitive research and designed to strengthen toddlers' foundational number sense. The founder—a seasoned educator with deep pedagogical expertise—needed full operational support to bring the platform to market: CRM infrastructure, strategic marketing, social presence, advertising architecture, and ongoing guidance through a complex launch cycle. With limited technical background and a product rooted in nuanced developmental theory, the venture required a partner capable of bridging vision and execution at every level.",
+    approach: "NFT Las Vegas™ designed and executed a multi-phase launch strategy, beginning with a full HubSpot CRM buildout tailored to the founder's workflow. We established brand presence across Meta, Google, TikTok, and LinkedIn, while architecting a scalable ad funnel to support user acquisition and investor visibility.\n\nIn parallel, we provided hands-on guidance—translating complex marketing systems into clear actions the founder could own. Weekly working sessions ensured alignment, minimized friction, and delivered forward momentum on tight timelines.",
     results: [
       "Executed HubSpot CRM Kickoff & Strategic Kickstart Package",
-      "Established presence across all major ad & social platforms",
-      "Developed a working relationship with the founder and his son for ongoing support",
+      "Established presence across all major advertising & social platforms",
+      "Developed a working relationship with the founder and his family for ongoing support",
       "Designed an AI-backed marketing ecosystem for long-term growth"
     ],
     testimonial: {
-      text: "The team at NFT Las Vegas has been a godsend. I've worked with many firms in my career, but none have combined deep technical skills with this level of care and clarity. It's not just a service — it's a partnership.",
+      text: "The team at NFT Las Vegas has been a miracle. I've worked with many firms in my career, but none have combined deep technical skills with this level of care and clarity. It's not just a service — it's a true partnership.",
       author: "Muir Matteson",
       position: "Founder of Enthralla, Inc."
     },
-    servicesUsed: ["HubSpot Onboarding", "Paid Social Setup", "Creative Strategy", "Founder Enablement"]
-  }
-];
-
-
-const partners = [
-  {
-    id: "x-ads",
-    name: "X Ads",
-    logo: "/partners/x-ads.webp",
-    tagline: "Official advertising platform of X",
-    description: "NFT Las Vegas™ is honored to collaborate with X Ads, the official advertising platform of X (formerly Twitter), to deliver strategic, high-impact media solutions across a dynamic global audience.\n\nThrough this partnership, our ecosystem gains privileged access to advanced campaign tools, audience intelligence, and priority placement opportunities, enabling our clients to scale reach, drive measurable engagement, and cultivate real-time cultural relevance on one of the world's most influential social platforms.\n\nThis alliance reflects our ongoing commitment to aligning with cutting-edge partners that amplify the voice of innovation across industries."
-  },
-  {
-    id: "easenext",
-    name: "EaseNext",
-    logo: "/partners/easenext-logo.png",
-    tagline: "Technology innovation partner",
-    description: "EaseNext empowers businesses with cutting-edge technology solutions and digital transformation strategies. Their expertise in software development, cloud infrastructure, and AI-driven automation helps organizations scale efficiently and compete in modern markets with confidence and precision."
-  },
-  {
-    id: "hubspot",
-    name: "HubSpot",
-    logo: "/partners/hubspot-logo.png",
-    tagline: "CRM and marketing automation platform",
-    description: "HubSpot provides world-class CRM, marketing, sales, and service software that helps businesses grow better. Through strategic implementation and training, we help clients leverage HubSpot's powerful ecosystem to streamline operations, nurture leads, and drive sustainable revenue growth."
-  },
-  {
-    id: "salesforce",
-    name: "Salesforce",
-    logo: "/partners/salesforce-logo.svg",
-    tagline: "Leading enterprise CRM solution",
-    description: "Salesforce is the world's #1 CRM platform, enabling businesses to connect with customers in revolutionary ways. Our certified experts help clients harness Salesforce's robust capabilities to optimize sales processes, enhance customer experiences, and unlock data-driven insights at scale."
+    servicesUsed: ["HubSpot CRM Onboarding", "Paid Social Setup", "Creative Strategy", "Founder Enablement", "Platform Architecture", "Go-To-Market Planning"]
   }
 ];
 
 const CaseStudiesNFT = () => {
   const [selectedCase, setSelectedCase] = useState<typeof caseStudies[0] | null>(null);
-  const [selectedPartner, setSelectedPartner] = useState<typeof partners[0] | null>(null);
 
   return (
     <>
       <SEOHead
         title="Case Studies - Real Client Success Stories"
-        description="See how NFT Las Vegas has helped brands like Amilo Halos and Enthralla achieve their goals through strategic content, CRM onboarding, and digital transformation."
-        keywords="case studies, client success stories, Amilo Halos, Enthralla, EdTech, early learning, HubSpot onboarding"
+        description="See how NFT Las Vegas has helped brands like Enthralla achieve their goals through strategic content, CRM onboarding, and digital transformation."
+        keywords="case studies, client success stories, Enthralla, EdTech, early learning, HubSpot onboarding"
         structuredData={{
           "@context": "https://schema.org",
           "@type": "CollectionPage",
@@ -133,18 +76,18 @@ const CaseStudiesNFT = () => {
           </div>
 
           {/* Case Studies Grid */}
-          <div className="grid gap-6 md:grid-cols-2 mb-16">
+          <div className="max-w-2xl mx-auto mb-16">
             {caseStudies.map((caseStudy) => (
               <Card 
                 key={caseStudy.id} 
                 className="group cursor-pointer hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
               >
                 <CardHeader>
-                <div className="bg-white rounded-lg p-4 mb-4 inline-flex items-center justify-center w-[200px] h-[64px] shadow-sm">
+                  <div className="bg-white rounded-lg p-6 mb-4 inline-flex items-center justify-center w-full h-[120px] shadow-sm">
                     <img 
                       src={caseStudy.logo} 
                       alt={`${caseStudy.title} logo`}
-                      className="h-12 sm:h-14 w-auto object-contain"
+                      className="h-20 sm:h-24 w-auto object-contain"
                       loading="lazy"
                       decoding="async"
                       onError={(e) => { e.currentTarget.src = '/placeholder.svg'; }}
@@ -177,7 +120,7 @@ const CaseStudiesNFT = () => {
                         variant="outline"
                         onClick={(e) => {
                           e.stopPropagation();
-                          window.location.href = '/contact#book-demo';
+                          window.location.href = '/contact';
                         }}
                         className="flex-1"
                       >
@@ -188,59 +131,6 @@ const CaseStudiesNFT = () => {
                 </CardContent>
               </Card>
             ))}
-          </div>
-
-          {/* Partner Network Section */}
-          <div className="mb-16">
-            <div className="max-w-3xl mx-auto mb-12 text-center">
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 border border-primary/30 rounded-full text-sm font-medium text-primary mb-6">
-                <Users className="w-4 h-4" />
-                Partner Network
-              </div>
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                Strategic Partnerships
-              </h2>
-              <p className="text-lg text-muted-foreground">
-                We collaborate with industry-leading platforms to deliver exceptional results for our clients
-              </p>
-            </div>
-
-            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-              {partners.map((partner) => (
-                <Card 
-                  key={partner.id} 
-                  className="group cursor-pointer hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
-                  onClick={() => setSelectedPartner(partner)}
-                >
-                  <CardHeader>
-                    <div className="bg-background rounded-lg p-6 mb-4 inline-flex items-center justify-center w-full min-h-[100px] shadow-sm border border-border">
-                      <img 
-                        src={partner.logo} 
-                        alt={`${partner.name} logo`}
-                        className="h-16 sm:h-20 w-auto object-contain"
-                        loading="lazy"
-                        decoding="async"
-                      />
-                    </div>
-                    <CardTitle className="text-xl group-hover:text-primary transition-colors">
-                      {partner.name}
-                    </CardTitle>
-                    <p className="text-sm text-muted-foreground mt-2">
-                      {partner.tagline}
-                    </p>
-                  </CardHeader>
-                  <CardContent>
-                    <Button 
-                      className="w-full"
-                      variant="outline"
-                    >
-                      Learn More
-                      <ArrowRight className="w-4 h-4 ml-2" />
-                    </Button>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
           </div>
 
           {/* Mini CTA */}
@@ -266,11 +156,11 @@ const CaseStudiesNFT = () => {
                 {/* Sticky Header */}
                 <DialogHeader className="sticky top-0 bg-background pb-4 border-b z-10">
                   <div className="flex items-center gap-4">
-                    <div className="bg-white rounded-lg p-3 flex-shrink-0 w-[180px] h-[56px] flex items-center justify-center shadow-sm">
+                    <div className="bg-white rounded-lg p-3 flex-shrink-0 w-[180px] h-[80px] flex items-center justify-center shadow-sm">
                       <img 
                         src={selectedCase.logo} 
                         alt={`${selectedCase.title} logo`}
-                        className="h-10 sm:h-12 w-auto object-contain"
+                        className="h-14 sm:h-16 w-auto object-contain"
                         loading="lazy"
                         decoding="async"
                         onError={(e) => { e.currentTarget.src = '/placeholder.svg'; }}
@@ -294,15 +184,17 @@ const CaseStudiesNFT = () => {
                   </p>
                 </div>
 
-                {/* Our Approach */}
+                {/* Our Role */}
                 <div>
                   <h3 className="text-xl font-semibold mb-3 flex items-center gap-2">
                     <Lightbulb className="w-5 h-5 text-primary" />
-                    Our Approach
+                    Our Role
                   </h3>
-                  <p className="text-muted-foreground leading-relaxed">
-                    {selectedCase.approach}
-                  </p>
+                  {selectedCase.approach.split('\n\n').map((paragraph, idx) => (
+                    <p key={idx} className="text-muted-foreground leading-relaxed mb-3">
+                      {paragraph}
+                    </p>
+                  ))}
                 </div>
 
                 {/* Results */}
@@ -346,7 +238,7 @@ const CaseStudiesNFT = () => {
 
                 {/* Services Used */}
                 <div>
-                  <h4 className="font-semibold mb-3">Services Used</h4>
+                  <h4 className="font-semibold mb-3">Services & Capabilities</h4>
                   <div className="flex flex-wrap gap-2">
                     {selectedCase.servicesUsed.map(service => (
                       <Badge key={service} variant="outline" className="text-sm">{service}</Badge>
@@ -360,7 +252,7 @@ const CaseStudiesNFT = () => {
                   <p className="text-muted-foreground mb-4">Let's build something amazing together</p>
                   <Button 
                     size="lg"
-                    onClick={() => window.location.href = '/contact#book-demo'}
+                    onClick={() => window.location.href = '/contact'}
                   >
                     Book a Discovery Call
                   </Button>
@@ -368,54 +260,6 @@ const CaseStudiesNFT = () => {
 
                 <div className="pt-4 flex gap-4 justify-end">
                   <Button onClick={() => setSelectedCase(null)} variant="outline">
-                    Close
-                  </Button>
-                </div>
-              </div>
-            )}
-          </DialogContent>
-        </Dialog>
-
-        {/* Partner Detail Modal */}
-        <Dialog open={!!selectedPartner} onOpenChange={() => setSelectedPartner(null)}>
-          <DialogContent className="max-w-[720px] max-h-[90vh] overflow-y-auto">
-            {selectedPartner && (
-              <div className="space-y-6">
-                <DialogHeader>
-                  <div className="bg-background rounded-lg p-6 mb-4 inline-flex items-center justify-center w-full min-h-[120px] shadow-sm border border-border">
-                    <img 
-                      src={selectedPartner.logo} 
-                      alt={`${selectedPartner.name} logo`}
-                      className="h-20 sm:h-24 w-auto object-contain"
-                      loading="lazy"
-                      decoding="async"
-                    />
-                  </div>
-                  <DialogTitle className="text-2xl md:text-3xl">{selectedPartner.name}</DialogTitle>
-                  <p className="text-muted-foreground text-lg">{selectedPartner.tagline}</p>
-                </DialogHeader>
-
-                <div className="prose prose-sm max-w-none">
-                  {selectedPartner.description.split('\n\n').map((paragraph, index) => (
-                    <p key={index} className="text-muted-foreground leading-relaxed mb-4">
-                      {paragraph}
-                    </p>
-                  ))}
-                </div>
-
-                <div className="pt-6 border-t bg-muted/30 rounded-lg p-6 text-center">
-                  <h4 className="text-xl font-semibold mb-2">Interested in Our Partner Network?</h4>
-                  <p className="text-muted-foreground mb-4">Connect with us to learn how our partnerships can benefit your business</p>
-                  <Button 
-                    size="lg"
-                    onClick={() => window.location.href = '/contact'}
-                  >
-                    Get in Touch
-                  </Button>
-                </div>
-
-                <div className="pt-4 flex gap-4 justify-end">
-                  <Button onClick={() => setSelectedPartner(null)} variant="outline">
                     Close
                   </Button>
                 </div>

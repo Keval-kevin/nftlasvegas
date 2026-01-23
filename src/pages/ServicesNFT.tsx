@@ -17,12 +17,13 @@ const services = [
       "Risk assessment & mitigation"
     ],
     technologies: ["Jira", "Asana", "Notion", "Miro"],
-    color: "from-primary to-primary-glow"
+    color: "from-primary to-primary-glow",
+    route: "/onboarding"
   },
   {
     icon: DollarSign,
     title: "Funding Enablement",
-    description: "Angel, strategic, and co-development funding support to fuel your venture's growth and scale.",
+    description: "Business loans, strategic, and co-development funding support to fuel your venture's growth and scale.",
     features: [
       "Pitch deck development",
       "Financial modeling & projections",
@@ -30,7 +31,8 @@ const services = [
       "Due diligence preparation"
     ],
     technologies: ["Financial Models", "Cap Tables", "Data Rooms", "Pitch Decks"],
-    color: "from-secondary to-accent"
+    color: "from-secondary to-accent",
+    route: "/funding-enablement"
   },
   {
     icon: Code,
@@ -43,7 +45,8 @@ const services = [
       "Salesforce/HubSpot integrations"
     ],
     technologies: ["React", "Node.js", "Python", "Solidity", "AWS"],
-    color: "from-accent to-secondary"
+    color: "from-accent to-secondary",
+    route: "/tech-development"
   },
   {
     icon: Package,
@@ -56,7 +59,8 @@ const services = [
       "Quality control systems"
     ],
     technologies: ["CAD/CAM", "3D Printing", "PCB Design", "IoT Integration"],
-    color: "from-primary to-secondary"
+    color: "from-primary to-secondary",
+    route: "/product-manufacturing"
   },
   {
     icon: Rocket,
@@ -69,7 +73,8 @@ const services = [
       "Content & social media"
     ],
     technologies: ["HubSpot", "Google Analytics", "SEMrush", "Social Platforms"],
-    color: "from-secondary to-primary"
+    color: "from-secondary to-primary",
+    route: "/platform-launch"
   },
   {
     icon: Globe,
@@ -82,7 +87,8 @@ const services = [
       "Market expansion planning"
     ],
     technologies: ["CRM Systems", "ERP", "Logistics Platforms", "Analytics"],
-    color: "from-accent to-primary"
+    color: "from-accent to-primary",
+    route: "/distribution"
   }
 ];
 
@@ -155,7 +161,7 @@ const ServicesNFT = () => {
                     </div>
 
                     {/* CTA */}
-                    <Link to="/contact" className="block mt-6">
+                    <Link to={service.route} className="block mt-6">
                       <Button 
                         variant="outline" 
                         className="w-full border-primary/50 hover:border-primary hover:bg-primary/10 group"

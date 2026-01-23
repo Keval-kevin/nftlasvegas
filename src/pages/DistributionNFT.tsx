@@ -45,11 +45,6 @@ const featuredPartners = [
     description: "Preferred partner for paid media on X (formerly Twitter)"
   },
   {
-    name: "EaseNext",
-    logo: "/partners/easenext-logo.png",
-    description: "Technology innovation and digital transformation partner"
-  },
-  {
     name: "HubSpot",
     logo: "/partners/hubspot-logo.png",
     description: "CRM and marketing automation platform partner"
@@ -80,7 +75,7 @@ const DistributionNFT = () => {
               <div className="text-center mb-16">
                 <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 border border-primary/30 rounded-full text-sm font-medium text-primary mb-6">
                   <Globe className="w-4 h-4" />
-                  Distribution & Partnerships
+                  Market Distribution
                 </div>
                 
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6">
@@ -92,7 +87,7 @@ const DistributionNFT = () => {
                   to maximize your market penetration and accelerate revenue growth.
                 </p>
 
-                <Link to="/contact">
+                <Link to="/partnerships">
                   <Button 
                     size="lg"
                     className="bg-gradient-to-r from-primary to-secondary hover:shadow-glow text-lg px-10 py-6"
@@ -101,25 +96,6 @@ const DistributionNFT = () => {
                     <ArrowRight className="ml-2 w-5 h-5" />
                   </Button>
                 </Link>
-              </div>
-
-              {/* Stats */}
-              <div className="grid md:grid-cols-4 gap-6">
-                {[
-                  { value: "50+", label: "Distribution Partners" },
-                  { value: "75+", label: "Countries Reached" },
-                  { value: "$200M+", label: "Revenue Distributed" },
-                  { value: "98%", label: "Partner Satisfaction" }
-                ].map((stat, index) => (
-                  <div 
-                    key={stat.label}
-                    className="bg-card/50 backdrop-blur-sm border border-border rounded-xl p-6 text-center hover:border-primary/50 transition-all duration-300 hover:shadow-glow"
-                    style={{ animationDelay: `${index * 0.1}s` }}
-                  >
-                    <div className="text-4xl font-bold text-primary mb-2">{stat.value}</div>
-                    <div className="text-sm text-muted-foreground">{stat.label}</div>
-                  </div>
-                ))}
               </div>
             </div>
           </section>
@@ -225,14 +201,13 @@ const DistributionNFT = () => {
 
               {/* Featured Partners with Logos */}
               <div className="mb-12">
-                <h3 className="text-xl font-semibold text-center mb-8 text-muted-foreground">Featured Media Partners</h3>
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-4xl mx-auto">
+                <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
                   {featuredPartners.map((partner) => (
                     <div 
                       key={partner.name}
                       className="bg-card/50 backdrop-blur-sm border border-border rounded-xl p-6 hover:border-primary/50 transition-all duration-300 hover:shadow-glow"
                     >
-                      <div className="bg-background rounded-lg p-6 mb-4 flex items-center justify-center min-h-[100px] border border-border">
+                      <div className="bg-white rounded-lg p-6 mb-4 flex items-center justify-center min-h-[100px] border border-border">
                         <img 
                           src={partner.logo} 
                           alt={`${partner.name} logo`}
@@ -243,23 +218,6 @@ const DistributionNFT = () => {
                       </div>
                       <h4 className="font-semibold text-lg mb-2 text-center">{partner.name}</h4>
                       <p className="text-sm text-muted-foreground text-center">{partner.description}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Other Partners Grid */}
-              <div>
-                <h3 className="text-xl font-semibold text-center mb-8 text-muted-foreground">Additional Partners</h3>
-                <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4">
-                  {partners.map((partner) => (
-                    <div 
-                      key={partner}
-                      className="aspect-square bg-card/50 backdrop-blur-sm border border-border rounded-xl flex items-center justify-center hover:border-primary/50 transition-all duration-300 hover:shadow-glow group"
-                    >
-                      <span className="text-sm font-medium text-muted-foreground group-hover:text-foreground transition-colors">
-                        {partner}
-                      </span>
                     </div>
                   ))}
                 </div>
