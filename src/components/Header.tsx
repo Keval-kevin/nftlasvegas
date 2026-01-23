@@ -117,13 +117,20 @@ export const Header = () => {
 
         {/* Mobile Navigation */}
         <div className={`lg:hidden transition-all duration-300 ease-in-out ${isMenuOpen ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0 overflow-hidden'}`}>
-          <div className="pt-2 pb-4 space-y-1 bg-muted/95 rounded-b-lg mt-2">
+          <div className="pt-2 pb-4 space-y-1 bg-background/95 backdrop-blur-md rounded-b-lg mt-2 border-b border-border">
             {navItems.map(item => {
-            const isActive = location.pathname === item.href;
-            return <Link key={item.name} to={item.href} className={`block px-4 py-3 text-base font-medium transition-colors duration-200 ${isActive ? 'text-primary bg-primary/10' : 'text-muted-foreground hover:text-foreground hover:bg-muted'}`} onClick={() => setIsMenuOpen(false)}>
+              const isActive = location.pathname === item.href;
+              return (
+                <Link 
+                  key={item.name} 
+                  to={item.href} 
+                  className={`block px-4 py-3 text-base font-medium transition-colors duration-200 ${isActive ? 'text-primary bg-primary/10' : 'text-foreground hover:text-primary hover:bg-muted'}`} 
+                  onClick={() => setIsMenuOpen(false)}
+                >
                   {item.name}
-                </Link>;
-          })}
+                </Link>
+              );
+            })}
             <div className="px-4 pt-4">
               <Button asChild className="w-full bg-gradient-to-r from-primary to-secondary hover:shadow-glow text-white rounded-full font-medium">
                 <Link to="/contact" onClick={() => setIsMenuOpen(false)}>

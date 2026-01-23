@@ -167,6 +167,22 @@ const Contact = () => {
     question: "How do you handle security and compliance?",
     answer: "We follow industry best practices for data security and can accommodate HIPAA, SOC 2, and other compliance requirements."
   }];
+  // Load HubSpot meetings embed script
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.src = 'https://static.hsappstatic.net/MeetingsEmbed/ex/MeetingsEmbedCode.js';
+    script.async = true;
+    document.body.appendChild(script);
+    
+    return () => {
+      // Cleanup script on unmount
+      const existingScript = document.querySelector('script[src="https://static.hsappstatic.net/MeetingsEmbed/ex/MeetingsEmbedCode.js"]');
+      if (existingScript) {
+        existingScript.remove();
+      }
+    };
+  }, []);
+
   return <>
       <SEOHead title="Contact NFT Las Vegas | Let's Build What's Next" description="Get in touch with NFT Las Vegas for funding enablement, tech development, product manufacturing, platform launch, distribution, or AI voice systems." url="https://www.nftlasvegas.io/contact" />
       <Header />
@@ -178,9 +194,15 @@ const Contact = () => {
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 bg-gradient-to-r from-primary via-purple-600 to-pink-600 bg-clip-text text-transparent">
                 Let's Build What's Next
               </h1>
-              <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto mb-10">
+              <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto mb-8">
                 Tell us where you're headed—funding, technology, manufacturing, launch, distribution, or AI voice systems—and we'll make it real.
               </p>
+              <div className="flex items-center justify-center gap-2 mb-8">
+                <Phone className="h-5 w-5 text-primary" />
+                <a href="tel:+17252406130" className="text-lg font-medium text-primary hover:underline">
+                  +1(725)240-6130
+                </a>
+              </div>
               <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-stretch sm:items-center mb-8 max-w-2xl mx-auto px-4">
                 <Button size="lg" onClick={() => scrollToSection('booking-section')} className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white shadow-lg hover:shadow-xl transition-all duration-300">
                   Book Discovery Call
@@ -190,24 +212,6 @@ const Contact = () => {
                   Send Message
                 </Button>
               </div>
-              <p className="text-sm text-muted-foreground">
-                Las Vegas, NV • Global delivery • Equity-based partnerships available
-              </p>
-            </div>
-          </div>
-        </section>
-
-        {/* Quick Contact Cards */}
-        <section className="py-16 px-4 sm:px-6 lg:px-8">
-          <div className="max-w-7xl mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {quickContactCards.map((card, index) => <Card key={index} className="p-6 hover:shadow-lg transition-all duration-300 cursor-pointer group hover:scale-[1.02] bg-card/50 backdrop-blur" onClick={card.action} style={{
-              animationDelay: `${index * 80}ms`
-            }}>
-                  <card.icon className="h-10 w-10 text-primary mb-4 group-hover:scale-110 transition-transform" />
-                  <h3 className="text-xl font-semibold mb-2">{card.title}</h3>
-                  <p className="text-sm text-muted-foreground">{card.description}</p>
-                </Card>)}
             </div>
           </div>
         </section>
@@ -216,12 +220,16 @@ const Contact = () => {
         <section id="booking-section" className="py-16 px-4 sm:px-6 lg:px-8 bg-muted/30">
           <div className="max-w-7xl mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-              {/* Calendly Embed */}
+              {/* HubSpot Meetings Embed */}
               <Card className="p-8">
                 <h2 className="text-3xl font-bold mb-6">Book a Discovery Call</h2>
                 <p className="text-muted-foreground mb-6">Schedule a 30 minutes consultation with our team. We'll discuss your goals and how we can help.</p>
-                <div className="bg-gray-50 rounded-lg overflow-hidden min-h-[700px]">
-                  <iframe src="https://calendly.com/nftlasvegas" width="100%" height="700" frameBorder="0" onLoad={() => trackGA4Event('calendly_widget_view')}></iframe>
+                <div className="bg-gray-50 dark:bg-gray-900 rounded-lg overflow-hidden min-h-[700px]">
+                  <div 
+                    className="meetings-iframe-container" 
+                    data-src="https://portal.nftlasvegas.io/meetings/quincey-lee?embed=true"
+                    style={{ minHeight: '700px' }}
+                  />
                 </div>
               </Card>
 
@@ -420,8 +428,8 @@ const Contact = () => {
                       <Phone className="h-6 w-6 text-primary mt-1" />
                       <div>
                         <h3 className="font-semibold mb-1">Phone</h3>
-                        <a href="tel:+17252569852" className="text-primary hover:underline">
-                          +1 (725) 256-9852
+                        <a href="tel:+17252406130" className="text-primary hover:underline">
+                          +1(725)240-6130
                         </a>
                       </div>
                     </div>
@@ -446,7 +454,7 @@ const Contact = () => {
         </section>
 
         {/* FAQ Section */}
-        <section className="py-16 px-4 sm:px-6 lg:px-8 bg-muted/30">
+        <section id="faq" className="py-16 px-4 sm:px-6 lg:px-8 bg-muted/30">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">Frequently Asked Questions</h2>
             <Accordion type="single" collapsible className="space-y-4">

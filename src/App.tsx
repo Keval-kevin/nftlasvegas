@@ -15,6 +15,11 @@ import Multiverse from "./pages/Multiverse";
 import Nonprofit from "./pages/Nonprofit";
 import Takeover from "./pages/Takeover";
 import Bookstore from "./pages/Bookstore";
+import BookQuantumLeap from "./pages/BookQuantumLeap";
+import BookQuantumLove from "./pages/BookQuantumLove";
+import BookNobelPeace from "./pages/BookNobelPeace";
+import BookStarseedQueens from "./pages/BookStarseedQueens";
+import BookQuinceyObsession from "./pages/BookQuinceyObsession";
 import SolutionsNFT from "./pages/SolutionsNFT";
 import ServicesNFT from "./pages/ServicesNFT";
 import FundingEnablement from "./pages/FundingEnablement";
@@ -62,6 +67,11 @@ const App = () => (
             <Route path="/nonprofit" element={<Nonprofit />} />
             <Route path="/takeover" element={<Takeover />} />
             <Route path="/bookstore" element={<Bookstore />} />
+            <Route path="/bookstore/quantum-leap" element={<BookQuantumLeap />} />
+            <Route path="/bookstore/quantum-love" element={<BookQuantumLove />} />
+            <Route path="/bookstore/nobel-peace" element={<BookNobelPeace />} />
+            <Route path="/bookstore/starseed-queens" element={<BookStarseedQueens />} />
+            <Route path="/bookstore/quincey-obsession" element={<BookQuinceyObsession />} />
             <Route path="/solutions" element={<SolutionsNFT />} />
             <Route path="/services" element={<ServicesNFT />} />
             <Route path="/funding-enablement" element={<FundingEnablement />} />
