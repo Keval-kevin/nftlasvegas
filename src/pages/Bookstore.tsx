@@ -13,35 +13,35 @@ const Bookstore = () => {
       description: "A practical guide to transforming your business using quantum thinking",
       status: "Available",
       slug: "quantum-leap",
-      coverImage: "/books/quantum-leap-page.jpg"
+      coverImage: "/books/quantum-leap-cover.jpg"
     },
     {
       title: "Quantum Love in the Metaverse",
       description: "Exploring relationships, connection, and consciousness in digital realms",
       status: "Available",
       slug: "quantum-love",
-      coverImage: "/books/quantum-love-page.jpg"
+      coverImage: "/books/quantum-love-cover.jpg"
     },
     {
       title: "A Nobel Peace Prize for Dummies",
       description: "Rearchitecting global impact and recognition in the decentralized age of acceleration.",
       status: "Available",
       slug: "nobel-peace",
-      coverImage: "/books/nobel-peace-page.jpg"
+      coverImage: "/books/nobel-peace-cover.jpg"
     },
     {
       title: "Quantum Dating for Starseed Queens",
       description: "A cosmic guide to conscious connections in multidimensional spaces",
       status: "Available",
       slug: "starseed-queens",
-      coverImage: "/books/starseed-queens-page.jpg"
+      coverImage: "/books/starseed-queens-cover.jpg"
     },
     {
       title: "The Quincey Lee Obsession",
       description: "A story of love, entanglement and billionaire affairs.",
       status: "Available",
       slug: "quincey-obsession",
-      coverImage: "/books/quincey-obsession-page.jpg"
+      coverImage: "/books/quincey-obsession-cover.jpg"
     }
   ];
 
