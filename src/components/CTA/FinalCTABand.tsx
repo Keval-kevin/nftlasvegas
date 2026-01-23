@@ -49,24 +49,6 @@ export const FinalCTABand = () => {
             </Link>
           </div>
 
-          <div className="mt-12 flex flex-wrap justify-center gap-8 text-white/80">
-            <div className="text-center">
-              <div className="text-3xl font-bold">100+</div>
-              <div className="text-sm">Projects Launched</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold">$50M+</div>
-              <div className="text-sm">Funding Secured</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold">25+</div>
-              <div className="text-sm">Countries</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold">98%</div>
-              <div className="text-sm">Success Rate</div>
-            </div>
-          </div>
         </div>
       </div>
     </section>

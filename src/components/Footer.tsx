@@ -19,7 +19,7 @@ export const Footer = () => {
     {
       title: "Company",
       links: [
-        { name: "About", href: "/about" },
+        { name: "About", href: "/multiverse" },
         { name: "Multiverse", href: "/multiverse" },
         { name: "Non Profit", href: "/nonprofit" },
         { name: "Takeover", href: "/takeover" },

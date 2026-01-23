@@ -130,27 +130,6 @@ const Contact = () => {
       page_title: 'Contact'
     });
   }, []);
-  const quickContactCards = [{
-    icon: Briefcase,
-    title: "Sales",
-    description: "Funding, Tech, Manufacturing, Launch, Distribution",
-    action: () => scrollToSection('contact-form')
-  }, {
-    icon: Users,
-    title: "Partnerships",
-    description: "Agencies, vendors, channels",
-    action: () => scrollToSection('contact-form')
-  }, {
-    icon: Newspaper,
-    title: "Media/Press",
-    description: "Press inquiries and media relations",
-    action: () => scrollToSection('contact-form')
-  }, {
-    icon: HeadphonesIcon,
-    title: "Support",
-    description: "Technical and customer support",
-    action: () => scrollToSection('contact-form')
-  }];
   const faqItems = [{
     question: "What are your response times?",
     answer: "We typically respond within 1 business day. For urgent inquiries, please call us directly at +1 (725) 256-9852."
