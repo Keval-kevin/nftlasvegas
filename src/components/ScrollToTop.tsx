@@ -62,10 +62,10 @@ const ScrollToTop = () => {
         onClick={scrollToTop}
         size="icon"
         className={cn(
-          "fixed bottom-6 right-4 z-40 rounded-full shadow-lg transition-all duration-300",
-          "pb-safe-area-inset-bottom",
+          "fixed right-4 z-40 rounded-full shadow-lg transition-all duration-300",
           showButton ? "opacity-100 translate-y-0" : "opacity-0 translate-y-16 pointer-events-none"
         )}
+        style={{ bottom: 'calc(1.5rem + env(safe-area-inset-bottom, 0px))' }}
         aria-label="Scroll to top"
       >
         <ArrowUp className="h-5 w-5" />
