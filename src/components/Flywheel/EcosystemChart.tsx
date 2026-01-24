@@ -125,7 +125,7 @@ export const EcosystemChart = () => {
           </div>
 
           {/* Chart */}
-          <ResponsiveContainer width="100%" height={isMobile ? 220 : 320}>
+          <ResponsiveContainer width="100%" height={isMobile ? 300 : 400}>
             <ComposedChart 
               data={PHASES_DATA}
               margin={{ 
