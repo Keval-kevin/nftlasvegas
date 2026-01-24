@@ -1,113 +1,48 @@
 
 
-## Plan: Embed HubSpot Newsletter Form in Footer
+## Plan: Remove White Space and Display Full Size Logo
 
 ### Overview
-Replace the current non-functional newsletter input in the footer with an embedded HubSpot form widget that connects directly to your HubSpot CRM for subscriber management.
+Remove the white background container around the case study logo and display it at full size without any constraining wrapper.
 
 ---
 
-### What You'll Need from HubSpot
-Before implementation, you'll need to create a newsletter form in HubSpot and get the embed code:
-
-1. Go to **HubSpot → Marketing → Forms**
-2. Create a new form (or use existing) with an email field
-3. Click **Embed** and select **Embed code**
-4. Copy the Portal ID and Form ID from the embed script
-
----
-
-### Implementation Steps
-
-**Step 1: Create HubSpot Newsletter Form Component**
-
-Create a new reusable component `src/components/HubSpotNewsletterForm.tsx` that:
-- Loads the HubSpot forms script dynamically
-- Renders the form in a target container
-- Handles dark theme styling for the footer context
-
-**Step 2: Update Footer Component**
-
-Modify `src/components/Footer.tsx` (lines 70-83):
-- Remove the current `Input` and `Button` elements
-- Import and render the new `HubSpotNewsletterForm` component
-- Keep the "Stay Updated ♥️" heading
+### Current State
+The logo is wrapped in a white container with:
+- `bg-white` background
+- `p-3` padding
+- Fixed `h-[100px]` height
+- This creates the white space you see around the logo
 
 ---
 
-### Technical Details
+### Changes
 
-**New Component Structure:**
-```
-src/components/HubSpotNewsletterForm.tsx
-├── useEffect for script loading
-├── HubSpot form target div
-└── Dark-themed CSS overrides
-```
+**File: `src/pages/CaseStudiesNFT.tsx`**
 
-**Footer Changes:**
-```text
-Before:
-┌──────────────────────────────────┐
-│ Stay Updated ♥️                  │
-│ ┌────────────────────┐ ┌──────┐  │
-│ │ Enter your email   │ │  →   │  │
-│ └────────────────────┘ └──────┘  │
-└──────────────────────────────────┘
+**Lines 86-95** - Replace the white container with a simple centered logo display:
 
-After:
-┌──────────────────────────────────┐
-│ Stay Updated ♥️                  │
-│ ┌────────────────────────────┐   │
-│ │   HubSpot Embedded Form    │   │
-│ │   (email + submit button)  │   │
-│ └────────────────────────────┘   │
-└──────────────────────────────────┘
-```
+| Before | After |
+|--------|-------|
+| White box with `bg-white rounded-lg p-3 h-[100px]` | No wrapper, just logo with `mb-4` spacing |
+| Logo constrained to `h-16 sm:h-20 max-w-[85%]` | Full size logo with only `max-h-32 w-auto` for reasonable bounds |
 
-**HubSpot Script Integration:**
+**New markup:**
 ```tsx
-// Dynamically load HubSpot forms script
-useEffect(() => {
-  const script = document.createElement('script');
-  script.src = '//js.hsforms.net/forms/embed/v2.js';
-  script.async = true;
-  script.onload = () => {
-    window.hbspt.forms.create({
-      portalId: "YOUR_PORTAL_ID",
-      formId: "YOUR_FORM_ID",
-      target: "#hubspot-newsletter-form"
-    });
-  };
-  document.body.appendChild(script);
-}, []);
+<img 
+  src={caseStudy.logo} 
+  alt={`${caseStudy.title} logo`}
+  className="mb-4 w-auto max-h-32 object-contain"
+  loading="lazy"
+  decoding="async"
+  onError={(e) => { e.currentTarget.src = '/placeholder.svg'; }}
+/>
 ```
 
 ---
 
-### Styling Considerations
-
-The form will need custom CSS to match the dark footer:
-- Override HubSpot default white backgrounds
-- Style input fields to match existing `bg-gray-800` theme
-- Style submit button to match `bg-blue-600` brand color
-
----
-
-### Files to Create/Modify
-
-| File | Action |
-|------|--------|
-| `src/components/HubSpotNewsletterForm.tsx` | Create new component |
-| `src/components/Footer.tsx` | Replace lines 73-82 with embedded form |
-
----
-
-### Configuration Required
-
-You will need to provide:
-- **HubSpot Portal ID** (e.g., `12345678`)
-- **HubSpot Newsletter Form ID** (e.g., `abc123-def456-...`)
-
-I can add placeholder values that you can replace, or you can provide the IDs now.
+### Result
+- No white background around the logo
+- Logo displays at its natural size (up to a max height of 128px for reasonable scaling)
+- Clean look that fits with the dark card background
 
