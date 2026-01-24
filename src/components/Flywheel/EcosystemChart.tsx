@@ -63,12 +63,7 @@ export const EcosystemChart = () => {
   const [showMilestones, setShowMilestones] = useState(true);
   const [hoveredPhase, setHoveredPhase] = useState<string | null>(null);
   
-  // Hide milestones by default on mobile to reduce clutter
-  useEffect(() => {
-    if (isMobile) {
-      setShowMilestones(false);
-    }
-  }, [isMobile]);
+  // Milestones now show on all devices by default
 
   const CustomTooltip = ({ active, payload }: any) => {
     if (!active || !payload || !payload[0]) return null;
