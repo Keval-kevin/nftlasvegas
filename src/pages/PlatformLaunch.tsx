@@ -143,19 +143,6 @@ const PlatformLaunch = () => {
                 </Link>
               </div>
 
-              {/* Video Placeholder */}
-              <div className="relative max-w-5xl mx-auto">
-                <div className="aspect-video bg-gradient-to-br from-muted to-card border border-border rounded-2xl overflow-hidden shadow-2xl">
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="text-center">
-                      <div className="w-20 h-20 mx-auto mb-4 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center shadow-lg">
-                        <Rocket className="w-10 h-10 text-white" />
-                      </div>
-                      <p className="text-muted-foreground">Launch Strategy Overview</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
             </div>
           </section>
 
