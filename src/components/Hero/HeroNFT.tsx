@@ -38,18 +38,18 @@ export const HeroNFT = () => {
             animationDelay: '0.6s'
           }}>
               <Button asChild size="lg" className="group relative bg-gradient-to-r from-primary to-secondary hover:shadow-[0_0_40px_rgba(59,130,246,0.4)] shadow-xl hover:scale-105 transition-all duration-400 rounded-full">
-                <Link to="/onboarding">
+                <a href="https://portal.nftlasvegas.io/client" target="_blank" rel="noopener noreferrer">
                   <span className="relative z-10 flex items-center justify-center font-semibold whitespace-nowrap">
-                    Book Discovery Call
+                    Client Portal
                     <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-2 transition-transform" />
                   </span>
                   <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
-                </Link>
+                </a>
               </Button>
               
               <Button asChild size="lg" variant="outline" className="group border-2 border-primary/50 hover:border-primary bg-white/5 backdrop-blur-sm hover:bg-white/10 shadow-lg hover:scale-105 transition-all duration-400 rounded-full text-foreground relative overflow-hidden">
                 <Link to="/onboarding">
-                  <span className="whitespace-nowrap">Start Onboarding</span>
+                  <span className="whitespace-nowrap">Book a Discovery Call</span>
                   <div className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/10 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
                 </Link>
               </Button>

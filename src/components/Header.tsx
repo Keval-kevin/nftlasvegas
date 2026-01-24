@@ -70,6 +70,10 @@ export const Header = () => {
   }, {
     name: "AI Voice",
     href: "/ai-voice"
+  }, {
+    name: "Client Portal",
+    href: "https://portal.nftlasvegas.io/client",
+    external: true
   }];
   return <header className={`fixed top-0 w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-background border-b border-border shadow-lg' : 'bg-background'}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -89,6 +93,11 @@ export const Header = () => {
           <nav className="hidden lg:flex items-center space-x-1 xl:space-x-2">
             {navItems.map(item => {
             const isActive = location.pathname === item.href;
+            if (item.external) {
+              return <a key={item.name} href={item.href} target="_blank" rel="noopener noreferrer" className="px-2 xl:px-3 py-2 text-sm font-medium transition-colors duration-200 whitespace-nowrap text-muted-foreground hover:text-foreground">
+                {item.name}
+              </a>;
+            }
             return <Link key={item.name} to={item.href} className={`px-2 xl:px-3 py-2 text-sm font-medium transition-colors duration-200 whitespace-nowrap ${isActive ? 'text-primary border-b-2 border-primary' : 'text-muted-foreground hover:text-foreground'}`}>
                   {item.name}
                 </Link>;
@@ -117,6 +126,20 @@ export const Header = () => {
           <div className="pt-2 pb-4 space-y-1 bg-background/95 backdrop-blur-md rounded-b-lg mt-2 border-b border-border">
             {navItems.map(item => {
               const isActive = location.pathname === item.href;
+              if (item.external) {
+                return (
+                  <a 
+                    key={item.name} 
+                    href={item.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block px-4 py-3 text-base font-medium transition-colors duration-200 text-foreground hover:text-primary hover:bg-muted" 
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    {item.name}
+                  </a>
+                );
+              }
               return (
                 <Link 
                   key={item.name} 
