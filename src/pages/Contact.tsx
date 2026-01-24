@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import { z } from "zod";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
@@ -161,6 +162,20 @@ const Contact = () => {
       }
     };
   }, []);
+
+  // Handle hash scrolling for direct links (e.g., /contact#faq)
+  const location = useLocation();
+  useEffect(() => {
+    if (location.hash) {
+      const id = location.hash.replace('#', '');
+      setTimeout(() => {
+        const element = document.getElementById(id);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 150);
+    }
+  }, [location.hash]);
 
   return <>
       <SEOHead title="Contact NFT Las Vegas | Let's Build What's Next" description="Get in touch with NFT Las Vegas for funding enablement, tech development, product manufacturing, platform launch, distribution, or AI voice systems." url="https://www.nftlasvegas.io/contact" />
