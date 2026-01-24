@@ -89,20 +89,6 @@ const services = [
     technologies: ["CRM Systems", "ERP", "Logistics Platforms", "Analytics"],
     color: "from-accent to-primary",
     route: "/distribution"
-  },
-  {
-    icon: Phone,
-    title: "AI Voice Systems",
-    description: "Enterprise-grade AI voice assistants that handle calls, schedule appointments, and qualify leads 24/7.",
-    features: [
-      "24/7 automated call handling",
-      "Appointment scheduling & booking",
-      "Lead qualification & routing",
-      "Multi-language support"
-    ],
-    technologies: ["AI Voice", "NLP", "CRM Integration", "Call Analytics"],
-    color: "from-primary-glow to-accent",
-    route: "/ai-voice"
   }
 ];
 
@@ -188,8 +174,59 @@ const ServicesNFT = () => {
                 ))}
               </div>
 
+              {/* AI Voice Systems Section */}
+              <div className="mt-16 bg-gradient-to-br from-primary/20 via-secondary/10 to-accent/20 border border-primary/40 rounded-2xl p-8 md:p-12 relative overflow-hidden">
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,hsl(var(--primary)/0.15),transparent_50%)]" />
+                <div className="relative z-10">
+                  <div className="flex flex-col lg:flex-row items-center gap-8">
+                    {/* Icon */}
+                    <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-primary to-secondary flex items-center justify-center shadow-glow flex-shrink-0">
+                      <Phone className="w-10 h-10 text-white" />
+                    </div>
+                    
+                    {/* Content */}
+                    <div className="flex-1 text-center lg:text-left">
+                      <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-3">
+                        AI Voice <span className="text-gradient">Systems</span>
+                      </h2>
+                      <p className="text-lg text-muted-foreground mb-6 max-w-2xl">
+                        Enterprise-grade AI voice assistants that handle calls, schedule appointments, 
+                        and qualify leads 24/7. Never miss a customer opportunity again.
+                      </p>
+                      <div className="flex flex-wrap gap-3 justify-center lg:justify-start mb-6">
+                        <span className="px-4 py-2 bg-card/60 border border-border rounded-lg text-sm font-medium text-foreground">
+                          24/7 Call Handling
+                        </span>
+                        <span className="px-4 py-2 bg-card/60 border border-border rounded-lg text-sm font-medium text-foreground">
+                          Appointment Booking
+                        </span>
+                        <span className="px-4 py-2 bg-card/60 border border-border rounded-lg text-sm font-medium text-foreground">
+                          Lead Qualification
+                        </span>
+                        <span className="px-4 py-2 bg-card/60 border border-border rounded-lg text-sm font-medium text-foreground">
+                          Multi-Language
+                        </span>
+                      </div>
+                    </div>
+                    
+                    {/* CTA */}
+                    <div className="flex-shrink-0">
+                      <Link to="/ai-voice">
+                        <Button 
+                          size="lg"
+                          className="bg-gradient-to-r from-primary to-secondary hover:shadow-glow text-lg px-8 py-6"
+                        >
+                          Explore AI Voice
+                          <ArrowRight className="ml-2 w-5 h-5" />
+                        </Button>
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
               {/* AI & Blockchain Integration Callout */}
-              <div className="mt-16 bg-gradient-to-r from-primary/10 via-secondary/10 to-accent/10 border border-primary/30 rounded-2xl p-8 md:p-12">
+              <div className="mt-12 bg-gradient-to-r from-primary/10 via-secondary/10 to-accent/10 border border-primary/30 rounded-2xl p-8 md:p-12">
                 <div className="text-center">
                   <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
                     AI & Blockchain <span className="text-gradient">Integration</span>
