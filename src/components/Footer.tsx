@@ -23,6 +23,7 @@ export const Footer = () => {
         { name: "Takeover", href: "/takeover" },
         { name: "Bookstore", href: "/bookstore" },
         { name: "Case Studies", href: "/case-studies" },
+        { name: "Partnerships", href: "/partnerships" },
         { name: "AI Voice System", href: "/ai-voice" },
         { name: "Client Portal", href: "https://portal.nftlasvegas.io/client", external: true },
         { name: "Contact Us", href: "/contact" },
