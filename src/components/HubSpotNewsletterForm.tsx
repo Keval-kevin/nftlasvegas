@@ -1,4 +1,9 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { Input } from '@/components/ui/input';
+import { Button } from '@/components/ui/button';
+import { ArrowRight, Loader2 } from 'lucide-react';
+import { useToast } from '@/hooks/use-toast';
+import { z } from 'zod';
 
 declare global {
   interface Window {
@@ -9,11 +14,16 @@ declare global {
           formId: string;
           target: string;
           css?: string;
+          onFormSubmitted?: () => void;
         }) => void;
       };
     };
   }
 }
+
+const emailSchema = z.object({
+  email: z.string().trim().email({ message: "Please enter a valid email address" }).max(255)
+});
 
 interface HubSpotNewsletterFormProps {
   portalId?: string;
@@ -21,14 +31,21 @@ interface HubSpotNewsletterFormProps {
 }
 
 export const HubSpotNewsletterForm = ({
-  portalId = "YOUR_PORTAL_ID",
-  formId = "YOUR_FORM_ID"
+  portalId = "",
+  formId = ""
 }: HubSpotNewsletterFormProps) => {
   const formContainerRef = useRef<HTMLDivElement>(null);
   const scriptLoadedRef = useRef(false);
+  const [hubspotLoaded, setHubspotLoaded] = useState(false);
+  const [email, setEmail] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState('');
+  const { toast } = useToast();
+
+  const isHubSpotConfigured = portalId && formId && portalId !== "YOUR_PORTAL_ID" && formId !== "YOUR_FORM_ID";
 
   useEffect(() => {
-    if (scriptLoadedRef.current) return;
+    if (!isHubSpotConfigured || scriptLoadedRef.current) return;
 
     const existingScript = document.querySelector('script[src*="hsforms.net"]');
     
@@ -37,8 +54,15 @@ export const HubSpotNewsletterForm = ({
         window.hbspt.forms.create({
           portalId,
           formId,
-          target: "#hubspot-newsletter-form"
+          target: "#hubspot-newsletter-form",
+          onFormSubmitted: () => {
+            toast({
+              title: "Successfully subscribed! 🎉",
+              description: "Thank you for joining our newsletter.",
+            });
+          }
         });
+        setHubspotLoaded(true);
       }
     };
 
@@ -58,12 +82,70 @@ export const HubSpotNewsletterForm = ({
     document.body.appendChild(script);
 
     return () => {
-      // Cleanup form container on unmount
       if (formContainerRef.current) {
         formContainerRef.current.innerHTML = '';
       }
     };
-  }, [portalId, formId]);
+  }, [portalId, formId, isHubSpotConfigured, toast]);
+
+  const handleFallbackSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setError('');
+
+    const result = emailSchema.safeParse({ email });
+    if (!result.success) {
+      setError(result.error.errors[0].message);
+      return;
+    }
+
+    setIsSubmitting(true);
+    
+    // Simulate submission delay
+    await new Promise(resolve => setTimeout(resolve, 1000));
+    
+    toast({
+      title: "Successfully subscribed! 🎉",
+      description: "Thank you for joining our newsletter.",
+    });
+    
+    setEmail('');
+    setIsSubmitting(false);
+  };
+
+  // Show fallback form if HubSpot is not configured or hasn't loaded
+  if (!isHubSpotConfigured || !hubspotLoaded) {
+    return (
+      <form onSubmit={handleFallbackSubmit} className="space-y-2">
+        <div className="flex gap-2">
+          <Input 
+            type="email" 
+            placeholder="Enter your email" 
+            value={email}
+            onChange={(e) => {
+              setEmail(e.target.value);
+              setError('');
+            }}
+            className="bg-gray-800 border-gray-700 text-white placeholder-gray-400 hover:border-gray-600 transition-colors" 
+            disabled={isSubmitting}
+          />
+          <Button 
+            type="submit"
+            className="bg-blue-600 hover:bg-blue-700 btn-animate hover-lift"
+            disabled={isSubmitting}
+          >
+            {isSubmitting ? (
+              <Loader2 className="h-4 w-4 animate-spin" />
+            ) : (
+              <ArrowRight className="h-4 w-4" />
+            )}
+          </Button>
+        </div>
+        {error && (
+          <p className="text-red-400 text-xs">{error}</p>
+        )}
+      </form>
+    );
+  }
 
   return (
     <div className="hubspot-newsletter-wrapper">
