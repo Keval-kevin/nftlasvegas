@@ -13,7 +13,7 @@ const Bookstore = () => {
       description: "A practical guide to transforming your business using quantum thinking",
       status: "Available",
       slug: "quantum-leap",
-      coverImage: "/books/quantum-leap-cover.jpg"
+      coverImage: "/books/quantum-leap-cover-new.jpg"
     },
     {
       title: "Quantum Love in the Metaverse",
