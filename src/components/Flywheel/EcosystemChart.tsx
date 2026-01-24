@@ -60,7 +60,6 @@ export const EcosystemChart = () => {
   const navigate = useNavigate();
   const isMobile = useIsMobile();
   const [showAreaFill, setShowAreaFill] = useState(true);
-  const [showMilestones, setShowMilestones] = useState(true);
   const [hoveredPhase, setHoveredPhase] = useState<string | null>(null);
   
   // Milestones now show on all devices by default
@@ -79,14 +78,9 @@ export const EcosystemChart = () => {
           <span className="text-xs text-muted-foreground">Growth potential:</span>
           <span className="text-xs font-semibold text-secondary">{getGrowthLevel(phase.index)}</span>
         </div>
-        {showMilestones && (
-          <div className="text-xs text-violet-300 mb-3 italic">
-            Milestone: {phase.milestone}
-          </div>
-        )}
-        <Link to={phase.route} className="text-xs text-secondary hover:text-secondary/80 transition-colors">
-          Learn more →
-        </Link>
+        <p className="text-xs text-secondary mt-2">
+          Click dot to learn more →
+        </p>
       </div>
     );
   };
@@ -115,7 +109,7 @@ export const EcosystemChart = () => {
         </div>
 
         {/* Chart Card */}
-        <div className="p-4 sm:p-6 md:p-8 rounded-2xl bg-slate-900/70 border border-white/10 shadow-xl overflow-hidden">
+        <div className="p-4 sm:p-6 md:p-8 rounded-2xl bg-slate-900/70 border border-white/10 shadow-xl overflow-visible">
           {/* Controls */}
           <div className="flex flex-wrap justify-center sm:justify-end items-center gap-2 sm:gap-3 mb-4 sm:mb-6">
             <button
@@ -128,25 +122,15 @@ export const EcosystemChart = () => {
             >
               Area fill
             </button>
-            <button
-              onClick={() => setShowMilestones(!showMilestones)}
-              className={`px-3 py-1.5 rounded-full text-xs font-medium transition-all duration-200 touch-friendly ${
-                showMilestones
-                  ? 'bg-white/10 text-white border border-white/20'
-                  : 'bg-transparent text-muted-foreground border border-white/5'
-              } hover:bg-white/15`}
-            >
-              Milestones
-            </button>
           </div>
 
           {/* Chart */}
-          <ResponsiveContainer width="100%" height={isMobile ? 280 : 400}>
+          <ResponsiveContainer width="100%" height={isMobile ? 220 : 320}>
             <ComposedChart 
               data={PHASES_DATA}
               margin={{ 
-                top: isMobile ? 10 : 20, 
-                right: isMobile ? 10 : 30, 
+                top: isMobile ? 25 : 35, 
+                right: isMobile ? 20 : 40, 
                 left: isMobile ? 0 : 20, 
                 bottom: isMobile ? 50 : 60 
               }}
@@ -237,28 +221,6 @@ export const EcosystemChart = () => {
                 onMouseLeave={() => setHoveredPhase(null)}
               />
 
-              {showMilestones && PHASES_DATA.map((phase, idx) => {
-                // Shorten milestone text on mobile
-                const milestoneText = isMobile 
-                  ? phase.milestone.split(' - ')[0] // Take first part only on mobile
-                  : phase.milestone;
-                
-                return (
-                  <ReferenceDot
-                    key={phase.phase}
-                    x={phase.phase}
-                    y={phase.index}
-                    r={0}
-                    label={{
-                      value: milestoneText,
-                      position: 'top',
-                      fill: '#a78bfa',
-                      fontSize: isMobile ? 8 : 10,
-                      offset: isMobile ? 10 : 15
-                    }}
-                  />
-                );
-              })}
             </ComposedChart>
           </ResponsiveContainer>
 
