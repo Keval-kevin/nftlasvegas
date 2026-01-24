@@ -1,112 +1,65 @@
 
+## Plan: Improve Desktop Layout for "Read More About the Multiverse" Button
 
-## Plan: Add AI Voice Request Form with HubSpot CRM Integration
+### Current Issue
+The "Read More About the Multiverse" collapsible button appears small and left-aligned on desktop, with a large empty space next to it when the dropdown is closed. While it looks good on mobile (where it fills the width), on desktop it leaves visual gaps.
 
-### Overview
-Create a dedicated form section on the `/ai-voice` page titled "Request a Call from Our AI Voice Assistant" that captures leads directly into HubSpot CRM. The form will follow the established patterns used in `HubSpotNewsletterForm.tsx` and `StarterPackDownload.tsx`.
+### Solution
+Make the button wider and centered on desktop while maintaining the mobile-friendly behavior:
 
----
-
-### Component Architecture
-
-**New Component:** `src/components/AIVoiceRequestForm.tsx`
-
-This reusable form component will:
-- Accept HubSpot portal ID and form ID as props
-- Load the HubSpot forms embed script dynamically
-- Render an embedded HubSpot form when configured
-- Fall back to a custom React form with Zod validation when HubSpot IDs are not set
-- Submit to HubSpot Forms API as a backup
-- Include dark theme CSS overrides matching the site design
-- Display success toast on submission
-
-**Form Fields:**
-| Field | Type | Required |
-|-------|------|----------|
-| First Name | text | Yes |
-| Last Name | text | Yes |
-| Email | email | Yes |
-| Phone | tel | Yes |
-| Company | text | No |
-| Preferred Plan | dropdown | No |
-| Message | textarea | No |
+1. **Center the button wrapper** - Add `flex justify-center` to center the trigger on desktop
+2. **Set responsive width** - Use `w-full md:w-2/3 lg:w-1/2` to make the button take up more space proportionally on larger screens while staying centered
+3. **Increase padding** - Add larger padding (`py-8`) to make the button more prominent
 
 ---
 
-### Page Integration
+### Changes
 
-**File:** `src/pages/AIVoice.tsx`
+**File: `src/pages/Multiverse.tsx`**
 
-Add a new section between the FAQ and Final CTA sections:
+| Location | Change |
+|----------|--------|
+| Lines 64-69 | Update the `CollapsibleTrigger` wrapper and button styling |
 
-```text
-+----------------------------------------------+
-|   Request a Call from Our AI Voice Assistant |
-|   ------------------------------------------ |
-|   "Experience our AI voice technology        |
-|    firsthand. Submit your details and our    |
-|    AI assistant will call you back."         |
-|                                              |
-|   +--------------------------------------+   |
-|   |  [HubSpot Embedded Form]             |   |
-|   |  - First Name, Last Name             |   |
-|   |  - Email, Phone                      |   |
-|   |  - Company (optional)                |   |
-|   |  - Preferred Plan dropdown           |   |
-|   |  - Message (optional)                |   |
-|   |  - [Request AI Call] button          |   |
-|   +--------------------------------------+   |
-+----------------------------------------------+
+**Before:**
+```tsx
+<CollapsibleTrigger asChild>
+  <Button variant="outline" className="w-full py-6 text-lg rounded-xl mb-6">
+    <span>Read More About the Multiverse</span>
+    <ChevronDown className={`ml-2 h-5 w-5 transition-transform ${isExpanded ? 'rotate-180' : ''}`} />
+  </Button>
+</CollapsibleTrigger>
+```
+
+**After:**
+```tsx
+<div className="flex justify-center mb-6">
+  <CollapsibleTrigger asChild>
+    <Button variant="outline" className="w-full md:w-2/3 lg:max-w-xl py-8 text-lg md:text-xl rounded-xl border-2 hover:border-primary/50 transition-all">
+      <span>Read More About the Multiverse</span>
+      <ChevronDown className={`ml-3 h-6 w-6 transition-transform ${isExpanded ? 'rotate-180' : ''}`} />
+    </Button>
+  </CollapsibleTrigger>
+</div>
 ```
 
 ---
 
-### Technical Implementation
+### Key Improvements
 
-#### Step 1: Create AIVoiceRequestForm Component
-**File:** `src/components/AIVoiceRequestForm.tsx`
-
-- Import HubSpot script loading pattern from `HubSpotNewsletterForm.tsx`
-- Define Zod schema for validation
-- Implement fallback form with styled inputs
-- Include Phone icon and AI-themed styling
-- Add CSS overrides for HubSpot embed to match dark theme
-
-#### Step 2: Update AIVoice Page
-**File:** `src/pages/AIVoice.tsx`
-
-- Import the new `AIVoiceRequestForm` component
-- Add new section with gradient background (matching existing sections)
-- Position between FAQ section and Final CTA section (around line 274)
-- Include heading, description text, and form component
+| Aspect | Before | After |
+|--------|--------|-------|
+| Desktop Alignment | Left-aligned | Centered |
+| Desktop Width | Full container width | 2/3 width with max-w-xl cap |
+| Vertical Padding | py-6 | py-8 (taller, more prominent) |
+| Text Size | text-lg | text-lg on mobile, text-xl on desktop |
+| Border | Default | border-2 with hover glow effect |
+| Icon | h-5 w-5 | h-6 w-6 (slightly larger) |
 
 ---
 
-### Code Changes Summary
-
-| File | Action | Lines |
-|------|--------|-------|
-| `src/components/AIVoiceRequestForm.tsx` | **Create** | ~180 lines |
-| `src/pages/AIVoice.tsx` | **Modify** | Insert ~25 lines after line 273 |
-
----
-
-### Visual Design
-
-The form section will feature:
-- Phone icon badge at the top
-- Gradient background (`bg-muted/30`) consistent with other sections
-- Card container with border for the form
-- Primary-colored submit button with hover effects
-- Responsive grid layout for form fields
-- Success state with confirmation message
-
----
-
-### HubSpot Integration Notes
-
-1. The form will work with placeholder IDs initially (showing the fallback form)
-2. When actual HubSpot Portal ID and Form ID are configured, it switches to embedded form
-3. Form submissions are automatically synced to HubSpot CRM contacts
-4. GA4 event tracking will be added for form submissions
-
+### Result
+- Button will be centered and more prominent on desktop screens
+- Proportionally sized to fill the visual space better
+- Enhanced hover effect to make it more interactive
+- Maintains full-width behavior on mobile for easy tapping
