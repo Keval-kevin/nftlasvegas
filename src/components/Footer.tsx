@@ -26,6 +26,7 @@ export const Footer = () => {
         { name: "Bookstore", href: "/bookstore" },
         { name: "Case Studies", href: "/case-studies" },
         { name: "AI Voice System", href: "/ai-voice" },
+        { name: "Client Portal", href: "https://portal.nftlasvegas.io/client", external: true },
         { name: "Contact Us", href: "/contact" },
         { name: "FAQ", href: "/contact#faq" },
       ]
@@ -94,13 +95,25 @@ export const Footer = () => {
               <ul className="space-y-2 lg:space-y-3">
                 {section.links.map((link, linkIndex) => (
                   <li key={link.name}>
-                    <Link 
-                      to={link.href} 
-                      className="text-gray-300 hover:text-white transition-all duration-200 hover:translate-x-1 inline-block" 
-                      style={{ transitionDelay: `${linkIndex * 0.05}s` }}
-                    >
-                      {link.name}
-                    </Link>
+                    {link.external ? (
+                      <a 
+                        href={link.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-gray-300 hover:text-white transition-all duration-200 hover:translate-x-1 inline-block" 
+                        style={{ transitionDelay: `${linkIndex * 0.05}s` }}
+                      >
+                        {link.name}
+                      </a>
+                    ) : (
+                      <Link 
+                        to={link.href} 
+                        className="text-gray-300 hover:text-white transition-all duration-200 hover:translate-x-1 inline-block" 
+                        style={{ transitionDelay: `${linkIndex * 0.05}s` }}
+                      >
+                        {link.name}
+                      </Link>
+                    )}
                   </li>
                 ))}
               </ul>
