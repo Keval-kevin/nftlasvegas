@@ -1,52 +1,112 @@
 
 
-## Plan: Remove or Replace Platform Launch Placeholder
+## Plan: Add AI Voice Request Form with HubSpot CRM Integration
 
-### Current Issue
-The "Launch Strategy Overview" section (lines 146-158) is an empty video placeholder that provides no value. It's just a large dark box with a rocket icon, taking up space without conveying any meaningful information.
-
-### Recommended Solution
-
-**Remove the empty placeholder entirely** and let the hero section flow naturally from the CTA button to the Launch Services section.
+### Overview
+Create a dedicated form section on the `/ai-voice` page titled "Request a Call from Our AI Voice Assistant" that captures leads directly into HubSpot CRM. The form will follow the established patterns used in `HubSpotNewsletterForm.tsx` and `StarterPackDownload.tsx`.
 
 ---
 
-### Changes
+### Component Architecture
 
-**File: `src/pages/PlatformLaunch.tsx`**
+**New Component:** `src/components/AIVoiceRequestForm.tsx`
 
-| Location | Action |
-|----------|--------|
-| Lines 146-158 | **Delete** the entire "Video Placeholder" div block |
+This reusable form component will:
+- Accept HubSpot portal ID and form ID as props
+- Load the HubSpot forms embed script dynamically
+- Render an embedded HubSpot form when configured
+- Fall back to a custom React form with Zod validation when HubSpot IDs are not set
+- Submit to HubSpot Forms API as a backup
+- Include dark theme CSS overrides matching the site design
+- Display success toast on submission
 
-**Before (remove this):**
-```tsx
-{/* Video Placeholder */}
-<div className="relative max-w-5xl mx-auto">
-  <div className="aspect-video bg-gradient-to-br from-muted to-card border border-border rounded-2xl overflow-hidden shadow-2xl">
-    <div className="absolute inset-0 flex items-center justify-center">
-      <div className="text-center">
-        <div className="w-20 h-20 mx-auto mb-4 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center shadow-lg">
-          <Rocket className="w-10 h-10 text-white" />
-        </div>
-        <p className="text-muted-foreground">Launch Strategy Overview</p>
-      </div>
-    </div>
-  </div>
-</div>
+**Form Fields:**
+| Field | Type | Required |
+|-------|------|----------|
+| First Name | text | Yes |
+| Last Name | text | Yes |
+| Email | email | Yes |
+| Phone | tel | Yes |
+| Company | text | No |
+| Preferred Plan | dropdown | No |
+| Message | textarea | No |
+
+---
+
+### Page Integration
+
+**File:** `src/pages/AIVoice.tsx`
+
+Add a new section between the FAQ and Final CTA sections:
+
+```text
++----------------------------------------------+
+|   Request a Call from Our AI Voice Assistant |
+|   ------------------------------------------ |
+|   "Experience our AI voice technology        |
+|    firsthand. Submit your details and our    |
+|    AI assistant will call you back."         |
+|                                              |
+|   +--------------------------------------+   |
+|   |  [HubSpot Embedded Form]             |   |
+|   |  - First Name, Last Name             |   |
+|   |  - Email, Phone                      |   |
+|   |  - Company (optional)                |   |
+|   |  - Preferred Plan dropdown           |   |
+|   |  - Message (optional)                |   |
+|   |  - [Request AI Call] button          |   |
+|   +--------------------------------------+   |
++----------------------------------------------+
 ```
 
 ---
 
-### Alternative Option
+### Technical Implementation
 
-If you'd prefer to have a visual element instead of removing it completely, I can replace the placeholder with a **Launch Process Flow Diagram** showing the 4 phases (Pre-Launch, Launch Week, Post-Launch, Scale) as a horizontal visual timeline with icons and connecting arrows - similar to how TechDevelopmentNFT displays its technology layers.
+#### Step 1: Create AIVoiceRequestForm Component
+**File:** `src/components/AIVoiceRequestForm.tsx`
+
+- Import HubSpot script loading pattern from `HubSpotNewsletterForm.tsx`
+- Define Zod schema for validation
+- Implement fallback form with styled inputs
+- Include Phone icon and AI-themed styling
+- Add CSS overrides for HubSpot embed to match dark theme
+
+#### Step 2: Update AIVoice Page
+**File:** `src/pages/AIVoice.tsx`
+
+- Import the new `AIVoiceRequestForm` component
+- Add new section with gradient background (matching existing sections)
+- Position between FAQ section and Final CTA section (around line 274)
+- Include heading, description text, and form component
 
 ---
 
-### Result
-- Cleaner hero section without empty placeholder
-- Faster page load (less DOM elements)
-- Better visual flow from CTA to services section
-- Consistent with FundingEnablement page pattern
+### Code Changes Summary
+
+| File | Action | Lines |
+|------|--------|-------|
+| `src/components/AIVoiceRequestForm.tsx` | **Create** | ~180 lines |
+| `src/pages/AIVoice.tsx` | **Modify** | Insert ~25 lines after line 273 |
+
+---
+
+### Visual Design
+
+The form section will feature:
+- Phone icon badge at the top
+- Gradient background (`bg-muted/30`) consistent with other sections
+- Card container with border for the form
+- Primary-colored submit button with hover effects
+- Responsive grid layout for form fields
+- Success state with confirmation message
+
+---
+
+### HubSpot Integration Notes
+
+1. The form will work with placeholder IDs initially (showing the fallback form)
+2. When actual HubSpot Portal ID and Form ID are configured, it switches to embedded form
+3. Form submissions are automatically synced to HubSpot CRM contacts
+4. GA4 event tracking will be added for form submissions
 
