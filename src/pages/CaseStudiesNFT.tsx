@@ -17,7 +17,7 @@ const caseStudies = [
     client: "Enthralla, Inc.",
     industry: "EdTech",
     blurb: "End-to-end venture architecture for a next-generation early learning platform.",
-    logo: "/case-studies/enthralla-logo.jpg",
+    logo: "/case-studies/enthralla-logo-dark.png",
     tags: ["App Development", "Web Development", "Go-To-Market"],
     challenge: "Enthralla, Inc. was building Subitize, an early-learning application grounded in cognitive research and designed to strengthen toddlers' foundational number sense. The founder—a seasoned educator with deep pedagogical expertise—needed full operational support to bring the platform to market: CRM infrastructure, strategic marketing, social presence, advertising architecture, and ongoing guidance through a complex launch cycle. With limited technical background and a product rooted in nuanced developmental theory, the venture required a partner capable of bridging vision and execution at every level.",
     approach: "NFT Las Vegas™ designed and executed a multi-phase launch strategy, beginning with a full HubSpot CRM buildout tailored to the founder's workflow. We established brand presence across Meta, Google, TikTok, and LinkedIn, while architecting a scalable ad funnel to support user acquisition and investor visibility.\n\nIn parallel, we provided hands-on guidance—translating complex marketing systems into clear actions the founder could own. Weekly working sessions ensured alignment, minimized friction, and delivered forward momentum on tight timelines.",
