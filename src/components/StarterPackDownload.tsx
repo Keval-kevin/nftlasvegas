@@ -194,7 +194,7 @@ export const StarterPackDownload = () => {
       <a
         id="dl-pack"
         href="/downloads/nftlv-starter-pack-v1.0.zip"
-        download="NFT-Las-Vegas-Onboarding-Package.zip"
+        download="NFT Las Vegas™ Onboarding Package.zip"
         rel="noopener"
         className="hidden"
         aria-hidden="true"
