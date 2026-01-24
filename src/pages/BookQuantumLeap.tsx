@@ -18,7 +18,7 @@ const BookQuantumLeap = () => {
         "Web3, AI, and emerging-tech innovators",
         "Visionaries designing long-term ecosystems"
       ]}
-      coverImage="/books/quantum-leap-cover.jpg"
+      coverImage="/books/quantum-leap-cover-new.jpg"
       checkoutUrl="https://portal.nftlasvegas.io/hs/payments/CwKWqkq7yX?referrer=PAYMENT_LINK"
       metaDescription="A practical guide to transforming your business using quantum thinking. Learn scalable frameworks, AI automation, and community-first strategies."
     />
