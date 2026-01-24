@@ -150,9 +150,29 @@ const CaseStudiesNFT = () => {
             <h3 className="text-2xl font-semibold mb-2">
               Our Partner Network
             </h3>
-            <p className="text-lg text-muted-foreground mb-6">
-              Learn more about our Top-of-the-Line Partnerships with industry leaders like X Ads, HubSpot, and Salesforce.
+            <p className="text-lg text-muted-foreground mb-4">
+              Learn more about our Top-of-the-Line Partnerships
             </p>
+            
+            {/* Partner Logo Thumbnails */}
+            <div className="flex items-center justify-center gap-6 mb-6">
+              <img 
+                src="/partners/x-ads.webp" 
+                alt="X Ads" 
+                className="h-8 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity"
+              />
+              <img 
+                src="/partners/hubspot-logo.png" 
+                alt="HubSpot" 
+                className="h-8 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity"
+              />
+              <img 
+                src="/partners/salesforce-logo.svg" 
+                alt="Salesforce" 
+                className="h-8 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity"
+              />
+            </div>
+            
             <Link to="/partnerships">
               <Button variant="outline" size="lg">
                 Explore Our Partners
