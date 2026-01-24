@@ -1,65 +1,81 @@
 
-## Plan: Improve Desktop Layout for "Read More About the Multiverse" Button
+
+## Plan: Fix Scroll-to-Top Button Cut-off on Mobile
 
 ### Current Issue
-The "Read More About the Multiverse" collapsible button appears small and left-aligned on desktop, with a large empty space next to it when the dropdown is closed. While it looks good on mobile (where it fills the width), on desktop it leaves visual gaps.
+The "Scroll to Top" button is being cut off on mobile devices. The problem is twofold:
+
+1. **Incorrect Tailwind class**: The component uses `pb-safe-area-inset-bottom` but the Tailwind config defines the spacing as `safe-bottom` (so the correct class would be `pb-safe-bottom`)
+2. **Wrong approach**: Using `pb-` (padding-bottom) on a fixed-position button doesn't push the button up - it just adds internal padding. We need to adjust the **positioning** itself, not the padding.
 
 ### Solution
-Make the button wider and centered on desktop while maintaining the mobile-friendly behavior:
-
-1. **Center the button wrapper** - Add `flex justify-center` to center the trigger on desktop
-2. **Set responsive width** - Use `w-full md:w-2/3 lg:w-1/2` to make the button take up more space proportionally on larger screens while staying centered
-3. **Increase padding** - Add larger padding (`py-8`) to make the button more prominent
+Change the button's `bottom` positioning to use CSS `calc()` to add the safe area inset on top of the base 24px (bottom-6) offset. This ensures the button is always visible above the home indicator on iPhones and other devices with bottom safe areas.
 
 ---
 
 ### Changes
 
-**File: `src/pages/Multiverse.tsx`**
+**File: `src/components/ScrollToTop.tsx`**
 
 | Location | Change |
 |----------|--------|
-| Lines 64-69 | Update the `CollapsibleTrigger` wrapper and button styling |
+| Lines 61-72 | Update button positioning to use inline style with safe area calculation |
 
 **Before:**
 ```tsx
-<CollapsibleTrigger asChild>
-  <Button variant="outline" className="w-full py-6 text-lg rounded-xl mb-6">
-    <span>Read More About the Multiverse</span>
-    <ChevronDown className={`ml-2 h-5 w-5 transition-transform ${isExpanded ? 'rotate-180' : ''}`} />
-  </Button>
-</CollapsibleTrigger>
+<Button
+  onClick={scrollToTop}
+  size="icon"
+  className={cn(
+    "fixed bottom-6 right-4 z-40 rounded-full shadow-lg transition-all duration-300",
+    "pb-safe-area-inset-bottom",
+    showButton ? "opacity-100 translate-y-0" : "opacity-0 translate-y-16 pointer-events-none"
+  )}
+  aria-label="Scroll to top"
+>
+  <ArrowUp className="h-5 w-5" />
+</Button>
 ```
 
 **After:**
 ```tsx
-<div className="flex justify-center mb-6">
-  <CollapsibleTrigger asChild>
-    <Button variant="outline" className="w-full md:w-2/3 lg:max-w-xl py-8 text-lg md:text-xl rounded-xl border-2 hover:border-primary/50 transition-all">
-      <span>Read More About the Multiverse</span>
-      <ChevronDown className={`ml-3 h-6 w-6 transition-transform ${isExpanded ? 'rotate-180' : ''}`} />
-    </Button>
-  </CollapsibleTrigger>
-</div>
+<Button
+  onClick={scrollToTop}
+  size="icon"
+  className={cn(
+    "fixed right-4 z-40 rounded-full shadow-lg transition-all duration-300",
+    showButton ? "opacity-100 translate-y-0" : "opacity-0 translate-y-16 pointer-events-none"
+  )}
+  style={{ bottom: 'calc(1.5rem + env(safe-area-inset-bottom, 0px))' }}
+  aria-label="Scroll to top"
+>
+  <ArrowUp className="h-5 w-5" />
+</Button>
 ```
 
 ---
 
-### Key Improvements
+### Technical Details
 
 | Aspect | Before | After |
 |--------|--------|-------|
-| Desktop Alignment | Left-aligned | Centered |
-| Desktop Width | Full container width | 2/3 width with max-w-xl cap |
-| Vertical Padding | py-6 | py-8 (taller, more prominent) |
-| Text Size | text-lg | text-lg on mobile, text-xl on desktop |
-| Border | Default | border-2 with hover glow effect |
-| Icon | h-5 w-5 | h-6 w-6 (slightly larger) |
+| Bottom position | Fixed `bottom-6` (24px) | Dynamic: `calc(1.5rem + safe-area)` |
+| Safe area handling | Broken `pb-safe-area-inset-bottom` class | Proper CSS `env()` function with fallback |
+| Device support | Cut off on notched devices | Respects all device safe areas |
+
+---
+
+### How It Works
+
+- `env(safe-area-inset-bottom, 0px)` returns the device's bottom safe area (e.g., ~34px on iPhone X+) or 0px if not supported
+- `calc(1.5rem + ...)` adds the base 24px offset plus the safe area
+- This pushes the button up above the home indicator bar on modern phones
 
 ---
 
 ### Result
-- Button will be centered and more prominent on desktop screens
-- Proportionally sized to fill the visual space better
-- Enhanced hover effect to make it more interactive
-- Maintains full-width behavior on mobile for easy tapping
+- Button will be fully visible on all mobile devices
+- Properly accounts for iPhone notch/home indicator area
+- Falls back gracefully on devices without safe areas
+- No visual change on desktop
+
