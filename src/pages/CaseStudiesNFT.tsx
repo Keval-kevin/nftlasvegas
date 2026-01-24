@@ -83,16 +83,14 @@ const CaseStudiesNFT = () => {
                 className="group cursor-pointer hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
               >
                 <CardHeader>
-                  <div className="bg-white rounded-lg p-3 mb-4 inline-flex items-center justify-center w-full h-[100px] shadow-sm">
-                    <img 
-                      src={caseStudy.logo} 
-                      alt={`${caseStudy.title} logo`}
-                      className="h-16 sm:h-20 w-auto object-contain max-w-[85%]"
-                      loading="lazy"
-                      decoding="async"
-                      onError={(e) => { e.currentTarget.src = '/placeholder.svg'; }}
-                    />
-                  </div>
+                  <img 
+                    src={caseStudy.logo} 
+                    alt={`${caseStudy.title} logo`}
+                    className="mb-4 w-auto max-h-32 object-contain"
+                    loading="lazy"
+                    decoding="async"
+                    onError={(e) => { e.currentTarget.src = '/placeholder.svg'; }}
+                  />
                   <CardTitle className="text-2xl group-hover:text-primary transition-colors">
                     {caseStudy.title}
                   </CardTitle>
