@@ -2,7 +2,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { SEOHead } from "@/components/SEO/SEOHead";
 import { Button } from "@/components/ui/button";
-import { Target, DollarSign, Code, Package, Rocket, Globe, ArrowRight } from "lucide-react";
+import { Target, DollarSign, Code, Package, Rocket, Globe, ArrowRight, Phone } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const services = [
@@ -89,6 +89,20 @@ const services = [
     technologies: ["CRM Systems", "ERP", "Logistics Platforms", "Analytics"],
     color: "from-accent to-primary",
     route: "/distribution"
+  },
+  {
+    icon: Phone,
+    title: "AI Voice Systems",
+    description: "Enterprise-grade AI voice assistants that handle calls, schedule appointments, and qualify leads 24/7.",
+    features: [
+      "24/7 automated call handling",
+      "Appointment scheduling & booking",
+      "Lead qualification & routing",
+      "Multi-language support"
+    ],
+    technologies: ["AI Voice", "NLP", "CRM Integration", "Call Analytics"],
+    color: "from-primary-glow to-accent",
+    route: "/ai-voice"
   }
 ];
 
