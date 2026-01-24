@@ -27,7 +27,7 @@ export const Footer = () => {
         { name: "AI Voice System", href: "/ai-voice" },
         { name: "Client Portal", href: "https://portal.nftlasvegas.io/client", external: true },
         { name: "Contact Us", href: "/contact" },
-        { name: "FAQ", href: "/contact#faq" },
+        { name: "— FAQ", href: "/contact#faq" },
       ]
     }
   ];
