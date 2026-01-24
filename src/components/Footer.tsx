@@ -1,6 +1,5 @@
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { ArrowRight, Mail, Phone, MapPin, Linkedin, Twitter, Facebook, Instagram } from "lucide-react";
+import { Mail, Phone, MapPin, Linkedin, Twitter, Facebook, Instagram } from "lucide-react";
+import { HubSpotNewsletterForm } from "./HubSpotNewsletterForm";
 import { Link } from "react-router-dom";
 
 export const Footer = () => {
@@ -70,16 +69,10 @@ export const Footer = () => {
             {/* Newsletter Signup */}
             <div>
               <h4 className="text-lg font-semibold mb-3">Stay Updated ♥️</h4>
-              <div className="flex gap-2">
-                <Input 
-                  type="email" 
-                  placeholder="Enter your email" 
-                  className="bg-gray-800 border-gray-700 text-white placeholder-gray-400 hover:border-gray-600 transition-colors" 
-                />
-                <Button className="bg-blue-600 hover:bg-blue-700 btn-animate hover-lift">
-                  <ArrowRight className="h-4 w-4" />
-                </Button>
-              </div>
+              <HubSpotNewsletterForm 
+                portalId="YOUR_PORTAL_ID"
+                formId="YOUR_FORM_ID"
+              />
             </div>
           </div>
 
