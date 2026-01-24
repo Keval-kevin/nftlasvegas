@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { ChevronLeft, ChevronRight, TrendingUp, Building2, Layers, Coins, Blocks } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 const solutions = [
   {
@@ -82,8 +83,8 @@ export const SolutionsCarousel = () => {
                         ))}
                       </div>
 
-                      <Button className="bg-gradient-to-r from-primary to-secondary hover:shadow-glow">
-                        Request Proposal
+                      <Button asChild className="bg-gradient-to-r from-primary to-secondary hover:shadow-glow">
+                        <Link to="/contact">Request Proposal</Link>
                       </Button>
                     </div>
                   </div>
