@@ -1,57 +1,113 @@
 
 
-## Plan: Enable Direct Link Scrolling to FAQ Section
+## Plan: Embed HubSpot Newsletter Form in Footer
 
-### Problem Identified
-The FAQ section on the Contact page already has the correct `id="faq"` anchor, and the footer already links to `/contact#faq`. However, when clicking this link from another page, the page scrolls to the top instead of the FAQ section.
+### Overview
+Replace the current non-functional newsletter input in the footer with an embedded HubSpot form widget that connects directly to your HubSpot CRM for subscriber management.
 
-**Root Cause**: The `ScrollToTop` component in `src/components/ScrollToTop.tsx` scrolls to top on every route change, overriding the browser's built-in hash navigation.
+---
+
+### What You'll Need from HubSpot
+Before implementation, you'll need to create a newsletter form in HubSpot and get the embed code:
+
+1. Go to **HubSpot → Marketing → Forms**
+2. Create a new form (or use existing) with an email field
+3. Click **Embed** and select **Embed code**
+4. Copy the Portal ID and Form ID from the embed script
 
 ---
 
 ### Implementation Steps
 
-**Step 1: Update ScrollToTop Component**
+**Step 1: Create HubSpot Newsletter Form Component**
 
-Modify `src/components/ScrollToTop.tsx` to respect URL hash anchors:
+Create a new reusable component `src/components/HubSpotNewsletterForm.tsx` that:
+- Loads the HubSpot forms script dynamically
+- Renders the form in a target container
+- Handles dark theme styling for the footer context
 
-- Check if the URL contains a hash (e.g., `#faq`)
-- If hash exists: scroll to that element instead of the top
-- If no hash: scroll to top as usual
+**Step 2: Update Footer Component**
 
-**Step 2: Add Hash Scroll Effect to Contact Page** 
-
-Add a `useEffect` hook in `src/pages/Contact.tsx` that:
-- Reads the URL hash on page load
-- Scrolls smoothly to the FAQ section if `#faq` is present
-- Runs after a brief delay to ensure the page is fully rendered
+Modify `src/components/Footer.tsx` (lines 70-83):
+- Remove the current `Input` and `Button` elements
+- Import and render the new `HubSpotNewsletterForm` component
+- Keep the "Stay Updated ♥️" heading
 
 ---
 
 ### Technical Details
 
+**New Component Structure:**
+```
+src/components/HubSpotNewsletterForm.tsx
+├── useEffect for script loading
+├── HubSpot form target div
+└── Dark-themed CSS overrides
+```
+
+**Footer Changes:**
 ```text
-ScrollToTop.tsx changes:
-┌─────────────────────────────────────┐
-│ useEffect(() => {                   │
-│   const hash = window.location.hash │
-│   if (hash) {                       │
-│     setTimeout(() => {              │
-│       element?.scrollIntoView()     │
-│     }, 100)                         │
-│   } else {                          │
-│     window.scrollTo({ top: 0 })     │
-│   }                                 │
-│ }, [pathname])                      │
-└─────────────────────────────────────┘
+Before:
+┌──────────────────────────────────┐
+│ Stay Updated ♥️                  │
+│ ┌────────────────────┐ ┌──────┐  │
+│ │ Enter your email   │ │  →   │  │
+│ └────────────────────┘ └──────┘  │
+└──────────────────────────────────┘
+
+After:
+┌──────────────────────────────────┐
+│ Stay Updated ♥️                  │
+│ ┌────────────────────────────┐   │
+│ │   HubSpot Embedded Form    │   │
+│ │   (email + submit button)  │   │
+│ └────────────────────────────┘   │
+└──────────────────────────────────┘
+```
+
+**HubSpot Script Integration:**
+```tsx
+// Dynamically load HubSpot forms script
+useEffect(() => {
+  const script = document.createElement('script');
+  script.src = '//js.hsforms.net/forms/embed/v2.js';
+  script.async = true;
+  script.onload = () => {
+    window.hbspt.forms.create({
+      portalId: "YOUR_PORTAL_ID",
+      formId: "YOUR_FORM_ID",
+      target: "#hubspot-newsletter-form"
+    });
+  };
+  document.body.appendChild(script);
+}, []);
 ```
 
 ---
 
-### Result
+### Styling Considerations
 
-After implementation:
-- Clicking "FAQ" link in footer (`/contact#faq`) will navigate to Contact page and auto-scroll to FAQ section
-- Regular navigation without hash will continue scrolling to top
-- Smooth scrolling animation will be preserved
+The form will need custom CSS to match the dark footer:
+- Override HubSpot default white backgrounds
+- Style input fields to match existing `bg-gray-800` theme
+- Style submit button to match `bg-blue-600` brand color
+
+---
+
+### Files to Create/Modify
+
+| File | Action |
+|------|--------|
+| `src/components/HubSpotNewsletterForm.tsx` | Create new component |
+| `src/components/Footer.tsx` | Replace lines 73-82 with embedded form |
+
+---
+
+### Configuration Required
+
+You will need to provide:
+- **HubSpot Portal ID** (e.g., `12345678`)
+- **HubSpot Newsletter Form ID** (e.g., `abc123-def456-...`)
+
+I can add placeholder values that you can replace, or you can provide the IDs now.
 
