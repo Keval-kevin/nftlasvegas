@@ -31,7 +31,7 @@ export const HeroNFT = () => {
             {/* Tagline */}
             <p className="text-lg sm:text-xl md:text-2xl text-muted-foreground/90 mb-12 max-w-5xl mx-auto font-medium animate-fade-in leading-relaxed" style={{
             animationDelay: '0.4s'
-          }}>We build scalable, self-sustaining digital ecosystems designed around intelligent automation—powering products, operations, and continuous growth cycles through AI, blockchain, and enterprise infrastructure.</p>
+          }}>We build scalable, self-sustaining digital ecosystems designed around intelligent automation - powering products, operations, and continuous growth cycles through AI, blockchain, and enterprise infrastructure.</p>
 
             {/* CTAs */}
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-stretch sm:items-center mb-16 w-full max-w-2xl mx-auto px-4 animate-fade-in" style={{
