@@ -61,12 +61,14 @@ const Multiverse = () => {
           <section className="section-padding bg-muted/30">
             <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
               <Collapsible open={isExpanded} onOpenChange={setIsExpanded}>
+              <div className="flex justify-center mb-6">
                 <CollapsibleTrigger asChild>
-                  <Button variant="outline" className="w-full py-6 text-lg rounded-xl mb-6">
+                  <Button variant="outline" className="w-full md:w-2/3 lg:max-w-xl py-8 text-lg md:text-xl rounded-xl border-2 hover:border-primary/50 transition-all">
                     <span>Read More About the Multiverse</span>
-                    <ChevronDown className={`ml-2 h-5 w-5 transition-transform ${isExpanded ? 'rotate-180' : ''}`} />
+                    <ChevronDown className={`ml-3 h-6 w-6 transition-transform ${isExpanded ? 'rotate-180' : ''}`} />
                   </Button>
                 </CollapsibleTrigger>
+              </div>
                 
                 <CollapsibleContent className="space-y-8">
                   {/* Meet NFT Las Vegas™ */}
