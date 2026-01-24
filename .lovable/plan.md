@@ -1,67 +1,45 @@
 
 
-## Plan: Fix Scroll-to-Top Button and Update Bookstore Cover Path
+## Plan: Make Ecosystem Chart Graph Taller
 
 ### Overview
-Two issues need to be addressed:
-1. The scroll-to-top button is extending off the screen on mobile devices
-2. The Bookstore listing page still shows the old book cover for "How To Quantum Leap Your Business"
+Increase the height of the Ecosystem Chart to provide more visual impact and better spacing for the data points.
 
 ---
 
 ### Changes
 
-#### Issue 1: Fix Scroll-to-Top Button on Mobile
+**File:** `src/components/Flywheel/EcosystemChart.tsx`
 
-**File:** `src/components/ScrollToTop.tsx`
+**Line 128:** Update the ResponsiveContainer height values
 
-The button needs explicit width and positioning constraints to prevent it from stretching across the screen on mobile devices.
-
-| Current | Problem |
+| Current | Updated |
 |---------|---------|
-| `fixed right-4` positioning | Missing explicit width control |
-| Uses `size="icon"` | May not be constraining properly on all mobile browsers |
+| `height={isMobile ? 220 : 320}` | `height={isMobile ? 300 : 400}` |
 
-**Solution:** Add explicit width (`w-12 h-12`) and ensure proper fixed positioning with consistent sizing:
+This increases:
+- **Mobile:** 220px → 300px (+80px, ~36% taller)
+- **Desktop:** 320px → 400px (+80px, ~25% taller)
+
+---
+
+### Technical Details
+
+The change is on a single line:
 
 ```tsx
-<Button
-  onClick={scrollToTop}
-  size="icon"
-  className={cn(
-    "fixed right-4 z-40 rounded-full shadow-lg transition-all duration-300",
-    "w-12 h-12 min-w-12 max-w-12",  // Explicit size constraints
-    showButton ? "opacity-100 translate-y-0" : "opacity-0 translate-y-16 pointer-events-none"
-  )}
-  style={{ bottom: 'calc(1.5rem + env(safe-area-inset-bottom, 0px))' }}
-  aria-label="Scroll to top"
->
+// Line 128 - Before
+<ResponsiveContainer width="100%" height={isMobile ? 220 : 320}>
+
+// Line 128 - After
+<ResponsiveContainer width="100%" height={isMobile ? 300 : 400}>
 ```
 
 ---
 
-#### Issue 2: Update Bookstore Cover Image Path
-
-**File:** `src/pages/Bookstore.tsx`
-
-The Bookstore listing page still references the old cover image path on line 16.
-
-| Current | Updated |
-|---------|---------|
-| `coverImage: "/books/quantum-leap-cover.jpg"` | `coverImage: "/books/quantum-leap-cover-new.jpg"` |
-
----
-
-### Files Modified
-
-| File | Change |
-|------|--------|
-| `src/components/ScrollToTop.tsx` | Add explicit width constraints to prevent button stretching |
-| `src/pages/Bookstore.tsx` | Update cover image path to use new file |
-
----
-
 ### Result
-- Scroll-to-top button will display as a properly sized circular button on mobile
-- Bookstore listing will show the new book cover matching the detail page
+- The chart will have more vertical breathing room
+- Data points will be more spread out vertically
+- The growth curve will appear more prominent and visually impactful
+- Labels and axes will have more space
 
