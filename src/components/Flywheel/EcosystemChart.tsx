@@ -207,20 +207,28 @@ export const EcosystemChart = () => {
                 type="monotone"
                 dataKey="index"
                 stroke="url(#lineGradient)"
-                strokeWidth={3}
+                strokeWidth={isMobile ? 2 : 3}
                 dot={{ 
                   fill: '#8b5cf6', 
-                  r: 5,
+                  r: isMobile ? 8 : 5,
                   stroke: '#fff',
-                  strokeWidth: 2,
-                  cursor: 'pointer'
+                  strokeWidth: isMobile ? 3 : 2,
+                  cursor: 'pointer',
+                  style: { 
+                    filter: 'drop-shadow(0 2px 4px rgba(139, 92, 246, 0.5))',
+                    touchAction: 'manipulation'
+                  }
                 }}
                 activeDot={{ 
-                  r: 7, 
+                  r: isMobile ? 12 : 7, 
                   fill: '#ec4899',
                   stroke: '#fff',
-                  strokeWidth: 2,
+                  strokeWidth: isMobile ? 3 : 2,
                   cursor: 'pointer',
+                  style: { 
+                    filter: 'drop-shadow(0 4px 8px rgba(236, 72, 153, 0.6))',
+                    touchAction: 'manipulation'
+                  },
                   onClick: (_: any, payload: any) => handlePhaseClick(payload.payload.phase)
                 }}
                 animationDuration={600}
