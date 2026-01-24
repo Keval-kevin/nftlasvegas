@@ -1,22 +1,54 @@
 
 
-## Plan: Update "How To Quantum Leap Your Business" Book Cover
+## Plan: Fix Scroll-to-Top Button and Update Bookstore Cover Path
 
 ### Overview
-Replace the current book cover image for "How To Quantum Leap Your Business" with the newly uploaded cover image featuring the updated design.
+Two issues need to be addressed:
+1. The scroll-to-top button is extending off the screen on mobile devices
+2. The Bookstore listing page still shows the old book cover for "How To Quantum Leap Your Business"
 
 ---
 
 ### Changes
 
-**Step 1: Copy the uploaded image to the public folder**
+#### Issue 1: Fix Scroll-to-Top Button on Mobile
 
-| Action | Details |
-|--------|---------|
-| Source | `user-uploads://How_To_Quantum_Leap_Your_Business_-_Cover-2.jpg` |
-| Destination | `public/books/quantum-leap-cover.jpg` |
+**File:** `src/components/ScrollToTop.tsx`
 
-This will overwrite the existing cover image with the new one. Since the `BookQuantumLeap.tsx` page already references `/books/quantum-leap-cover.jpg`, no code changes are required - the new image will automatically be displayed.
+The button needs explicit width and positioning constraints to prevent it from stretching across the screen on mobile devices.
+
+| Current | Problem |
+|---------|---------|
+| `fixed right-4` positioning | Missing explicit width control |
+| Uses `size="icon"` | May not be constraining properly on all mobile browsers |
+
+**Solution:** Add explicit width (`w-12 h-12`) and ensure proper fixed positioning with consistent sizing:
+
+```tsx
+<Button
+  onClick={scrollToTop}
+  size="icon"
+  className={cn(
+    "fixed right-4 z-40 rounded-full shadow-lg transition-all duration-300",
+    "w-12 h-12 min-w-12 max-w-12",  // Explicit size constraints
+    showButton ? "opacity-100 translate-y-0" : "opacity-0 translate-y-16 pointer-events-none"
+  )}
+  style={{ bottom: 'calc(1.5rem + env(safe-area-inset-bottom, 0px))' }}
+  aria-label="Scroll to top"
+>
+```
+
+---
+
+#### Issue 2: Update Bookstore Cover Image Path
+
+**File:** `src/pages/Bookstore.tsx`
+
+The Bookstore listing page still references the old cover image path on line 16.
+
+| Current | Updated |
+|---------|---------|
+| `coverImage: "/books/quantum-leap-cover.jpg"` | `coverImage: "/books/quantum-leap-cover-new.jpg"` |
 
 ---
 
@@ -24,12 +56,12 @@ This will overwrite the existing cover image with the new one. Since the `BookQu
 
 | File | Change |
 |------|--------|
-| `public/books/quantum-leap-cover.jpg` | Replace with new cover image |
+| `src/components/ScrollToTop.tsx` | Add explicit width constraints to prevent button stretching |
+| `src/pages/Bookstore.tsx` | Update cover image path to use new file |
 
 ---
 
 ### Result
-- The book detail page at `/bookstore/quantum-leap` will display the new cover
-- The Bookstore listing page will also show the updated cover (if it references the same image)
-- No code changes needed since the filename remains the same
+- Scroll-to-top button will display as a properly sized circular button on mobile
+- Bookstore listing will show the new book cover matching the detail page
 
