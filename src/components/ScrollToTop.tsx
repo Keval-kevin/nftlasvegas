@@ -11,6 +11,17 @@ const ScrollToTop = () => {
   const [scrollProgress, setScrollProgress] = useState(0);
 
   useEffect(() => {
+    const hash = window.location.hash;
+    if (hash) {
+      const id = hash.replace('#', '');
+      const element = document.getElementById(id);
+      if (element) {
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }, 100);
+        return;
+      }
+    }
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, [pathname]);
 
