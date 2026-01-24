@@ -86,7 +86,7 @@ const CaseStudiesNFT = () => {
                   <img 
                     src={caseStudy.logo} 
                     alt={`${caseStudy.title} logo`}
-                    className="mb-4 w-auto max-h-32 object-contain"
+                    className="mb-4 w-full max-h-48 object-contain rounded-lg"
                     loading="lazy"
                     decoding="async"
                     onError={(e) => { e.currentTarget.src = '/placeholder.svg'; }}
