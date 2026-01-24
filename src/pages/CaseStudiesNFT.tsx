@@ -7,7 +7,8 @@ import { Badge } from "@/components/ui/badge";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { useState } from "react";
-import { ArrowRight, Quote, Target, Lightbulb, TrendingUp as TrendingUpIcon, CheckCircle2 } from "lucide-react";
+import { ArrowRight, Quote, Target, Lightbulb, TrendingUp as TrendingUpIcon, CheckCircle2, Users } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const caseStudies = [
   {
@@ -141,6 +142,23 @@ const CaseStudiesNFT = () => {
             >
               Download Onboarding Package
             </Button>
+          </div>
+
+          {/* Partnerships Section */}
+          <div className="max-w-2xl mx-auto text-center p-8 bg-gradient-to-br from-muted/20 to-muted/40 rounded-lg border border-border/50 mt-10">
+            <Users className="w-10 h-10 mx-auto mb-4 text-primary" />
+            <h3 className="text-2xl font-semibold mb-2">
+              Our Partner Network
+            </h3>
+            <p className="text-lg text-muted-foreground mb-6">
+              Learn more about our Top-of-the-Line Partnerships with industry leaders like X Ads, HubSpot, and Salesforce.
+            </p>
+            <Link to="/partnerships">
+              <Button variant="outline" size="lg">
+                Explore Our Partners
+                <ArrowRight className="w-4 h-4 ml-2" />
+              </Button>
+            </Link>
           </div>
         </main>
 
