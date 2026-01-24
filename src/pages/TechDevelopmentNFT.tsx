@@ -111,9 +111,6 @@ const TechDevelopmentNFT = () => {
                         <layer.icon className="w-10 h-10 text-white" />
                       </div>
                       <h3 className="text-lg font-bold text-foreground">{layer.label}</h3>
-                      <div className="h-20 bg-muted/50 rounded-lg flex items-center justify-center">
-                        <div className="text-xs text-muted-foreground">Processing & Analysis</div>
-                      </div>
                     </div>
                   ))}
                 </div>
