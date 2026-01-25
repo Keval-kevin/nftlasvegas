@@ -93,10 +93,16 @@ export const SalesforceCRM = () => {
                       Book Discovery Call
                     </Button>
                   </Link>
-                  <Button variant="outline" className="flex-1">
-                    <Download className="w-4 h-4 mr-2" />
-                    Download PDF
-                  </Button>
+                  <a 
+                    href="/downloads/Salesforce-Quick-Start-Plan.pdf" 
+                    download="NFT-Las-Vegas-Salesforce-Quick-Start.pdf"
+                    className="flex-1"
+                  >
+                    <Button variant="outline" className="w-full">
+                      <Download className="w-4 h-4 mr-2" />
+                      Download PDF
+                    </Button>
+                  </a>
                 </CardFooter>
               </Card>
 
@@ -152,10 +158,16 @@ export const SalesforceCRM = () => {
                       Book Discovery Call
                     </Button>
                   </Link>
-                  <Button variant="outline" className="flex-1">
-                    <Download className="w-4 h-4 mr-2" />
-                    Download PDF
-                  </Button>
+                  <a 
+                    href="/downloads/Salesforce-Growth-Plan.pdf" 
+                    download="NFT-Las-Vegas-Salesforce-Growth-Plan.pdf"
+                    className="flex-1"
+                  >
+                    <Button variant="outline" className="w-full">
+                      <Download className="w-4 h-4 mr-2" />
+                      Download PDF
+                    </Button>
+                  </a>
                 </CardFooter>
               </Card>
             </div>
@@ -268,10 +280,16 @@ export const SalesforceCRM = () => {
                       Book Discovery Call
                     </Button>
                   </Link>
-                  <Button variant="outline" className="flex-1">
-                    <Download className="w-4 h-4 mr-2" />
-                    Download PDF
-                  </Button>
+                  <a 
+                    href="/downloads/Salesforce-Starter-Suite.pdf" 
+                    download="NFT-Las-Vegas-Salesforce-Starter-Suite.pdf"
+                    className="flex-1"
+                  >
+                    <Button variant="outline" className="w-full">
+                      <Download className="w-4 h-4 mr-2" />
+                      Download PDF
+                    </Button>
+                  </a>
                 </CardFooter>
               </Card>
 
@@ -356,10 +374,16 @@ export const SalesforceCRM = () => {
                       Book Discovery Call
                     </Button>
                   </Link>
-                  <Button variant="outline" className="flex-1">
-                    <Download className="w-4 h-4 mr-2" />
-                    Download PDF
-                  </Button>
+                  <a 
+                    href="/downloads/Salesforce-Pro-Suite.pdf" 
+                    download="NFT-Las-Vegas-Salesforce-Pro-Suite.pdf"
+                    className="flex-1"
+                  >
+                    <Button variant="outline" className="w-full">
+                      <Download className="w-4 h-4 mr-2" />
+                      Download PDF
+                    </Button>
+                  </a>
                 </CardFooter>
               </Card>
             </div>
