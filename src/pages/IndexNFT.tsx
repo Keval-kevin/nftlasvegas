@@ -12,9 +12,10 @@ const IndexNFT = () => {
   return (
     <>
       <SEOHead
-        title="NFT Las Vegas™ - Venture Enablement & Digital Transformation"
-        description="Your all-in-one partner for marketing, branding & enterprise-level tech development. From funding to launch, powered by AI, Blockchain & Human Creativity."
-        keywords="venture acceleration, digital transformation, AI automation, blockchain solutions, marketing agency, tech development"
+        title="NFT Las Vegas™ Distribution Label"
+        description="Your key to unlocking full-stack venture enablement that combines blockchain, AI, and enterprise infrastructure to create self-sustainable economies."
+        keywords="NFT Las Vegas, distribution label, venture enablement, blockchain, AI automation, enterprise infrastructure, digital transformation"
+        image="/og-image.jpg"
       />
       
       <div className="min-h-screen bg-background">
