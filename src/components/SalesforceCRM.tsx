@@ -35,9 +35,19 @@ export const SalesforceCRM = () => {
         </div>
 
         <Tabs defaultValue="sales-cloud" className="w-full">
-          <TabsList className="grid w-full max-w-2xl mx-auto grid-cols-2 mb-12">
-            <TabsTrigger value="sales-cloud" className="text-base">Sales Cloud Quick Implementations</TabsTrigger>
-            <TabsTrigger value="starter-pro" className="text-base">Starter & Pro Suite Services</TabsTrigger>
+          <TabsList className="grid w-full max-w-2xl mx-auto grid-cols-1 sm:grid-cols-2 h-auto p-2 gap-2 mb-12">
+            <TabsTrigger 
+              value="sales-cloud" 
+              className="text-sm sm:text-base py-3 px-4 whitespace-normal text-center"
+            >
+              Sales Cloud Quick Implementations
+            </TabsTrigger>
+            <TabsTrigger 
+              value="starter-pro" 
+              className="text-sm sm:text-base py-3 px-4 whitespace-normal text-center"
+            >
+              Starter & Pro Suite Services
+            </TabsTrigger>
           </TabsList>
 
           {/* Sales Cloud Quick Implementations */}
