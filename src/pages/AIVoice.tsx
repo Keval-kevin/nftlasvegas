@@ -118,7 +118,10 @@ const AIVoice = () => {
             </div>
             <Card className="border-primary/20">
               <CardContent className="pt-6">
-                <AIVoiceRequestForm />
+                <AIVoiceRequestForm 
+                  portalId="243834591" 
+                  formId="7ba1eb89-c774-4837-b0f7-b1424eb2f36f" 
+                />
               </CardContent>
             </Card>
           </div>
