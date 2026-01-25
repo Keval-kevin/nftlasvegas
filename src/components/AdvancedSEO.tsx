@@ -22,27 +22,28 @@ interface AdvancedSEOProps {
 }
 
 export const AdvancedSEO: React.FC<AdvancedSEOProps> = ({
-  title = 'Easenext - Empowering Businesses with Smart Tech Solutions',
-  description = 'From AI-driven automation to healthcare innovation, Easenext is your partner in building the future. Custom solutions, expert talent, and smart technology.',
-  keywords = ['AI automation', 'healthcare innovation', 'custom software', 'tech solutions', 'digital transformation'],
-  author = 'Easenext',
+  title = 'NFT Las Vegas™ Distribution Label',
+  description = 'Your key to unlocking full-stack venture enablement that combines blockchain, AI, and enterprise infrastructure to create self-sustainable economies.',
+  keywords = ['NFT Las Vegas', 'distribution label', 'venture enablement', 'blockchain', 'AI automation', 'enterprise infrastructure', 'digital transformation'],
+  author = 'NFT Las Vegas',
   type = 'website',
-  image = '/lovable-uploads/45d400ac-8bf5-41af-8aaf-1c03b17e2b04.png',
+  image = '/og-image.jpg',
   url,
   publishedTime,
   modifiedTime,
   section,
   tags,
   locale = 'en_US',
-  siteName = 'Easenext',
-  twitterSite = '@easenext',
-  twitterCreator = '@easenext',
+  siteName = 'NFT Las Vegas',
+  twitterSite = '@nftlasvegas',
+  twitterCreator = '@nftlasvegas',
   canonicalUrl,
   robots = 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1',
   structuredData
 }) => {
-  const currentUrl = url || (typeof window !== 'undefined' ? window.location.href : '');
+  const currentUrl = url || (typeof window !== 'undefined' ? window.location.href : 'https://nftlasvegas.io');
   const canonical = canonicalUrl || currentUrl;
+  const fullImageUrl = image.startsWith('http') ? image : `https://nftlasvegas.io${image}`;
 
   return (
     <Helmet>
@@ -59,7 +60,7 @@ export const AdvancedSEO: React.FC<AdvancedSEOProps> = ({
       <meta property="og:description" content={description} />
       <meta property="og:type" content={type} />
       <meta property="og:url" content={currentUrl} />
-      <meta property="og:image" content={image} />
+      <meta property="og:image" content={fullImageUrl} />
       <meta property="og:image:alt" content={`${title} - Preview Image`} />
       <meta property="og:locale" content={locale} />
       <meta property="og:site_name" content={siteName} />
@@ -84,7 +85,7 @@ export const AdvancedSEO: React.FC<AdvancedSEOProps> = ({
       <meta name="twitter:creator" content={twitterCreator} />
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
-      <meta name="twitter:image" content={image} />
+      <meta name="twitter:image" content={fullImageUrl} />
 
       {/* Additional Meta Tags */}
       <meta name="theme-color" content="#0b1020" />
@@ -106,13 +107,13 @@ export const AdvancedSEO: React.FC<AdvancedSEOProps> = ({
           "@context": "https://schema.org",
           "@type": "Organization",
           "name": "NFT Las Vegas",
-          "url": "https://www.nftlasvegas.com",
-          "logo": "https://www.nftlasvegas.com/lovable-uploads/1c9723c9-35fd-49bd-878c-7cea1e3e924f.png",
-          "description": "Your all-in-one partner for marketing, branding, and enterprise-level tech development. We turn ambitious ideas into reality.",
+          "url": "https://nftlasvegas.io",
+          "logo": "https://nftlasvegas.io/og-image.jpg",
+          "description": "Your key to unlocking full-stack venture enablement that combines blockchain, AI, and enterprise infrastructure to create self-sustainable economies.",
           "contactPoint": {
             "@type": "ContactPoint",
             "contactType": "customer service",
-            "url": "https://www.nftlasvegas.com/contact"
+            "url": "https://nftlasvegas.io/contact"
           },
           "sameAs": [
             "https://linkedin.com/company/nftlasvegas",
