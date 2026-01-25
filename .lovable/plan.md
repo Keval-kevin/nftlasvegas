@@ -1,137 +1,82 @@
 
 
-## Plan: Fix Salesforce CRM Download PDF Buttons
+## Plan: Fix Salesforce CRM Tab Buttons for Mobile Display
 
-### Overview
-Make the "Download PDF" buttons functional by creating dedicated PDF files for each Salesforce service tier and linking them properly.
-
----
-
-### Current State
-- 4 "Download PDF" buttons exist but have no functionality
-- The buttons are plain `<Button>` elements without `onClick` or href
-- The existing Tech Development PDF contains generic project intake forms, not Salesforce-specific pricing
+### Problem
+The two tab buttons ("Sales Cloud Quick Implementations" and "Starter & Pro Suite Services") are overlapping and text is cut off on mobile devices because:
+- The tabs are forced into a 2-column grid layout at all screen sizes
+- Text has `whitespace-nowrap` which prevents wrapping
+- Long button labels don't fit in small mobile widths
 
 ---
 
-### Changes Required
-
-#### 1. Create 4 New Salesforce PDF Files
-
-Create detailed PDF documents for each service tier in `public/downloads/`:
-
-| PDF File Name | Content |
-|--------------|---------|
-| `Salesforce-Quick-Start-Plan.pdf` | Sales Cloud Quick Start - $12,500, 40 hours, 2-4 weeks, full feature list |
-| `Salesforce-Growth-Plan.pdf` | Sales Cloud Growth Plan - $30,000, 100 hours, 4-6 weeks, full feature list |
-| `Salesforce-Starter-Suite.pdf` | Starter Suite Onboarding - $7,500, 15 hours, 2-4 weeks, full feature list |
-| `Salesforce-Pro-Suite.pdf` | Pro Suite Implementation - $12,500, 40 hours, 3-6 weeks, full feature list |
-
-**Note**: PDF creation requires external tools. The implementation will use `<a>` links pointing to these PDF paths. You will need to create the actual PDF files and upload them to `public/downloads/`.
+### Solution
+Stack the tabs vertically on mobile (single column), then switch to horizontal layout on larger screens. Also use shorter labels on mobile for better readability.
 
 ---
 
-#### 2. Update SalesforceCRM.tsx - Convert Buttons to Download Links
+### Changes
 
 **File:** `src/components/SalesforceCRM.tsx`
 
-**Changes at 4 locations:**
+**Lines 37-41** - Update TabsList and TabsTrigger layout:
 
-**Line 96-99** (Quick Start card):
+| Current | Updated |
+|---------|---------|
+| `grid-cols-2` always | `grid-cols-1 sm:grid-cols-2` (stack on mobile) |
+| Fixed height `h-10` | `h-auto` with padding for flexible height |
+| Single-line text | Allow text wrapping on mobile |
+
 ```tsx
 // Before
-<Button variant="outline" className="flex-1">
-  <Download className="w-4 h-4 mr-2" />
-  Download PDF
-</Button>
+<TabsList className="grid w-full max-w-2xl mx-auto grid-cols-2 mb-12">
+  <TabsTrigger value="sales-cloud" className="text-base">Sales Cloud Quick Implementations</TabsTrigger>
+  <TabsTrigger value="starter-pro" className="text-base">Starter & Pro Suite Services</TabsTrigger>
+</TabsList>
 
 // After
-<a 
-  href="/downloads/Salesforce-Quick-Start-Plan.pdf" 
-  download="NFT-Las-Vegas-Salesforce-Quick-Start.pdf"
-  className="flex-1"
->
-  <Button variant="outline" className="w-full">
-    <Download className="w-4 h-4 mr-2" />
-    Download PDF
-  </Button>
-</a>
-```
-
-**Line 155-158** (Growth Plan card):
-```tsx
-<a 
-  href="/downloads/Salesforce-Growth-Plan.pdf" 
-  download="NFT-Las-Vegas-Salesforce-Growth-Plan.pdf"
-  className="flex-1"
->
-  <Button variant="outline" className="w-full">
-    <Download className="w-4 h-4 mr-2" />
-    Download PDF
-  </Button>
-</a>
-```
-
-**Line 271-274** (Starter Suite card):
-```tsx
-<a 
-  href="/downloads/Salesforce-Starter-Suite.pdf" 
-  download="NFT-Las-Vegas-Salesforce-Starter-Suite.pdf"
-  className="flex-1"
->
-  <Button variant="outline" className="w-full">
-    <Download className="w-4 h-4 mr-2" />
-    Download PDF
-  </Button>
-</a>
-```
-
-**Line 359-362** (Pro Suite card):
-```tsx
-<a 
-  href="/downloads/Salesforce-Pro-Suite.pdf" 
-  download="NFT-Las-Vegas-Salesforce-Pro-Suite.pdf"
-  className="flex-1"
->
-  <Button variant="outline" className="w-full">
-    <Download className="w-4 h-4 mr-2" />
-    Download PDF
-  </Button>
-</a>
+<TabsList className="grid w-full max-w-2xl mx-auto grid-cols-1 sm:grid-cols-2 h-auto p-2 gap-2 mb-12">
+  <TabsTrigger 
+    value="sales-cloud" 
+    className="text-sm sm:text-base py-3 px-4 whitespace-normal text-center"
+  >
+    Sales Cloud Quick Implementations
+  </TabsTrigger>
+  <TabsTrigger 
+    value="starter-pro" 
+    className="text-sm sm:text-base py-3 px-4 whitespace-normal text-center"
+  >
+    Starter & Pro Suite Services
+  </TabsTrigger>
+</TabsList>
 ```
 
 ---
 
-### PDF Content Structure (for each file)
+### Key Improvements
 
-Each PDF should include:
-1. NFT Las Vegas branding/header
-2. Service tier name and badge (e.g., "POPULAR", "BEST VALUE")
-3. Pricing, hours, and timeline
-4. Complete "What's included" feature list
-5. Optional add-ons section (for Sales Cloud plans)
-6. Contact information and next steps
-7. "Book Discovery Call" CTA with contact URL
+| Aspect | Mobile (< 640px) | Desktop (>= 640px) |
+|--------|------------------|-------------------|
+| Layout | Stacked vertically (1 column) | Side by side (2 columns) |
+| Text Size | Smaller (`text-sm`) | Normal (`text-base`) |
+| Text Wrap | Allowed (`whitespace-normal`) | Allowed |
+| Height | Auto (flexible) | Auto (flexible) |
+| Padding | Generous (`py-3 px-4`) | Generous (`py-3 px-4`) |
+| Gap | 8px between buttons | 8px between buttons |
 
 ---
 
 ### Technical Summary
 
-| File | Changes |
-|------|---------|
-| `src/components/SalesforceCRM.tsx` | Wrap 4 Download PDF buttons with `<a>` download links |
-| `public/downloads/` | Add 4 new Salesforce PDF files (requires manual PDF creation) |
-
----
-
-### Mobile Tab Buttons Status
-
-The tab buttons ("Sales Cloud Quick Implementations" and "Starter & Pro Suite Services") are working correctly - they use Radix UI Tabs which handles touch events properly. The circled area in your screenshot shows these tabs which should toggle content on tap.
+| File | Change |
+|------|--------|
+| `src/components/SalesforceCRM.tsx` | Update TabsList grid layout from always 2-cols to responsive 1-col/2-cols, add proper padding, allow text wrapping |
 
 ---
 
 ### Result
-- All 4 "Download PDF" buttons will trigger file downloads
-- Each PDF contains the specific service tier details from the page
-- Mobile touch interactions fully supported
+- Tab buttons will stack vertically on mobile for full visibility
+- Text will be fully readable without truncation
+- Touch targets will be larger and easier to tap
+- Smooth transition to horizontal layout on tablet/desktop
 
