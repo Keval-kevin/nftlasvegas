@@ -9,7 +9,7 @@ export const HeroNFT = () => {
   useEffect(() => {
     setIsVisible(true);
   }, []);
-  return <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-[hsl(222,47%,11%)] via-[hsl(237,50%,20%)] to-[hsl(263,50%,25%)]">
+  return <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-background">
       <ParticleBackground />
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-20 lg:py-32">
