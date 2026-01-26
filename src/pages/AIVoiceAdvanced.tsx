@@ -26,7 +26,7 @@ const AIVoiceAdvanced = () => {
         title="Advanced Plan - AI Voice System | NFT Las Vegas™"
         description="Premium AI Voice Agent with memory, intent routing, and post-call analysis for $10,000."
       />
-      <div className="min-h-screen bg-background">
+      <div className="min-h-dvh bg-background">
         <Header />
         
         <section className="pt-32 pb-20 px-6">

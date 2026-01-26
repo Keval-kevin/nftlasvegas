@@ -75,7 +75,7 @@ const AIVoice = () => {
         description="AI Voice Agents that book meetings, qualify leads, and reduce costs. From simple call flows to memory-based conversations—fully integrated with your CRM."
         keywords="AI voice agents, CRM integration, lead qualification, automated calls, voice AI"
       />
-      <div className="min-h-screen bg-background">
+      <div className="min-h-dvh bg-background">
         <Header />
         
         {/* Hero */}

@@ -33,7 +33,7 @@ export const BookDetailPage = ({
         keywords={`${title}, NFT Las Vegas, quantum thinking, digital books, Web3`}
       />
       <Header />
-      <main className="min-h-screen bg-background pt-20">
+      <main className="min-h-dvh bg-background pt-20">
         {/* Back to Bookstore */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <Link 

@@ -26,7 +26,7 @@ const AIVoiceEnterprise = () => {
         title="Enterprise Plan - AI Voice System | NFT Las Vegas™"
         description="Custom enterprise AI Voice Agent deployment with full governance, compliance, and dedicated support."
       />
-      <div className="min-h-screen bg-background">
+      <div className="min-h-dvh bg-background">
         <Header />
         
         <section className="pt-32 pb-20 px-6">

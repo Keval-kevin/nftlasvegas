@@ -68,7 +68,7 @@ const CookiePolicy = () => {
         keywords="cookie policy, privacy, data protection, GDPR, cookie consent"
       />
       
-      <div className="min-h-screen bg-background">
+      <div className="min-h-dvh bg-background">
         <Header />
         
         <main className="pt-20">

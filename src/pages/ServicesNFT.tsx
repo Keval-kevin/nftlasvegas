@@ -101,7 +101,7 @@ const ServicesNFT = () => {
         keywords="strategy, PMO, funding, tech development, manufacturing, product launch, distribution"
       />
       
-      <div className="min-h-screen bg-background">
+      <div className="min-h-dvh bg-background">
         <Header />
         
         <main className="pt-20">

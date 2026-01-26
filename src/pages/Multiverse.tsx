@@ -22,7 +22,7 @@ const Multiverse = () => {
         keywords="multiverse, metaverse, blockchain, quantum intelligence, NFT Las Vegas, Web3"
       />
       
-      <div className="min-h-screen bg-background">
+      <div className="min-h-dvh bg-background">
         <Header />
         
         <main>

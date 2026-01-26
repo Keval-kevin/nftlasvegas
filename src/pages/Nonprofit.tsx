@@ -15,7 +15,7 @@ const Nonprofit = () => {
         keywords="nonprofit, community, philanthropy, UNLV NFT, Web3 education, youth programs"
       />
       
-      <div className="min-h-screen bg-background">
+      <div className="min-h-dvh bg-background">
         <Header />
         
         <main className="pt-20">

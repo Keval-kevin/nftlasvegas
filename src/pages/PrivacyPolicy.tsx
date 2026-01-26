@@ -11,7 +11,7 @@ const PrivacyPolicy = () => {
         description="Learn how NFT Las Vegas™ collects, uses, and protects your information."
         keywords="privacy, policy, data protection, GDPR, NFT Las Vegas"
       />
-      <div className="min-h-screen bg-background text-foreground">
+      <div className="min-h-dvh bg-background text-foreground">
         <Header />
         
         <main className="max-w-[900px] mx-auto px-4 md:px-6 py-12 md:py-16">
