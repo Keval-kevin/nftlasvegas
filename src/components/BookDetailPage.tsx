@@ -35,7 +35,7 @@ export const BookDetailPage = ({
       <Header />
       <main className="min-h-dvh bg-background pt-20">
         {/* Back to Bookstore */}
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 sm:py-6">
           <Link 
             to="/bookstore" 
             className="inline-flex items-center text-muted-foreground hover:text-foreground transition-colors"
@@ -46,7 +46,7 @@ export const BookDetailPage = ({
         </div>
 
         {/* Hero Section */}
-        <section className="py-12 px-4 sm:px-6 lg:px-8">
+        <section className="py-6 sm:py-12 px-4 sm:px-6 lg:px-8">
           <div className="max-w-7xl mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
               {/* Book Cover */}
