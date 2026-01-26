@@ -1,80 +1,59 @@
 
 
-## Plan: Reduce Spacing Between Back Link and Book Cover on Mobile
+## Plan: Remove Cookie Consent Popup
 
-### Problem
-On the book detail pages (e.g., `/bookstore/quantum-leap`), there's excessive vertical space between the "Back to Bookstore" navigation link and the book cover image on mobile devices.
+### Current Implementation
 
----
+There are two cookie consent systems currently active:
 
-### Current Spacing Structure
-
-| Element | Current Class | Pixels |
-|---------|---------------|--------|
-| Back to Bookstore container | `py-6` | 24px top + 24px bottom = 48px total |
-| Hero section | `py-12` | 48px top + 48px bottom |
-| **Combined gap** | - | ~72px between link and book |
+| System | Location | Description |
+|--------|----------|-------------|
+| Custom React component | `src/App.tsx` | The `CookieConsent` component that creates a styled banner |
+| Cookiebot external script | `index.html` | Third-party cookie management service |
 
 ---
 
-### Solution
+### Changes to Make
 
-Adjust spacing to be tighter on mobile while preserving desktop layout:
+#### 1. Remove CookieConsent from App.tsx
 
-| Element | Current | Updated |
-|---------|---------|---------|
-| Back to Bookstore container | `py-6` | `py-3 sm:py-6` (12px on mobile, 24px on larger) |
-| Hero section | `py-12` | `py-6 sm:py-12` (24px on mobile, 48px on larger) |
+**File:** `src/App.tsx`
 
-This reduces the mobile gap from ~72px to ~36px - cutting it in half for a much tighter, cleaner look.
+- **Line 42**: Remove the import statement
+- **Line 53**: Remove the `<CookieConsent />` component
 
----
+#### 2. Remove Cookiebot Script from index.html
 
-### File to Modify
+**File:** `index.html`
 
-**`src/components/BookDetailPage.tsx`**
-
-#### Change 1: Line 38
-```tsx
-// Before
-<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-
-// After
-<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 sm:py-6">
-```
-
-#### Change 2: Line 49
-```tsx
-// Before
-<section className="py-12 px-4 sm:px-6 lg:px-8">
-
-// After
-<section className="py-6 sm:py-12 px-4 sm:px-6 lg:px-8">
-```
+- **Lines 15-16**: Remove the Cookiebot script and its comment
 
 ---
 
-### Visual Result
+### Files Modified
 
-| Screen Size | Before | After |
-|-------------|--------|-------|
-| Mobile (<640px) | ~72px gap | ~36px gap |
-| Tablet/Desktop (>=640px) | ~96px gap | ~96px gap (unchanged) |
+| File | Action |
+|------|--------|
+| `src/App.tsx` | Remove import and component usage |
+| `index.html` | Remove Cookiebot third-party script |
 
 ---
 
-### Technical Summary
+### Optional Cleanup
 
-| File | Lines | Change |
-|------|-------|--------|
-| `src/components/BookDetailPage.tsx` | 38 | Add responsive padding `py-3 sm:py-6` |
-| `src/components/BookDetailPage.tsx` | 49 | Add responsive padding `py-6 sm:py-12` |
+The following files will remain but won't be used. They can be kept for future use or deleted:
+
+| File | Status |
+|------|--------|
+| `src/components/CookieConsent.tsx` | Unused (can keep or delete) |
+| `src/pages/CookiePolicy.tsx` | Still accessible at `/cookie-policy` route |
 
 ---
 
 ### Result
-- Tighter, more polished mobile layout
-- Book cover appears closer to the navigation without feeling cramped
-- Desktop spacing remains unchanged for proper visual hierarchy
-- Consistent with responsive design strategy across the site
+
+- No cookie consent popup will appear on any page
+- Site loads faster without the Cookiebot external script
+- Cookie Policy page remains available if you want to keep it for legal/compliance purposes
+- The custom CookieConsent component file stays in the codebase in case you need it later
 
