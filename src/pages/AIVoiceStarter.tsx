@@ -23,7 +23,7 @@ const AIVoiceStarter = () => {
         title="Starter Plan - AI Voice System | NFT Las Vegas™"
         description="Get started with AI Voice Agents. Simple flow, basic KB, and CRM integration for $2,500 one-time setup."
       />
-      <div className="min-h-screen bg-background">
+      <div className="min-h-dvh bg-background">
         <Header />
         
         <section className="pt-32 pb-20 px-6">

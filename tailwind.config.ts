@@ -38,8 +38,11 @@ export default {
 			xl: '1366px',
 			'2xl': '1920px'
 		},
-		extend: {
-			colors: {
+	extend: {
+		minHeight: {
+			'dvh': '100dvh',
+		},
+		colors: {
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
 				ring: 'hsl(var(--ring))',

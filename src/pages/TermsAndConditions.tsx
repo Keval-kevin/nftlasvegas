@@ -11,7 +11,7 @@ const TermsAndConditions = () => {
         description="Review the terms and conditions governing your use of NFT Las Vegas™ services."
         keywords="terms, conditions, legal, agreement, NFT Las Vegas"
       />
-      <div className="min-h-screen bg-background text-foreground">
+      <div className="min-h-dvh bg-background text-foreground">
         <Header />
         
         <main className="max-w-[900px] mx-auto px-4 md:px-6 py-12 md:py-16">

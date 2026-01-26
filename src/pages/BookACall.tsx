@@ -34,7 +34,7 @@ const BookACall = () => {
         url="https://www.nftlasvegas.io/book-a-call"
       />
       <Header />
-      <div className="min-h-screen bg-gradient-to-br from-background via-background to-primary/5">
+      <div className="min-h-dvh bg-gradient-to-br from-background via-background to-primary/5">
         <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12 animate-fade-in">

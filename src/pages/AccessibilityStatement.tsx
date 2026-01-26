@@ -11,7 +11,7 @@ const AccessibilityStatement = () => {
         description="Our commitment to a more accessible and inclusive digital experience."
         keywords="accessibility, WCAG, inclusive, web standards, NFT Las Vegas"
       />
-      <div className="min-h-screen bg-background text-foreground">
+      <div className="min-h-dvh bg-background text-foreground">
         <Header />
         
         <main className="max-w-[900px] mx-auto px-4 md:px-6 py-12 md:py-16">

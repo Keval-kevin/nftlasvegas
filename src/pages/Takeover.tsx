@@ -23,7 +23,7 @@ const Takeover = () => {
         keywords="Web3 Wednesdays, blockchain meetup, NFT Las Vegas, Web3 events, crypto community, Stand With Crypto"
       />
       
-      <div className="min-h-screen bg-background">
+      <div className="min-h-dvh bg-background">
         <Header />
         
         <main className="pt-20">

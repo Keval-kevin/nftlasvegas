@@ -63,7 +63,7 @@ const TechDevelopmentNFT = () => {
         keywords="AI development, blockchain, Web3, full-stack, enterprise integration, cloud solutions"
       />
       
-      <div className="min-h-screen bg-background">
+      <div className="min-h-dvh bg-background">
         <Header />
         
         <main className="pt-20">

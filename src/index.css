@@ -74,6 +74,18 @@
     overflow-x: hidden;
   }
 
+  /* Dynamic viewport height support with fallback for mobile browsers */
+  html, body, #root {
+    min-height: 100vh;
+    min-height: 100dvh;
+  }
+
+  /* Dynamic viewport height utility class */
+  .min-h-dvh {
+    min-height: 100vh; /* Fallback for older browsers */
+    min-height: 100dvh; /* Modern browsers */
+  }
+
   /* Enhanced Typography Hierarchy with Fluid Scaling */
   h1 {
     font-size: clamp(2rem, 2rem + 2vw, 4rem);

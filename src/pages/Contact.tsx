@@ -180,7 +180,7 @@ const Contact = () => {
   return <>
       <SEOHead title="Contact NFT Las Vegas | Let's Build What's Next" description="Get in touch with NFT Las Vegas for funding enablement, tech development, product manufacturing, platform launch, distribution, or AI voice systems." url="https://www.nftlasvegas.io/contact" />
       <Header />
-      <div className="min-h-screen bg-gradient-to-br from-background via-background to-primary/5">
+      <div className="min-h-dvh bg-gradient-to-br from-background via-background to-primary/5">
         {/* Hero Section */}
         <section className="relative pt-32 pb-20 px-4 sm:px-6 lg:px-8">
           <div className="max-w-7xl mx-auto text-center">

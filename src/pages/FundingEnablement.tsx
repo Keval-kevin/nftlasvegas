@@ -53,7 +53,7 @@ const FundingEnablement = () => {
         keywords="funding, angel investors, strategic funding, venture capital, co-development"
       />
       
-      <div className="min-h-screen bg-background">
+      <div className="min-h-dvh bg-background">
         <Header />
         
         <main className="pt-20">

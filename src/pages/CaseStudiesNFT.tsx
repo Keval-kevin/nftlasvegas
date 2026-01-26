@@ -63,7 +63,7 @@ const CaseStudiesNFT = () => {
         }}
       />
       
-      <div className="min-h-screen bg-background">
+      <div className="min-h-dvh bg-background">
         <Header />
         
         <main className="max-w-[1100px] mx-auto px-6 md:px-8 py-16 md:py-24">

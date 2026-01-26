@@ -25,7 +25,7 @@ const AIVoiceProfessional = () => {
         title="Professional Plan - AI Voice System | NFT Las Vegas™"
         description="Advanced AI Voice Agent setup with complex flows, calendar booking, and monitoring for $5,000."
       />
-      <div className="min-h-screen bg-background">
+      <div className="min-h-dvh bg-background">
         <Header />
         
         <section className="pt-32 pb-20 px-6">

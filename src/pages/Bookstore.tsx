@@ -57,7 +57,7 @@ const Bookstore = () => {
         keywords="bookstore, digital books, NFT Las Vegas, Web3 literature, quantum business, metaverse stories"
       />
       
-      <div className="min-h-screen bg-background">
+      <div className="min-h-dvh bg-background">
         <Header />
         
         <main className="pt-20">
