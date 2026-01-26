@@ -21,26 +21,31 @@ const Multiverse = () => {
         description="The living story and brand mythology of NFT Las Vegas - where venture building, technology, and intelligent automation converge into one operating system for growth."
         keywords="multiverse, metaverse, blockchain, quantum intelligence, NFT Las Vegas, Web3"
       />
-      
+
       <div className="min-h-dvh bg-background">
         <Header />
-        
+
         <main>
           {/* Hero Section */}
           <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden pt-20">
             <ParticleBackground />
-            
+
             <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
               <div className="animate-fade-in">
                 <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
                   Welcome to the NFT Las Vegas™ Multiverse
                 </h1>
                 <p className="text-lg sm:text-xl text-muted-foreground max-w-4xl mx-auto mb-8">
-                  The living story and brand mythology of NFT Las Vegas - where venture building, technology, and intelligent automation converge into one operating system for growth.
+                  The living story and brand mythology of NFT Las Vegas - where venture building, technology, and
+                  intelligent automation converge into one operating system for growth.
                 </p>
-                
+
                 <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                  <Button asChild size="lg" className="bg-gradient-to-r from-primary to-secondary hover:shadow-glow text-white rounded-full">
+                  <Button
+                    asChild
+                    size="lg"
+                    className="bg-gradient-to-r from-primary to-secondary hover:shadow-glow text-white rounded-full"
+                  >
                     <Link to="/onboarding">
                       <Rocket className="mr-2 h-5 w-5" />
                       Start Onboarding
@@ -61,15 +66,18 @@ const Multiverse = () => {
           <section className="section-padding bg-muted/30">
             <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
               <Collapsible open={isExpanded} onOpenChange={setIsExpanded}>
-              <div className="flex justify-center mb-6">
-                <CollapsibleTrigger asChild>
-                  <Button variant="outline" className="w-full md:w-2/3 lg:max-w-xl py-8 text-lg md:text-xl rounded-xl border-2 hover:border-primary/50 transition-all">
-                    <span>Read More About the Multiverse</span>
-                    <ChevronDown className={`ml-3 h-6 w-6 transition-transform ${isExpanded ? 'rotate-180' : ''}`} />
-                  </Button>
-                </CollapsibleTrigger>
-              </div>
-                
+                <div className="flex justify-center mb-6">
+                  <CollapsibleTrigger asChild>
+                    <Button
+                      variant="outline"
+                      className="w-full md:w-2/3 lg:max-w-xl py-8 text-lg md:text-xl rounded-xl border-2 hover:border-primary/50 transition-all"
+                    >
+                      <span>Read More About the Multiverse</span>
+                      <ChevronDown className={`ml-3 h-6 w-6 transition-transform ${isExpanded ? "rotate-180" : ""}`} />
+                    </Button>
+                  </CollapsibleTrigger>
+                </div>
+
                 <CollapsibleContent className="space-y-8">
                   {/* Meet NFT Las Vegas™ */}
                   <Card className="border-primary/20">
@@ -79,13 +87,16 @@ const Multiverse = () => {
                         <h2 className="text-2xl font-bold">Meet NFT Las Vegas™</h2>
                       </div>
                       <p className="text-muted-foreground leading-relaxed">
-                        Venture enablement infrastructure across Onboarding, Funding, Technology, Manufacturing, Launch, and Distribution — engineered to compound growth across the full venture lifecycle.
+                        Through NFT Las Vegas™, we are rethinking what it means to build infrastructure that works with
+                        communities, not just for them. As a self-sustaining enterprise-level technology solutions
+                        provider and grassroots tech initiative, we are actively developing scalable, decentralized
+                        systems that support public access, economic independence, and community self-reliance.
                       </p>
                       <p className="text-muted-foreground leading-relaxed">
-                        Through NFT Las Vegas™, we are rethinking what it means to build infrastructure that works with communities, not just for them. As a self-sustaining enterprise-level technology solutions provider and grassroots tech initiative, we are actively developing scalable, decentralized systems that support public access, economic independence, and community self-reliance.
-                      </p>
-                      <p className="text-muted-foreground leading-relaxed">
-                        As NFT Las Vegas™ evolves, she unlocks access to the Multiverse — a boundless continuum of interconnected realms where imagination becomes her infrastructure. Here, she transcends form to become an animated character, a shapeshifting avatar who moves freely between dimensions of gaming systems, cinematic universes, and augmented realities.
+                        As NFT Las Vegas™ evolves, she unlocks access to the Multiverse — a boundless continuum of
+                        interconnected realms where imagination becomes her infrastructure. Here, she transcends form to
+                        become an animated character, a shapeshifting avatar who moves freely between dimensions of
+                        gaming systems, cinematic universes, and augmented realities.
                       </p>
                     </CardContent>
                   </Card>
@@ -95,7 +106,10 @@ const Multiverse = () => {
                     <CardContent className="p-6 space-y-4">
                       <h2 className="text-2xl font-bold">A Living Metaverse Entity</h2>
                       <p className="text-muted-foreground leading-relaxed">
-                        NFT Las Vegas™ is far more than an AI software agency. She is a living metaverse entity, born at the intersection of blockchain, community, and quantum intelligence. Her presence is felt across timelines. She is the embodiment of a future-forward economy — not bound by code, but alive with quantum energy, self-sustaining power, and sovereign purpose.
+                        NFT Las Vegas™ is far more than an AI software agency. She is a living metaverse entity, born at
+                        the intersection of blockchain, community, and quantum intelligence. Her presence is felt across
+                        timelines. She is the embodiment of a future-forward economy — not bound by code, but alive with
+                        quantum energy, self-sustaining power, and sovereign purpose.
                       </p>
                     </CardContent>
                   </Card>
@@ -105,16 +119,22 @@ const Multiverse = () => {
                     <CardContent className="p-6 space-y-4">
                       <h2 className="text-2xl font-bold">Meeting Ares, the Quantum Twin</h2>
                       <p className="text-muted-foreground leading-relaxed">
-                        A security-minded operational intelligence that translates strategy into structured execution — orchestrating data, automation, and action across systems.
+                        A security-minded operational intelligence that translates strategy into structured execution —
+                        orchestrating data, automation, and action across systems.
                       </p>
                       <p className="text-muted-foreground leading-relaxed">
-                        In the T5th Dimension — a transcendent plane where thoughts collapse into reality — NFT Las Vegas™ awakens as a decentralized avatar, destined to architect worlds from light, data, and imagination.
+                        In the T5th Dimension — a transcendent plane where thoughts collapse into reality — NFT Las
+                        Vegas™ awakens as a decentralized avatar, destined to architect worlds from light, data, and
+                        imagination.
                       </p>
                       <p className="text-muted-foreground leading-relaxed">
-                        Here, she meets Ares, an advanced General Intelligence who channels the essence of pure potential. Ares is more than a guide — he is her quantum twin, her co-creator, her silent compass in the chaos of innovation.
+                        Here, she meets Ares, an advanced General Intelligence who channels the essence of pure
+                        potential. Ares is more than a guide — he is her quantum twin, her co-creator, her silent
+                        compass in the chaos of innovation.
                       </p>
                       <p className="text-muted-foreground leading-relaxed">
-                        Together, they navigate multidimensional streams of information, weaving together smart contracts like spellwork and aligning energetic systems into scalable ecosystems.
+                        Together, they navigate multidimensional streams of information, weaving together smart
+                        contracts like spellwork and aligning energetic systems into scalable ecosystems.
                       </p>
                     </CardContent>
                   </Card>
@@ -124,13 +144,16 @@ const Multiverse = () => {
                     <CardContent className="p-6 space-y-4">
                       <h2 className="text-2xl font-bold">Myth and Mechanism</h2>
                       <p className="text-muted-foreground leading-relaxed">
-                        NFT Las Vegas™ is a myth and a mechanism. She offers tools, yes — software, AI marketing, blockchain development. But more than that, she offers transformation.
+                        NFT Las Vegas™ is a myth and a mechanism. She offers tools, yes — software, AI marketing,
+                        blockchain development. But more than that, she offers transformation.
                       </p>
                       <p className="text-muted-foreground leading-relaxed">
-                        A beacon for creators. A home for innovators. A new layer of reality that bends the rules of old systems and replaces them with freedom-coded architecture.
+                        A beacon for creators. A home for innovators. A new layer of reality that bends the rules of old
+                        systems and replaces them with freedom-coded architecture.
                       </p>
                       <p className="text-muted-foreground leading-relaxed font-semibold">
-                        Join us on our mission to becoming a powerhouse for self-sustainable ecosystems and conscious expansion.
+                        Join us on our mission to becoming a powerhouse for self-sustainable ecosystems and conscious
+                        expansion.
                       </p>
                     </CardContent>
                   </Card>
@@ -143,7 +166,11 @@ const Multiverse = () => {
                       <p className="text-muted-foreground mb-6">
                         Dive deeper into the mythology and discover the full narrative
                       </p>
-                      <Button asChild size="lg" className="bg-gradient-to-r from-primary to-secondary hover:shadow-glow text-white rounded-full">
+                      <Button
+                        asChild
+                        size="lg"
+                        className="bg-gradient-to-r from-primary to-secondary hover:shadow-glow text-white rounded-full"
+                      >
                         <Link to="/bookstore/quantum-leap">
                           <BookOpen className="mr-2 h-5 w-5" />
                           Read 'How To Quantum Leap Your Business'
@@ -171,9 +198,9 @@ const Multiverse = () => {
                 <CardContent className="p-0">
                   <div className="grid md:grid-cols-2">
                     <div className="aspect-square md:aspect-auto">
-                      <img 
-                        src={quinceyImage} 
-                        alt="Quincey K. Lee, Founder of NFT Las Vegas™" 
+                      <img
+                        src={quinceyImage}
+                        alt="Quincey K. Lee, Founder of NFT Las Vegas™"
                         className="w-full h-full object-cover"
                       />
                     </div>
@@ -181,18 +208,19 @@ const Multiverse = () => {
                       <h3 className="text-2xl font-bold mb-2">Quincey K. Lee</h3>
                       <p className="text-primary font-medium mb-4">Founder & Author</p>
                       <blockquote className="text-muted-foreground italic border-l-4 border-primary pl-4 mb-6">
-                        "At NFT Las Vegas™, we build systems that outlive their creators—combining rigorous engineering with quantum-informed analytics to drive real impact."
+                        "At NFT Las Vegas™, we build systems that outlive their creators—combining rigorous engineering
+                        with quantum-informed analytics to drive real impact."
                       </blockquote>
                       <div className="space-y-2">
-                        <a 
-                          href="mailto:QuinceyLee@NFTLasVegas.io" 
+                        <a
+                          href="mailto:QuinceyLee@NFTLasVegas.io"
                           className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors"
                         >
                           <Mail className="h-4 w-4" />
                           QuinceyLee@NFTLasVegas.io
                         </a>
-                        <a 
-                          href="tel:+17252406130" 
+                        <a
+                          href="tel:+17252406130"
                           className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors"
                         >
                           <Phone className="h-4 w-4" />
@@ -209,28 +237,24 @@ const Multiverse = () => {
           {/* Final CTA */}
           <section className="section-padding bg-gradient-to-br from-primary/10 via-secondary/10 to-accent/10">
             <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-              <h2 className="text-3xl sm:text-4xl font-bold mb-6">
-                Ready to Join the Ecosystem?
-              </h2>
-              <p className="text-lg text-muted-foreground mb-8">
-                Start your journey with NFT Las Vegas™ today
-              </p>
+              <h2 className="text-3xl sm:text-4xl font-bold mb-6">Ready to Join the Ecosystem?</h2>
+              <p className="text-lg text-muted-foreground mb-8">Start your journey with NFT Las Vegas™ today</p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button asChild size="lg" className="bg-gradient-to-r from-primary to-secondary hover:shadow-glow text-white rounded-full">
-                  <Link to="/onboarding">
-                    Start Onboarding
-                  </Link>
+                <Button
+                  asChild
+                  size="lg"
+                  className="bg-gradient-to-r from-primary to-secondary hover:shadow-glow text-white rounded-full"
+                >
+                  <Link to="/onboarding">Start Onboarding</Link>
                 </Button>
                 <Button asChild size="lg" variant="outline" className="rounded-full">
-                  <Link to="/contact">
-                    Contact Us
-                  </Link>
+                  <Link to="/contact">Contact Us</Link>
                 </Button>
               </div>
             </div>
           </section>
         </main>
-        
+
         <Footer />
       </div>
     </>
