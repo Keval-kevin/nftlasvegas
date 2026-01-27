@@ -7,35 +7,35 @@ import { useIsMobile } from "@/hooks/use-mobile";
 const PHASES_DATA = [
   { 
     phase: "Onboarding", 
-    index: 5,
+    index: 8,
     benefit: "Clarity, access, and a 90-day roadmap.",
     route: "/onboarding",
     milestone: "Journey Starts"
   },
   { 
     phase: "Funding", 
-    index: 22,
+    index: 18,
     benefit: "Investor narrative, data room, capital strategy.",
     route: "/funding-enablement",
     milestone: "Funding Ready"
   },
   { 
     phase: "Tech", 
-    index: 42,
+    index: 35,
     benefit: "AI, Web3, and enterprise integrations designed for scale.",
     route: "/tech-development",
     milestone: "MVP Assembled"
   },
   { 
     phase: "Manufacturing", 
-    index: 65,
+    index: 58,
     benefit: "Prototype → certify → mass produce with reliable partners.",
     route: "/product-manufacturing",
     milestone: "Production Ready"
   },
   { 
     phase: "Launch", 
-    index: 85,
+    index: 82,
     benefit: "Positioning, content engine, marketing ops, analytics.",
     route: "/platform-launch",
     milestone: "Public Launch"
@@ -125,14 +125,14 @@ export const EcosystemChart = () => {
           </div>
 
           {/* Chart */}
-          <ResponsiveContainer width="100%" height={isMobile ? 300 : 400}>
+          <ResponsiveContainer width="100%" height={isMobile ? 320 : 420}>
             <ComposedChart 
               data={PHASES_DATA}
               margin={{ 
-                top: isMobile ? 25 : 35, 
-                right: isMobile ? 20 : 40, 
-                left: isMobile ? 0 : 20, 
-                bottom: isMobile ? 50 : 60 
+                top: isMobile ? 10 : 15, 
+                right: isMobile ? 10 : 25, 
+                left: isMobile ? -5 : 10, 
+                bottom: isMobile ? 40 : 45 
               }}
             >
               <defs>
@@ -153,25 +153,27 @@ export const EcosystemChart = () => {
               <XAxis 
                 dataKey="phase" 
                 stroke="rgba(255,255,255,0.3)" 
-                tick={{ fill: 'rgba(255,255,255,0.6)', fontSize: isMobile ? 9 : 11 }}
-                angle={isMobile ? -35 : -20}
+                tick={{ fill: 'rgba(255,255,255,0.6)', fontSize: isMobile ? 10 : 12 }}
+                angle={isMobile ? -30 : -15}
                 textAnchor="end"
-                height={isMobile ? 70 : 80}
+                height={isMobile ? 55 : 60}
                 onClick={(data: any) => data && handlePhaseClick(data.value)}
                 style={{ cursor: 'pointer' }}
               />
               
               <YAxis 
-                domain={[0, 100]}
-                ticks={[0, 25, 50, 75, 100]}
+                domain={[0, 105]}
+                ticks={[20, 40, 60, 80, 100]}
                 stroke="rgba(255,255,255,0.3)" 
                 tick={{ fill: 'rgba(255,255,255,0.6)', fontSize: isMobile ? 9 : 12 }}
+                width={isMobile ? 25 : 45}
                 label={!isMobile ? { 
-                  value: 'Growth Potential (Index)', 
+                  value: 'Growth Potential', 
                   angle: -90, 
                   position: 'insideLeft', 
                   fill: 'rgba(255,255,255,0.6)',
-                  style: { textAnchor: 'middle' }
+                  style: { textAnchor: 'middle' },
+                  offset: 5
                 } : undefined}
               />
               
