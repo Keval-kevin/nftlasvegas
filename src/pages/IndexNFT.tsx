@@ -15,7 +15,7 @@ const IndexNFT = () => {
         title="NFT Las Vegas™ Distribution Label"
         description="Your key to unlocking full-stack venture enablement that combines blockchain, AI, and enterprise infrastructure to create self-sustainable economies."
         keywords="NFT Las Vegas, distribution label, venture enablement, blockchain, AI automation, enterprise infrastructure, digital transformation"
-        image="/og-image.jpg"
+        image="/og-image.png"
       />
       
       <div className="min-h-dvh bg-background">

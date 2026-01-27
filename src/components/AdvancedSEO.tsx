@@ -27,7 +27,7 @@ export const AdvancedSEO: React.FC<AdvancedSEOProps> = ({
   keywords = ['NFT Las Vegas', 'distribution label', 'venture enablement', 'blockchain', 'AI automation', 'enterprise infrastructure', 'digital transformation'],
   author = 'NFT Las Vegas',
   type = 'website',
-  image = '/og-image.jpg',
+  image = '/og-image.png',
   url,
   publishedTime,
   modifiedTime,
@@ -108,7 +108,7 @@ export const AdvancedSEO: React.FC<AdvancedSEOProps> = ({
           "@type": "Organization",
           "name": "NFT Las Vegas",
           "url": "https://nftlasvegas.io",
-          "logo": "https://nftlasvegas.io/og-image.jpg",
+          "logo": "https://nftlasvegas.io/og-image.png",
           "description": "Your key to unlocking full-stack venture enablement that combines blockchain, AI, and enterprise infrastructure to create self-sustainable economies.",
           "contactPoint": {
             "@type": "ContactPoint",
