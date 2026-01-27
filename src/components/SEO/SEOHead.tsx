@@ -15,7 +15,7 @@ export const SEOHead = ({
   title = "NFT Las Vegas™ Distribution Label",
   description = "Your key to unlocking full-stack venture enablement that combines blockchain, AI, and enterprise infrastructure to create self-sustainable economies.",
   keywords = "NFT Las Vegas, distribution label, venture enablement, blockchain, AI automation, enterprise infrastructure, digital transformation",
-  image = "/og-image.jpg",
+  image = "/og-image.png",
   url = "https://nftlasvegas.io",
   type = "website",
   structuredData
@@ -31,9 +31,9 @@ export const SEOHead = ({
     "url": url,
     "logo": {
       "@type": "ImageObject",
-      "url": "https://nftlasvegas.io/og-image.jpg",
+      "url": "https://nftlasvegas.io/og-image.png",
       "width": 1200,
-      "height": 630
+      "height": 1200
     },
     "contactPoint": {
       "@type": "ContactPoint",
