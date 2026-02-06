@@ -108,7 +108,7 @@ export const AdvancedSEO: React.FC<AdvancedSEOProps> = ({
           "@type": "Organization",
           "name": "NFT Las Vegas",
           "url": "https://nftlasvegas.io",
-          "logo": "https://nftlasvegas.io/og-image.png",
+          "logo": "https://nftlasvegas.io/favicon.png",
           "description": "Your key to unlocking full-stack venture enablement that combines blockchain, AI, and enterprise infrastructure to create self-sustainable economies.",
           "contactPoint": {
             "@type": "ContactPoint",

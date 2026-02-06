@@ -42,7 +42,10 @@ Allow: /
 # Disallow: /private/
 
 # Allow images and assets
+# Allow favicon and branding assets
 User-agent: *
+Allow: /favicon.png
+Allow: /og-image.png
 Allow: /lovable-uploads/
 Allow: /*.css
 Allow: /*.js
