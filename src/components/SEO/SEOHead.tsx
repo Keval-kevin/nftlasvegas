@@ -31,9 +31,9 @@ export const SEOHead = ({
     "url": url,
     "logo": {
       "@type": "ImageObject",
-      "url": "https://nftlasvegas.io/og-image.png",
-      "width": 1200,
-      "height": 1200
+      "url": "https://nftlasvegas.io/favicon.png",
+      "width": 512,
+      "height": 512
     },
     "contactPoint": {
       "@type": "ContactPoint",
