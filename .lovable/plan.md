@@ -1,201 +1,142 @@
 
 
-## Plan: Make Ecosystem Chart Steeper and Fill More Space
+## Plan: Update Favicon, Meta Tags, and Search Indexing
 
-### Current Issues
+### Overview
 
-The chart has significant empty space because:
-
-1. **Low starting point**: First data point (Onboarding) starts at index 5 - very close to the bottom
-2. **Gentle curve**: The growth progression is relatively linear (5 → 22 → 42 → 65 → 85 → 100)
-3. **Large margins**: Chart margins eat into usable space
-4. **Y-axis domain**: Fixed at 0-100, but data only uses 5-100
+Update the site's branding assets with the new red geometric cube logo across all touchpoints - favicon, Open Graph images, meta tags, and ensure proper search engine indexing.
 
 ---
 
-### Solution: Multi-Pronged Approach
+### Files to Update
 
-#### 1. Adjust Data Points for Steeper Curve
-
-Make the growth curve more exponential/dramatic:
-
-| Phase | Current Index | New Index | Effect |
-|-------|---------------|-----------|--------|
-| Onboarding | 5 | 8 | Slightly higher start |
-| Funding | 22 | 18 | Lower dip creates contrast |
-| Tech | 42 | 35 | Steeper climb ahead |
-| Manufacturing | 65 | 58 | Build tension |
-| Launch | 85 | 82 | Sharp acceleration |
-| Distribution | 100 | 100 | Peak unchanged |
-
-This creates a more dramatic "hockey stick" growth curve that feels steeper in the final phases.
-
-#### 2. Reduce Chart Margins
-
-Current margins waste space:
-
-| Setting | Current (Desktop) | New (Desktop) | Current (Mobile) | New (Mobile) |
-|---------|-------------------|---------------|------------------|--------------|
-| Top | 35px | 15px | 25px | 10px |
-| Right | 40px | 25px | 20px | 10px |
-| Left | 20px | 10px | 0px | -5px |
-| Bottom | 60px | 45px | 50px | 40px |
-
-#### 3. Adjust Y-Axis to Better Fill Space
-
-- Remove the 0 tick mark and start visual display slightly higher
-- Keep domain at [0, 100] for accuracy but adjust tick display
-- Use ticks: [10, 30, 50, 70, 90, 100] instead of [0, 25, 50, 75, 100]
-
-#### 4. Increase Chart Height
-
-| Device | Current | New |
-|--------|---------|-----|
-| Mobile | 300px | 320px |
-| Desktop | 400px | 420px |
+| File | Purpose |
+|------|---------|
+| `public/favicon.png` | Browser tab favicon |
+| `public/og-image.png` | Social media preview image |
+| `index.html` | Main HTML meta tags and favicon links |
+| `src/components/SEO/SEOHead.tsx` | Dynamic SEO component for all pages |
+| `src/components/AdvancedSEO.tsx` | Advanced SEO component with structured data |
+| `public/sitemap.xml` | Update lastmod dates for fresh crawling |
+| `public/robots.txt` | Ensure proper indexing directives |
 
 ---
 
-### File to Modify
+### Changes Summary
 
-**`src/components/Flywheel/EcosystemChart.tsx`**
+#### 1. Copy New Favicon Image
 
-#### Change 1: Update PHASES_DATA (Lines 7-50)
+Copy the uploaded image to both favicon and OG image locations:
+- `public/favicon.png` - For browser tabs
+- `public/og-image.png` - For social media previews
 
-```tsx
-const PHASES_DATA = [
-  { 
-    phase: "Onboarding", 
-    index: 8,  // Was 5
-    benefit: "Clarity, access, and a 90-day roadmap.",
-    route: "/onboarding",
-    milestone: "Journey Starts"
-  },
-  { 
-    phase: "Funding", 
-    index: 18,  // Was 22
-    benefit: "Investor narrative, data room, capital strategy.",
-    route: "/funding-enablement",
-    milestone: "Funding Ready"
-  },
-  { 
-    phase: "Tech", 
-    index: 35,  // Was 42
-    benefit: "AI, Web3, and enterprise integrations designed for scale.",
-    route: "/tech-development",
-    milestone: "MVP Assembled"
-  },
-  { 
-    phase: "Manufacturing", 
-    index: 58,  // Was 65
-    benefit: "Prototype → certify → mass produce with reliable partners.",
-    route: "/product-manufacturing",
-    milestone: "Production Ready"
-  },
-  { 
-    phase: "Launch", 
-    index: 82,  // Was 85
-    benefit: "Positioning, content engine, marketing ops, analytics.",
-    route: "/platform-launch",
-    milestone: "Public Launch"
-  },
-  { 
-    phase: "Distribution", 
-    index: 100,  // Unchanged
-    benefit: "Channels, marketplaces, enablement kits, & SLAs.",
-    route: "/distribution",
-    milestone: "Scale"
-  }
-];
+#### 2. Update index.html (Lines 15-17, 41-43, 52)
+
+Add comprehensive favicon support and update meta:
+
+```html
+<!-- Favicon - Multiple formats for cross-browser support -->
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/favicon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
+<link rel="mask-icon" href="/favicon.png" color="#E85A5A">
+<meta name="msapplication-TileImage" content="/favicon.png">
 ```
 
-#### Change 2: Reduce Margins and Increase Height (Lines 128-136)
-
-```tsx
-<ResponsiveContainer width="100%" height={isMobile ? 320 : 420}>
-  <ComposedChart 
-    data={PHASES_DATA}
-    margin={{ 
-      top: isMobile ? 10 : 15, 
-      right: isMobile ? 10 : 25, 
-      left: isMobile ? -5 : 10, 
-      bottom: isMobile ? 40 : 45 
-    }}
-  >
+Update Open Graph image dimensions to standard 1200x1200 (square for logo):
+```html
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="1200" />
 ```
 
-#### Change 3: Adjust Y-Axis Ticks (Lines 164-176)
+#### 3. Update SEOHead.tsx (Lines 32-37)
 
+Update the structured data logo reference:
 ```tsx
-<YAxis 
-  domain={[0, 105]}  // Slight buffer at top
-  ticks={[20, 40, 60, 80, 100]}  // Skip 0, start at 20
-  stroke="rgba(255,255,255,0.3)" 
-  tick={{ fill: 'rgba(255,255,255,0.6)', fontSize: isMobile ? 9 : 12 }}
-  width={isMobile ? 25 : 45}  // Tighter width
-  label={!isMobile ? { 
-    value: 'Growth Potential', 
-    angle: -90, 
-    position: 'insideLeft', 
-    fill: 'rgba(255,255,255,0.6)',
-    style: { textAnchor: 'middle' },
-    offset: 5
-  } : undefined}
-/>
+"logo": {
+  "@type": "ImageObject",
+  "url": "https://nftlasvegas.io/favicon.png",
+  "width": 512,
+  "height": 512
+},
 ```
 
-#### Change 4: Adjust X-Axis Height (Lines 153-162)
+#### 4. Update AdvancedSEO.tsx (Line 111)
 
+Update the organization schema logo:
 ```tsx
-<XAxis 
-  dataKey="phase" 
-  stroke="rgba(255,255,255,0.3)" 
-  tick={{ fill: 'rgba(255,255,255,0.6)', fontSize: isMobile ? 10 : 12 }}
-  angle={isMobile ? -30 : -15}  // Less angle = more compact
-  textAnchor="end"
-  height={isMobile ? 55 : 60}  // Reduced from 70/80
-  onClick={(data: any) => data && handlePhaseClick(data.value)}
-  style={{ cursor: 'pointer' }}
-/>
+"logo": "https://nftlasvegas.io/favicon.png",
 ```
 
----
+#### 5. Update Sitemap (public/sitemap.xml)
 
-### Visual Comparison
+Refresh all lastmod dates to today (2026-02-06) to signal search engines that content is fresh and should be recrawled.
 
+#### 6. Update Robots.txt (public/robots.txt)
+
+Ensure proper Googlebot indexing with explicit image path allowances:
 ```text
-BEFORE:                          AFTER:
-+------------------------+       +------------------------+
-|                        |       |                    ●   |
-|                        |       |                  ●     |
-|                   ●    |       |               ●        |
-|               ●        |       |            ●           |
-|          ●             |       |        ●               |
-|      ●                 |       |    ●                   |
-|  ●                     |       |●                       |
-+------------------------+       +------------------------+
-  More empty space above           Curve fills more of box
-  Gentle, linear growth            Steeper "hockey stick"
+# Allow favicon and branding assets
+Allow: /favicon.png
+Allow: /og-image.png
 ```
 
 ---
 
-### Summary of Changes
+### Technical Details
 
-| File | Lines | Change |
-|------|-------|--------|
-| `src/components/Flywheel/EcosystemChart.tsx` | 7-50 | Adjust index values for steeper curve |
-| `src/components/Flywheel/EcosystemChart.tsx` | 128-136 | Reduce margins, increase height |
-| `src/components/Flywheel/EcosystemChart.tsx` | 153-162 | Reduce X-axis height and angle |
-| `src/components/Flywheel/EcosystemChart.tsx` | 164-176 | Adjust Y-axis ticks and width |
+#### Favicon Implementation
+
+| Size | Purpose |
+|------|---------|
+| Default | General browser tabs |
+| 180x180 | Apple Touch Icon (iOS home screen) |
+| 32x32 | Standard favicon size |
+| 16x16 | Small favicon size |
+
+#### Search Indexing Improvements
+
+| Directive | Purpose |
+|-----------|---------|
+| `max-image-preview:large` | Allow large image previews in search results |
+| `max-snippet:-1` | No limit on text snippet length |
+| `max-video-preview:-1` | No limit on video preview length |
+| `googlebot: index, follow` | Explicitly allow Google indexing |
+
+#### Structured Data (JSON-LD)
+
+Update Organization schema with new logo reference for rich search results:
+```json
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "NFT Las Vegas",
+  "logo": "https://nftlasvegas.io/favicon.png"
+}
+```
+
+---
+
+### Files Modified
+
+| File | Lines Changed | Change Description |
+|------|---------------|-------------------|
+| `public/favicon.png` | - | Replace with new red cube image |
+| `public/og-image.png` | - | Replace with new red cube image |
+| `index.html` | 15-17 | Add comprehensive favicon meta tags |
+| `src/components/SEO/SEOHead.tsx` | 32-37 | Update logo in structured data |
+| `src/components/AdvancedSEO.tsx` | 111 | Update logo in organization schema |
+| `public/sitemap.xml` | Multiple | Update all lastmod to 2026-02-06 |
+| `public/robots.txt` | 46-47 | Add explicit favicon allowances |
 
 ---
 
 ### Result
 
-- Chart curve appears steeper and more dramatic
-- Less empty space around the graph
-- Data fills more of the container box
-- Works consistently on both mobile and desktop
-- Maintains all interactivity (tooltips, clickable dots)
+- New red geometric cube appears in browser tabs across all devices
+- Social media previews (Facebook, Twitter, LinkedIn) show the new logo
+- Google Search Console and other crawlers can index the new images
+- Updated sitemap signals freshness to search engines
+- Structured data provides the correct logo for Google Knowledge Panel
 
