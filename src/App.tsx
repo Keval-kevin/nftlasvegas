@@ -53,7 +53,7 @@ const App = () => (
           <ResponsiveTestingHelper />
           <GoogleAnalytics 
             measurementId="G-7NVLMVTXGD" 
-            facebookPixelId="XXXXXXXXXX"
+            facebookPixelIds={["896780503164243", "25818556454432701"]}
             linkedInPartnerId="XXXXXXX"
           />
           <Routes>

@@ -14,14 +14,14 @@ declare global {
 
 interface GoogleAnalyticsProps {
   measurementId?: string;
-  facebookPixelId?: string;
+  facebookPixelIds?: string[];
   linkedInPartnerId?: string;
 }
 
 export const GoogleAnalytics = ({ 
-  measurementId = "G-7NVLMVTXGD", // Updated with your actual GA4 Measurement ID
-  facebookPixelId = "XXXXXXXXXX", // Replace with actual Facebook Pixel ID
-  linkedInPartnerId = "XXXXXXX" // Replace with actual LinkedIn Partner ID
+  measurementId = "G-7NVLMVTXGD",
+  facebookPixelIds = [],
+  linkedInPartnerId = "XXXXXXX"
 }: GoogleAnalyticsProps) => {
   const location = useLocation();
 
@@ -53,9 +53,10 @@ export const GoogleAnalytics = ({
       document.head.appendChild(script2);
     }
 
-    // Initialize Facebook Pixel
-    if (facebookPixelId && facebookPixelId !== "XXXXXXXXXX") {
+    // Initialize Facebook Pixels
+    if (facebookPixelIds.length > 0) {
       const script3 = document.createElement('script');
+      const pixelInits = facebookPixelIds.map(id => `fbq('init', '${id}');`).join('\n        ');
       script3.innerHTML = `
         !function(f,b,e,v,n,t,s)
         {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -65,14 +66,16 @@ export const GoogleAnalytics = ({
         t.src=v;s=b.getElementsByTagName(e)[0];
         s.parentNode.insertBefore(t,s)}(window, document,'script',
         'https://connect.facebook.net/en_US/fbevents.js');
-        fbq('init', '${facebookPixelId}');
+        ${pixelInits}
         fbq('track', 'PageView');
       `;
       document.head.appendChild(script3);
 
-      const noscript = document.createElement('noscript');
-      noscript.innerHTML = `<img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=${facebookPixelId}&ev=PageView&noscript=1" />`;
-      document.head.appendChild(noscript);
+      facebookPixelIds.forEach(id => {
+        const noscript = document.createElement('noscript');
+        noscript.innerHTML = `<img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=${id}&ev=PageView&noscript=1" />`;
+        document.head.appendChild(noscript);
+      });
     }
 
     // Initialize LinkedIn Insight Tag
@@ -94,7 +97,7 @@ export const GoogleAnalytics = ({
       noscript2.innerHTML = `<img height="1" width="1" style="display:none;" alt="" src="https://px.ads.linkedin.com/collect/?pid=${linkedInPartnerId}&fmt=gif" />`;
       document.head.appendChild(noscript2);
     }
-  }, [measurementId, facebookPixelId, linkedInPartnerId]);
+  }, [measurementId, facebookPixelIds, linkedInPartnerId]);
 
   // Track page views on route changes
   useEffect(() => {
@@ -112,14 +115,14 @@ export const GoogleAnalytics = ({
       });
     }
 
-    if (window.fbq && facebookPixelId !== "XXXXXXXXXX") {
+    if (window.fbq && facebookPixelIds.length > 0) {
       window.fbq('track', 'PageView');
     }
 
     if (window.lintrk && linkedInPartnerId !== "XXXXXXX") {
       window.lintrk('track', { conversion_id: 'pageview' });
     }
-  }, [location, measurementId, facebookPixelId, linkedInPartnerId]);
+  }, [location, measurementId, facebookPixelIds, linkedInPartnerId]);
 
   return null;
 };
